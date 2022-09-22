@@ -11,6 +11,14 @@ Commands.Test.LeaveZone = function(player, args)
     player:Say("Radiation NOT Detected!")
 end
 
+Commands.Test.ReadCorsFile = function()
+    -- http://lua-users.org/wiki/FileInputOutput
+    file = "coordinates"
+
+    -- see if the file exist
+
+end
+
 local onClientCommand = function(module, command, player, args)
     if Commands[module] and Commands[module][command] then
         Commands[module][command](player, args);
