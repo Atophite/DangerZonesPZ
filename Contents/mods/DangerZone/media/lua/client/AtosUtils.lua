@@ -1,3 +1,6 @@
+
+coordinates = {}
+
 function test()
 	print("test")
 end
@@ -12,7 +15,7 @@ function printCors()
 end
 
 function printTable(table)
-   print(dump(cors))
+   print(dump(table))
 
 end
 
@@ -21,14 +24,47 @@ function readCorsFile()
    --
    --});
 
-   local reader = getFileReader("coordinates.txt", true)
+   --[0-9]
+   local zone = {}
+   coordinates = {}
+   local counter = 1;
+   local x
+   local y
+   local reader = getModFileReader("DangerZone", "media/coordinates.txt", true)
    if reader then
       local line = reader:readLine()
+      line = reader:readLine()
       print(line)
+      while line do
+         for w in string.gmatch(line, "%d+") do
+            print(w)
+            if counter == 1 then
+               x = tonumber(w)
+            end
+
+            if counter == 2 then
+               y = tonumber(w)
+            end
+            counter = counter + 1
+            if counter == 3 then
+               counter = 1
+               table.insert(zone, {x,y})
+            end
+         end
+
+         table.insert(coordinates, zone)
+         zone = {}
+         line = reader:readLine()
+      end
       reader:close();
 
    end
-   print(tostring(reader))
+   print(printTable(coordinates))
+   for i, zone in ipairs(coordinates) do
+       print("zone " .. i)
+      print(zone)
+      printTable(zone)
+   end
 
 end
 
@@ -56,4 +92,12 @@ function dump(o)
    else
       return tostring(o)
    end
+end
+
+function tableLength(T)
+   local count = 0
+   for k, v in pairs(T) do
+      count = count + 1
+   end
+   return count
 end

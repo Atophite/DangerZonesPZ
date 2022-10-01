@@ -1,3 +1,4 @@
+
 local Commands = {};
 Commands.Test = {};
 
@@ -25,4 +26,13 @@ local onClientCommand = function(module, command, player, args)
     end
 end
 
+local function ATOS_EveryOneMinute()
+
+    for playerIndex = 0, getNumActivePlayers() -1 do
+        local player = getSpecificPlayer(playerIndex)
+        ATOS_loopCors(player)
+    end
+end
+
 Events.OnClientCommand.Add(onClientCommand);
+Events.EveryOneMinute.Add(ATOS_EveryOneMinute)
