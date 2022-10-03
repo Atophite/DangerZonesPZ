@@ -1,23 +1,35 @@
 
 local Commands = {};
-Commands.Test = {};
+Commands.Atos = {};
 
-Commands.Test.EnterZone = function(player, args)
+--When the player entered the zone with or without geiger
+Commands.Atos.EnterZone = function(player, args)
     print(player:getUsername() .. " has entered the radation zone")
-    player:Say("Radiation detected!")
+
+    if args.hasGeiger then
+        player:Say("Radiation detected!")
+    end
 end
 
-Commands.Test.LeaveZone = function(player, args)
+--When the player left the zone with or without geiger
+Commands.Atos.LeaveZone = function(player, args)
     print(player:getUsername() .. " has left the radation zone")
-    player:Say("Radiation NOT Detected!")
+
+    if args.hasGeiger then
+        player:Say("Radiation not detected!")
+    end
 end
 
-Commands.Test.ReadCorsFile = function()
-    -- http://lua-users.org/wiki/FileInputOutput
-    file = "coordinates"
+--When the player equipped the geigerteller outside the zone
+Commands.Atos.EquipGeigerOutsideZone = function(player, args)
 
-    -- see if the file exist
+    player:Say("Radiation not detected!")
+end
 
+--When the player equipped the geigerteller inside the zone
+Commands.Atos.EquipGeigerInsideZone = function(player, args)
+
+    player:Say("Radiation detected!")
 end
 
 local onClientCommand = function(module, command, player, args)
@@ -26,13 +38,4 @@ local onClientCommand = function(module, command, player, args)
     end
 end
 
-local function ATOS_EveryOneMinute()
-
-    for playerIndex = 0, getNumActivePlayers() -1 do
-        local player = getSpecificPlayer(playerIndex)
-        ATOS_loopCors(player)
-    end
-end
-
 Events.OnClientCommand.Add(onClientCommand);
-Events.EveryOneMinute.Add(ATOS_EveryOneMinute)

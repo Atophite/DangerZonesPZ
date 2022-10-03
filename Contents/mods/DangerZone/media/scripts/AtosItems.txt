@@ -1,0 +1,16 @@
+module DangerZone {
+    item GeigerTeller
+    {
+        DisplayCategory = Electronics,
+        Weight  =   0.3,
+        Type    =   Normal,
+        DisplayName =   Geiger Teller,
+        Icon            = WalkieTalkieBudget,
+        AttachmentType = Walkie,
+        Tooltip = Attach in right or left belt to make it activate or equip primary/secondary.,
+        StaticModel     = WalkieTalkieToy,
+        WorldStaticModel = CDPlayer,
+
+    }
+
+}

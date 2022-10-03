@@ -1,32 +1,28 @@
 
-coordinates = {}
+ATOS_coordinates = {}
 
-function test()
-	print("test")
-end
 
-function printCors()
+function ATOS_printCors()
 
    for playerIndex = 0, getNumActivePlayers() -1 do
       local player = getSpecificPlayer(playerIndex)
-      -- print(inspect(getmetatable(player)))
       print(player:getUsername() .. " X: " .. player:getLx() .. " Y: " .. player:getLy() .. " Z: " .. player:getLz())
    end
 end
 
-function printTable(table)
-   print(dump(table))
+function ATOS_printTable(table)
+   print(ATOS_dump(table))
 
 end
 
-function readCorsFile()
+function ATOS_readCorsFile()
    --sendClientCommand("Test", "ReadCorsFile", {
    --
    --});
 
    --[0-9]
    local zone = {}
-   coordinates = {}
+   ATOS_coordinates = {}
    local counter = 1;
    local x
    local y
@@ -52,25 +48,35 @@ function readCorsFile()
             end
          end
 
-         table.insert(coordinates, zone)
+         table.insert(ATOS_coordinates, zone)
          zone = {}
          line = reader:readLine()
       end
       reader:close();
 
    end
-   print(printTable(coordinates))
-   for i, zone in ipairs(coordinates) do
+   print(ATOS_printTable(ATOS_coordinates))
+   for i, zone in ipairs(ATOS_coordinates) do
        print("zone " .. i)
       print(zone)
-      printTable(zone)
+      ATOS_printTable(zone)
    end
 
 end
 
-function playerIsProtected(player)
-   local items = player:getWornItems()
+function ATOS_isGeigerEquipped(player)
+   local attachedItems = player:getAttachedItems()
 
+   for count = 0, attachedItems:size() - 1 do
+      if attachedItems:getItemByIndex(count):getName() == "Geiger Teller" then
+            return true
+      end
+   end
+   return false
+end
+
+function ATOS_isPlayerIsProtected(player)
+   local items = player:getWornItems()
 
    for count = 1, items:size() - 1 do
       if items:getItemByIndex(count):getClothingItemName() == "HazmatSuit" then
@@ -81,12 +87,12 @@ function playerIsProtected(player)
    return false
 end
 
-function dump(o)
+function ATOS_dump(o)
    if type(o) == 'table' then
       local s = '{ '
       for k,v in pairs(o) do
          if type(k) ~= 'number' then k = '"'..k..'"' end
-         s = s .. '['..k..'] = ' .. dump(v) .. ','
+         s = s .. '['..k..'] = ' .. ATOS_dump(v) .. ','
       end
       return s .. '} '
    else
@@ -94,7 +100,7 @@ function dump(o)
    end
 end
 
-function tableLength(T)
+function ATOS_tableLength(T)
    local count = 0
    for k, v in pairs(T) do
       count = count + 1
