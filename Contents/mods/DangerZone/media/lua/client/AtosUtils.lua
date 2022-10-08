@@ -52,8 +52,9 @@ function ATOS_isPlayerProtected(player)
    --TODO check if there are holes in hazmat
 
    for count = 1, items:size() - 1 do
-      if items:getItemByIndex(count):getClothingItemName() == "HazmatSuit" then
-         --print(items:getItemByIndex(count):getClothingItemName())
+      if items:getItemByIndex(count):getClothingItemName() == "HazmatSuit"
+      and items:getItemByIndex(count):getHolesNumber() < 1 then
+
          return true
       end
    end

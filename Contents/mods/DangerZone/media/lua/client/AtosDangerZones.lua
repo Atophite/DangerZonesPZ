@@ -55,6 +55,9 @@ local function OnGameBoot()
 end
 
 local function ATOS_everyOneMinute()
+	--If zones are empty
+	--sendClientCommand only works on multiplayer
+	--For some reason the sendClientCommand doesnt work on onGameStart()
 	if ATOS_zones == nil then
 		if(isClient()) then
 			sendClientCommand("Atos", "RequestAllZones", {
@@ -131,8 +134,6 @@ function ATOS_validateZone()
 			if ATOS_hasGeiger then
 				ATOS_player:Say("Radiation detected!")
 			end
-
-
 			ATOS_hasEnteredZone = true
 			ATOS_onClothingUpdated()
 		end
