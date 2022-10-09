@@ -9,47 +9,47 @@ if isServer() and not isClient() then
 	return
 end
 
-local ATOS_player = getPlayer()
+local player = getPlayer()
 
-local ATOS_sound = nil
+local geigerSound = nil
 --Is radiation detected by the geiger teller
-local ATOS_isRadiationDetected = false
-local ATOS_isInZone = false
-local ATOS_isProtected = false
-local ATOS_sickness = 1
-local ATOS_hasGeiger = false
-local ATOS_hasEnteredZone = false
+local isRadiationDetected = false
+local isInZone = false
+local isProtected = false
+local sickness = 1
+local hasGeiger = false
+local hasEnteredZone = false
 
-local ATOS_zones
+local zones
 
-local Client = AtosDangerZones.Client
-local Shared = AtosDangerZones.Shared
+local AtosClient = AtosDangerZones.Client
+local AtosShared = AtosDangerZones.Shared
 
-local function ATOS_onGameStart()
-	ATOS_player = getPlayer()
+local function onGameStart()
+	player = getPlayer()
 
 	--if client is online send request to server
 	if isClient() then
 		print("requesting zones")
 		sendClientCommand("Atos", "RequestAllZones", {
-			player = ATOS_player
+			player = player
 		});
 	else
 		--If client is offline, manually read the file
-		ATOS_zones = Shared.ATOS_readZonesFile()
+		zones = AtosShared:readZonesFile()
 	end
 
 end
 
-local function testCommand()
-	--ATOS_zones = ATOS_readCorsFile()
+function testCommand()
+	zones = AtosShared:readCorsFile()
 	print(isClient())
 	sendClientCommand("Atos", "RequestAllZones", {
-		player = ATOS_player
+		player = player
 	});
 end
 
-local function ATOS_onConnected()
+local function onConnected()
 	print("Connected to server")
 end
 
@@ -57,153 +57,150 @@ local function OnGameBoot()
 	print("game is booted!")
 end
 
-local function ATOS_everyOneMinute()
+local function everyOneMinute()
 	--If zones are empty
 	--sendClientCommand only works on multiplayer
 	--For some reason the sendClientCommand doesnt work on onGameStart()
-	if ATOS_zones == nil then
+	if zones == nil then
 		if(isClient()) then
 			sendClientCommand("Atos", "RequestAllZones", {
-				player = ATOS_player
+				player = player
 			});
 		else
-			ATOS_zones = Shared.ATOS_readZonesFile()
+			zones = AtosShared:readZonesFile()
 		end
 	else
-		Client.ATOS_loopZones()
+		AtosClient:loopZones()
 	end
 end
 
 
-function Client.ATOS_onClothingUpdated()
+
+function AtosClient:onClothingUpdated()
 
 	--https://zomboid-javadoc.com/41.65/zombie/characters/ILuaGameCharacterClothing.html
 
 	--getModID
 	--Check if player equipped a geiger when clothing is updated
 	--Also checks if the player already has the geiger equipped.
-	if Client.ATOS_isGeigerEquipped(ATOS_player) and not ATOS_hasGeiger then
-		ATOS_hasGeiger = true
+	if AtosClient:isGeigerEquipped(player) and not hasGeiger then
+		hasGeiger = true
 
-		if not ATOS_isInZone then
-			ATOS_player:Say("Radiation not detected!")
-		elseif ATOS_isInZone then
-			ATOS_player:Say("Radiation detected!")
+		if not isInZone then
+			player:Say("Radiation not detected!")
+		elseif isInZone then
+			player:Say("Radiation detected!")
 		end
 
-	elseif not Client.ATOS_isGeigerEquipped(ATOS_player) then
-		ATOS_hasGeiger = false
+	elseif not AtosClient:isGeigerEquipped(player) then
+		hasGeiger = false
 	end
 
-	if Client.ATOS_isPlayerProtected(ATOS_player) then
-		ATOS_isProtected = true
+	if AtosClient:isPlayerProtected(player) then
+		isProtected = true
 	else
-		ATOS_isProtected = false
+		isProtected = false
 	end
 end
 
 
-function Client.ATOS_loopZones()
-	local playerX = ATOS_player:getLx()
-	local playerY = ATOS_player:getLy()
-	local isInZone = false
+function AtosClient:loopZones()
+	local playerX = player:getLx()
+	local playerY = player:getLy()
+	isInZone = false
 
 	--Check if ATOS_player is in the zone
 	--zone[1][1] is lowest x coordinate and zone[1][2] is highest.
 	--Same with y coordinate
-	for i, zone in ipairs(ATOS_zones) do
+	for i, zone in ipairs(zones) do
 		if(playerX > zone[1][1] and playerX < zone[1][2] and playerY > zone[2][1] and playerY < zone[2][2]) then
 			isInZone = true
 		end
 	end
-	if isInZone then
-		ATOS_isInZone = true
-	else
-		ATOS_isInZone = false
-	end
-	Client.ATOS_validateZone()
+
+	AtosClient:validateZone()
 end
 
 
-function Client.ATOS_validateZone()
+function AtosClient:validateZone()
 
 	-- Check if the player is in the radiation zone
-	if ATOS_isInZone then
+	if isInZone then
 
 		--Check if its the first time that the ATOS_player has entered the zone.
 		--To prevent a loop
-		if not ATOS_hasEnteredZone then
+		if not hasEnteredZone then
 
-			if ATOS_hasGeiger then
-				ATOS_player:Say("Radiation detected!")
+			if hasGeiger then
+				player:Say("Radiation detected!")
 			end
-			ATOS_hasEnteredZone = true
-			Client.ATOS_onClothingUpdated()
+			hasEnteredZone = true
+			AtosClient:onClothingUpdated()
 		end
 
 
-		if ATOS_isProtected then
+		if isProtected then
 			print("player is wearing protection")
 		else
 			print("player is NOT wearing protection")
-			ATOS_sickness = ATOS_sickness * 1.2
-			if(ATOS_sickness >= 100) then
-				print(ATOS_sickness)
-				ATOS_player:getBodyDamage():setFoodSicknessLevel(20);
-			elseif ATOS_sickness >= 200 then
-				ATOS_player:getBodyDamage():setFoodSicknessLevel(40);
+			sickness = sickness * 1.2
+			if(sickness >= 100) then
+				print(sickness)
+				player:getBodyDamage():setFoodSicknessLevel(20);
+			elseif sickness >= 200 then
+				player:getBodyDamage():setFoodSicknessLevel(40);
 			end
 
 		end
 
 		--If the ATOS_player has a geiger the ATOS_player can detect the radiation
-		if ATOS_hasGeiger then
-			ATOS_isRadiationDetected = true
-			Client.ATOS_playSound()
+		if hasGeiger then
+			isRadiationDetected = true
+			AtosClient:playSound()
 		else
-			ATOS_isRadiationDetected = false
-			Client.ATOS_stopSound()
+			isRadiationDetected = false
+			AtosClient:stopSound()
 		end
 	else
 		--Check if its the first time that the player has left the zone.
 		--To prevent a loop
-		if ATOS_hasEnteredZone then
-			Client.ATOS_stopSound()
+		if hasEnteredZone then
+			AtosClient:stopSound()
 			--Send message to server that player left zone.
-			if ATOS_hasGeiger then
-				ATOS_player:Say("Radiation not detected!")
+			if hasGeiger then
+				player:Say("Radiation not detected!")
 			end
 
-			ATOS_hasEnteredZone = false
+			hasEnteredZone = false
 		end
 	end
 end
 
-function Client.ATOS_playSound()
-	if ATOS_sound == nil then
-		ATOS_sound = ATOS_player:playSound("Geiger")
+function AtosClient:playSound()
+	if geigerSound == nil then
+		geigerSound = player:playSound("Geiger")
 
-	elseif ATOS_sound ~= nil and not ATOS_player:getEmitter():isPlaying(ATOS_sound) and ATOS_hasGeiger == true then
-		ATOS_sound = ATOS_player:playSound("Geiger")
+	elseif geigerSound ~= nil and not player:getEmitter():isPlaying(geigerSound) and hasGeiger == true then
+		geigerSound = player:playSound("Geiger")
 	end
 end
 
-function Client.ATOS_stopSound()
-	if ATOS_sound ~= nil and ATOS_isRadiationDetected or not ATOS_hasGeiger then
-		ATOS_player:getEmitter():stopSoundByName("Geiger")
+function AtosClient:stopSound()
+	if geigerSound ~= nil and isRadiationDetected or not hasGeiger then
+		player:getEmitter():stopSoundByName("Geiger")
 
-		ATOS_sound = nil
+		geigerSound = nil
 	end
 end
 
-function Client.ATOS_setZones(zones)
-	ATOS_zones = zones
+function AtosClient:setZones(paramZones)
+	zones = paramZones
 end
 
-Events.OnClothingUpdated.Add(Client.ATOS_onClothingUpdated)
-Events.OnGameStart.Add(ATOS_onGameStart)
-Events.EveryOneMinute.Add(ATOS_everyOneMinute)
-Events.OnConnected.Add(ATOS_onConnected)
+Events.OnClothingUpdated.Add(AtosClient.onClothingUpdated)
+Events.OnGameStart.Add(onGameStart)
+Events.EveryOneMinute.Add(everyOneMinute)
+Events.OnConnected.Add(onConnected)
 Events.OnGameBoot.Add(OnGameBoot)
 
 

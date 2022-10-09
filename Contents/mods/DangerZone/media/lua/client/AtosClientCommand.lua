@@ -9,18 +9,18 @@ if isServer() and not isClient() then
     return
 end
 
-local Client = AtosDangerZones.Client
+local AtosClient = AtosDangerZones.Client
 
 --Listen to server commands
 local function OnServerCommand(module, command, arguments)
     print("Getting server command")
-    ATOS_setZones(arguments.zones)
+    AtosClient:setZones(arguments.zones)
 
     if module == "Atos" and command == "GetAllZones" then
         print("Getting all zones")
         print(arguments.zones)
         if arguments.zones then
-            Client.ATOS_setZones(arguments.zones)
+            AtosClient:setZones(arguments.zones)
         end
     end
 

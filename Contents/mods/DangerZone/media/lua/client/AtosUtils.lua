@@ -9,9 +9,9 @@ if isServer() and not isClient() then
    return
 end
 
-local Client = AtosDangerZones.Client
+local AtosClient = AtosDangerZones.Client
 
-function Client.ATOS_printCors()
+function AtosClient:printCors()
 
    for playerIndex = 0, getNumActivePlayers() -1 do
       local player = getSpecificPlayer(playerIndex)
@@ -19,12 +19,12 @@ function Client.ATOS_printCors()
    end
 end
 
-function Client.ATOS_printTable(table)
-   print(ATOS_dump(table))
+function AtosClient:printTable(table)
+   print(AtosClient:dump(table))
 
 end
 
-function Client.ATOS_isGeigerEquipped(player)
+function AtosClient:isGeigerEquipped(player)
    local attachedItems = player:getAttachedItems()
 
    for count = 0, attachedItems:size() - 1 do
@@ -46,7 +46,7 @@ function test(player)
 
 end
 
-function Client.ATOS_isPlayerProtected(player)
+function AtosClient:isPlayerProtected(player)
    local items = player:getWornItems()
 
    --TODO check if the hazmat is from base
@@ -63,12 +63,12 @@ function Client.ATOS_isPlayerProtected(player)
    return false
 end
 
-function Client.ATOS_dump(o)
+function AtosClient:dump(o)
    if type(o) == 'table' then
       local s = '{ '
       for k,v in pairs(o) do
          if type(k) ~= 'number' then k = '"'..k..'"' end
-         s = s .. '['..k..'] = ' .. ATOS_dump(v) .. ','
+         s = s .. '['..k..'] = ' .. AtosClient:dump(v) .. ','
       end
       return s .. '} '
    else
@@ -76,7 +76,7 @@ function Client.ATOS_dump(o)
    end
 end
 
-function Client.ATOS_tableLength(T)
+function AtosClient:tableLength(T)
    local count = 0
    for k, v in pairs(T) do
       count = count + 1

@@ -5,12 +5,29 @@ module DangerZone {
         Weight  =   0.3,
         Type    =   Normal,
         DisplayName =   Geiger Teller,
-        Icon            = WalkieTalkieBudget,
+        Icon            = Geigerteller,
         AttachmentType = Walkie,
         Tooltip = Tooltip_item_geigerteller,
-        StaticModel     = WalkieTalkieToy,
-        WorldStaticModel = WalkieTalkieToy,
+        StaticModel     = WalkieTalkieValue,
+        WorldStaticModel = Geigerteller,
 
+    }
+    item Iodine {
+        DisplayCategory = FirstAid,
+        Weight  =   0.02,
+        Type    =   Food,
+        HungerChange = +1,
+        UseDelta    =   0.1,
+        UseWhileEquipped    =   FALSE,
+        DisplayName =   Iodine Pills,
+        Icon    =   PillsAntidepressant,
+        Tooltip = Tooltip_PillsAntidepressant,
+        StaticModel = PillBottle,
+        WorldStaticModel = PillBottleGround,
+        Medical = TRUE,
+        OnEat = OnEat_Iodine,
+        EatType = popcan,
+        CustomContextMenu   = Eat Pills,
     }
 
 }

@@ -15,9 +15,10 @@ AtosDangerZones = {
     Shared = { },
 }
 
-local Shared = AtosDangerZones.Shared
+local AtosShared = AtosDangerZones.Shared
+local AtosClient = AtosDangerZones.Client
 
-function Shared.ATOS_readZonesFile()
+function AtosShared:readZonesFile()
     local zone = {}
     local zones = {}
     local counter = 1;
@@ -28,8 +29,8 @@ function Shared.ATOS_readZonesFile()
     if reader then
         local line = reader:readLine()
         line = reader:readLine()
-        --print(line)
         while line do
+            print(line)
             for number in string.gmatch(line, "%d+") do
                 print(number)
                 if counter == 1 then
@@ -39,15 +40,20 @@ function Shared.ATOS_readZonesFile()
                 if counter == 2 then
                     y = tonumber(number)
                 end
+
                 counter = counter + 1
+
                 if counter == 3 then
                     counter = 1
                     table.insert(zone, {x,y})
                 end
             end
 
-            table.insert(zones, zone)
-            zone = {}
+            if zone[1] and zone[2] ~= nill then
+                table.insert(zones, zone)
+                zone = {}
+            end
+
             line = reader:readLine()
         end
         reader:close();
@@ -58,12 +64,11 @@ function Shared.ATOS_readZonesFile()
         print("{Lowest point of X, Highest point of X}, {Lowest point of Z, highest point of Z}")
 
     end
-    --print(ATOS_printTable(coordinates))
-    for i, zone in ipairs(zones) do
-        print("zone " .. i)
-        print(zone)
-        --ATOS_printTable(zone)
-    end
+    --for i, z in ipairs(zones) do
+    --    print("zone " .. i)
+    --    --print(zone)
+    --    AtosClient:printTable(z)
+    --end
 
     return zones
 end
