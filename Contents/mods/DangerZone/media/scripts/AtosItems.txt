@@ -21,13 +21,13 @@ module DangerZone {
         UseWhileEquipped    =   FALSE,
         DisplayName =   Iodine Pills,
         Icon    =   PillsAntidepressant,
-        Tooltip = Tooltip_PillsAntidepressant,
+        Tooltip = Tooltip_item_iodine,
         StaticModel = PillBottle,
         WorldStaticModel = PillBottleGround,
         Medical = TRUE,
         OnEat = OnEat_Iodine,
         EatType = popcan,
-        CustomContextMenu   = Eat Pills,
+        CustomContextMenu   = ContextMenu_item_iodine,
     }
 
 }

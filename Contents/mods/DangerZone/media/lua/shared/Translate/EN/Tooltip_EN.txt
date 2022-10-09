@@ -1,4 +1,4 @@
 Tooltip_EN = {
-	Tooltip_item_geigerteller = "Equip on right or left belt. Or primary/Secondary",
-	Tooltip_item_pills = "Eat pills to be protected for 1 hour",
+	Tooltip_item_geigerteller = "Know when there is radiation. Equip on right or left belt. Or equip Primary/Secondary",
+	Tooltip_item_iodine = "Eat pills to be protected from radiation for 1 hour",
 }
