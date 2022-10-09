@@ -7,9 +7,9 @@ module DangerZone {
         DisplayName =   Geiger Teller,
         Icon            = WalkieTalkieBudget,
         AttachmentType = Walkie,
-        Tooltip = Attach in right or left belt to make it activate or equip primary/secondary.,
+        Tooltip = Tooltip_item_geigerteller,
         StaticModel     = WalkieTalkieToy,
-        WorldStaticModel = CDPlayer,
+        WorldStaticModel = WalkieTalkieToy,
 
     }
 

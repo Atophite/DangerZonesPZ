@@ -10,14 +10,17 @@ Commands.Atos = {};
 
 local ATOS_zones = {};
 
+local Shared = AtosDangerZones.Shared
+local Server = AtosDangerZones.Server
+
 Commands.Atos.RequestAllZones = function(player, args)
     print("Player is requesting zones")
-   ATOS_sendCors(player)
+    Server.ATOS_sendCors(player)
 end
 
-function ATOS_sendCors(player)
+function Server.ATOS_sendCors(player)
     if not ATOS_zones then
-        ATOS_zones = ATOS_readZonesFile()
+        ATOS_zones = Shared.ATOS_readZonesFile()
     end
     print("sending server command to " .. player:getUsername())
     sendServerCommand(player, "Atos", "GetAllZones", {
@@ -27,7 +30,7 @@ end
 
 
 local function onServerStarted()
-    ATOS_zones = ATOS_readZonesFile()
+    ATOS_zones = Shared.ATOS_readZonesFile()
 end
 
 local onClientCommand = function(module, command, player, args)
