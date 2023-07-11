@@ -16,9 +16,10 @@ local geigerSound = nil
 local isRadiationDetected = false
 local isInZone = false
 local isProtected = false
-local sickness = 1
+local radSickness = 1
 local hasGeiger = false
-local hasEnteredZone = false
+local hasEnteredZone = fals
+local radLevels = {200, 400, 1000}
 
 local zones
 
@@ -143,13 +144,20 @@ function AtosClient:validateZone()
 			print("player is wearing protection")
 		else
 			print("player is NOT wearing protection")
-			sickness = sickness * 1.2
-			if(sickness >= 100) then
-				print(sickness)
-				player:getBodyDamage():setFoodSicknessLevel(20);
-			elseif sickness >= 200 then
-				player:getBodyDamage():setFoodSicknessLevel(40);
-			end
+			radSickness = radSickness * 1.2
+			print(radSickness)
+			print(player:getBodyDamage():getFoodSicknessLevel())
+			print("health: " .. tostring(player:getHealth()))
+			--if(radSickness > 2000) then
+			--	player:Kill(player)
+			--	radSickness = 2000
+			--elseif radSickness > 1000 then
+			--	player:getBodyDamage():setFoodSicknessLevel(100);
+			--elseif radSickness > 400 then
+			--	player:getBodyDamage():setFoodSicknessLevel(80);
+			--elseif radSickness > 200 then
+			--	player:getBodyDamage():setFoodSicknessLevel(40);
+			--end
 
 		end
 
@@ -179,9 +187,6 @@ end
 function AtosClient:playSound()
 	if geigerSound == nil then
 		geigerSound = player:playSound("Geiger")
-
-	elseif geigerSound ~= nil and not player:getEmitter():isPlaying(geigerSound) and hasGeiger == true then
-		geigerSound = player:playSound("Geiger")
 	end
 end
 
@@ -195,6 +200,14 @@ end
 
 function AtosClient:setZones(paramZones)
 	zones = paramZones
+end
+
+function AtosClient:setRadSickness(number)
+	radSickness = number
+end
+
+function AtosClient:getRadSickness()
+	return radSickness
 end
 
 Events.OnClothingUpdated.Add(AtosClient.onClothingUpdated)

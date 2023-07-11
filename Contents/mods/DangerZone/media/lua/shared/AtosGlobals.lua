@@ -16,7 +16,6 @@ AtosDangerZones = {
 }
 
 local AtosShared = AtosDangerZones.Shared
-local AtosClient = AtosDangerZones.Client
 
 function AtosShared:readZonesFile()
     local zone = {}
