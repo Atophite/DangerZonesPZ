@@ -16,9 +16,11 @@ local geigerSound = nil
 local isRadiationDetected = false
 local isInZone = false
 local isProtected = false
+local isProtectedByPills = false
+local isProtectByPillsSince = null
 local radSickness = 1
 local hasGeiger = false
-local hasEnteredZone = fals
+local hasEnteredZone = false
 local radLevels = {200, 400, 1000}
 
 local zones
@@ -59,6 +61,18 @@ local function OnGameBoot()
 end
 
 local function everyOneMinute()
+
+	--Check for pills
+	if isProtectedByPills then
+		local pillDuration = 1 -- 5 hours
+		local currentWorldHour = GameTime:getInstance():getWorldAgeHours()
+
+		if currentWorldHour - isProtectedByPillsSince >= pillDuration then
+			AtosClient:setIsProtectedByPills(false)
+			print("The effects of the Iodine Pills has fallen off")
+		end
+	end
+
 	--If zones are empty
 	--sendClientCommand only works on multiplayer
 	--For some reason the sendClientCommand doesnt work on onGameStart()
@@ -97,7 +111,7 @@ function AtosClient:onClothingUpdated()
 		hasGeiger = false
 	end
 
-	if AtosClient:isPlayerProtected(player) then
+	if AtosClient:isPlayerProtected(player)  then
 		isProtected = true
 	else
 		isProtected = false
@@ -106,20 +120,20 @@ end
 
 
 function AtosClient:loopZones()
-	local playerX = player:getLx()
-	local playerY = player:getLy()
-	isInZone = false
+    local playerX, playerY = player:getX(), player:getY()
+    isInZone = false
 
-	--Check if ATOS_player is in the zone
-	--zone[1][1] is lowest x coordinate and zone[1][2] is highest.
-	--Same with y coordinate
-	for i, zone in ipairs(zones) do
-		if(playerX > zone[1][1] and playerX < zone[1][2] and playerY > zone[2][1] and playerY < zone[2][2]) then
-			isInZone = true
-		end
-	end
+    for i, zone in ipairs(zones) do
+        local zoneXMin, zoneXMax = zone[1][1], zone[1][2]
+        local zoneYMin, zoneYMax = zone[2][1], zone[2][2]
 
-	AtosClient:validateZone()
+        if playerX > zoneXMin and playerX < zoneXMax and playerY > zoneYMin and playerY < zoneYMax then
+            isInZone = true
+            break  -- No need to check further if the player is already in a zone
+        end
+    end
+
+    AtosClient:validateZone()
 end
 
 
@@ -140,7 +154,7 @@ function AtosClient:validateZone()
 		end
 
 
-		if isProtected then
+		if isProtected or isProtectedByPills then
 			print("player is wearing protection")
 		else
 			print("player is NOT wearing protection")
@@ -208,6 +222,22 @@ end
 
 function AtosClient:getRadSickness()
 	return radSickness
+end
+
+function AtosClient:getIsProtectedByPills()
+	return isProtectedByPills
+end
+
+function AtosClient:setIsProtectedByPills(playerIsProtected)
+	isProtectedByPills = playerIsProtected
+end
+
+function AtosClient:getIsProtectedByPillsSince()
+	return isProtectByPillsSince
+end
+
+function AtosClient:setIsProtectedByPillsSince(worldAge)
+	isProtectedByPillsSince = worldAge
 end
 
 Events.OnClothingUpdated.Add(AtosClient.onClothingUpdated)

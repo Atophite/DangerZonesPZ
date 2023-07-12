@@ -35,6 +35,10 @@ function AtosClient:isGeigerEquipped(player)
    return false
 end
 
+function getTime()
+   print(GameTime:getInstance():getHour())
+end
+
 function test(player)
    local items = player:getWornItems()
 

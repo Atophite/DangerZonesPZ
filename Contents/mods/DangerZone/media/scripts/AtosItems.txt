@@ -27,7 +27,7 @@ module DangerZone {
         Medical = TRUE,
         OnEat = OnEat_Iodine,
         EatType = popcan,
-        CustomContextMenu   = ContextMenu_item_iodine,
+        CustomContextMenu = ContextMenu_item_iodine,
     }
 
 }

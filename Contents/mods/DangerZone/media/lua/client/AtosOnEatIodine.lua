@@ -11,5 +11,6 @@ function OnEat_Iodine(food, player, percentage)
     print(player:getUsername())
     AtosClient:setRadSickness(1)
     player:getBodyDamage():setFoodSicknessLevel(0);
-
+    AtosClient:setIsProtectedByPills(true)
+    AtosClient:setIsProtectedByPillsSince(GameTime:getInstance():getWorldAgeHours())
 end
