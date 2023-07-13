@@ -1,15 +1,16 @@
 # DangerZonesPZ
 
 # TODO LIST
-- [ ] Distribute Iodine, Hazmat and Geigerteller
-- [ ] Make a feature to fix holes in hazmat suit. Maybe with new item rubber
-- [ ] Radiate all different area's of the map
-- [x] Save data persistent with ModData
-- [ ] Giegerteller need batteries
-- [ ] Support for multiplayer
-- [ ] Cure radiation. Everyday there is a chance to cure radiation or player will die from radiation.
-- [ ] Iodine will help with curing
-- [ ] Get burn damage when medium radiated
+
+- [ ] Distribute Iodine, Hazmat, and Geigerteller
+- [ ] Add a feature to fix holes in the hazmat suit (consider using a new item called rubber)
+- [ ] Radiate different areas of the map
+- [x] Save data persistently with ModData
+- [ ] Ensure Geigerteller has batteries
+- [ ] Implement support for multiplayer
+- [ ] Create a cure for radiation: introduce a chance for daily radiation cure or else player will die from radiation
+- [ ] Utilize iodine for aiding in the curing process
+- [ ] Implement burn damage when medium radiated
 
 When player gets radiated the player will get sick. The more radiated the player is the more player get sick.
 There are three stages of radiated:
