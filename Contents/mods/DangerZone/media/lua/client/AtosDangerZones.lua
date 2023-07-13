@@ -41,16 +41,13 @@ local function onGameStart()
 		});
 	else
 		--If client is offline, manually read the file
-		AtosClient:createMoodles()
-
 		zones = AtosShared:readZonesFile()
 	end
 
   	-- Check if player is wearing hazmat
-	if AtosClient:isPlayerProtected(player) then
-		print("Player has hazmat")
-		AtosClient:setHazmatMoodle(0.1)--float
-	end
+	--if AtosClient:getIsProtectedByPills() then
+	--	AtosClient:setIodineMoodle(1.0)--float
+	--end
 
 end
 
@@ -73,14 +70,19 @@ end
 local function everyOneMinute()
 
 	--Check for pills
-	if isProtectedByPills then
-		local pillDuration = 1 -- 5 hours
+	if AtosClient:getIsProtectedByPills() then
+		local pillTotalDuration = 5 -- 5 hours
+		local pillLowDuration = 4
 		local currentWorldHour = GameTime:getInstance():getWorldAgeHours()
 
-		if currentWorldHour - isProtectedByPillsSince >= pillDuration then
+		if currentWorldHour - AtosClient:getIsProtectedByPillsSince() >= pillTotalDuration then
 			AtosClient:setIsProtectedByPills(false)
 			AtosClient:setIodineMoodle(0.5)--float
 			print("The effects of the Iodine Pills has fallen off")
+		elseif currentWorldHour - AtosClient:getIsProtectedByPillsSince() >= pillLowDuration then
+			AtosClient:setIodineMoodle(0.2)--float
+		else
+			AtosClient:setIodineMoodle(1.0)--float
 		end
 	end
 
@@ -167,11 +169,11 @@ function AtosClient:validateZone()
 		end
 
 
-		if isProtected or isProtectedByPills then
+		if isProtected or AtosClient:getIsProtectedByPills() then
 			print("player is wearing protection")
 		else
 			print("player is NOT wearing protection")
-			radSickness = radSickness * 1.2
+			radSickness = AtosClient:getRadiation() * 1.2
 			print(radSickness)
 			print(player:getBodyDamage():getFoodSicknessLevel())
 			print("health: " .. tostring(player:getHealth()))
@@ -185,6 +187,7 @@ function AtosClient:validateZone()
 			elseif radSickness > 200 then
 				player:getBodyDamage():setFoodSicknessLevel(40);
 			end
+			AtosClient:setRadiation(radSickness)
 
 		end
 
@@ -213,7 +216,10 @@ end
 
 function AtosClient:playSound()
 	if geigerSound == nil then
-		geigerSound = player:playSound("Geiger")
+		geigerSound = player:playSoundLocal("Geiger")
+	elseif geigerSound ~= nil and not player:getEmitter():isPlaying("Geiger") and hasGeiger == true then
+		geigerSound = player:playSoundLocal("Geiger")
+
 	end
 end
 
@@ -237,21 +243,21 @@ function AtosClient:getRadSickness()
 	return radSickness
 end
 
-function AtosClient:getIsProtectedByPills()
-	return isProtectedByPills
-end
-
-function AtosClient:setIsProtectedByPills(playerIsProtected)
-	isProtectedByPills = playerIsProtected
-end
-
-function AtosClient:getIsProtectedByPillsSince()
-	return isProtectByPillsSince
-end
-
-function AtosClient:setIsProtectedByPillsSince(worldAge)
-	isProtectedByPillsSince = worldAge
-end
+--function AtosClient:getIsProtectedByPills()
+--	return isProtectedByPills
+--end
+--
+--function AtosClient:setIsProtectedByPills(playerIsProtected)
+--	isProtectedByPills = playerIsProtected
+--end
+--
+--function AtosClient:getIsProtectedByPillsSince()
+--	return isProtectByPillsSince
+--end
+--
+--function AtosClient:setIsProtectedByPillsSince(worldAge)
+--	isProtectedByPillsSince = worldAge
+--end
 
 Events.OnClothingUpdated.Add(AtosClient.onClothingUpdated)
 Events.OnGameStart.Add(onGameStart)

@@ -20,14 +20,35 @@ module DangerZone {
         UseDelta    =   0.1,
         UseWhileEquipped    =   FALSE,
         DisplayName =   Iodine Pills,
-        Icon    =   PillsAntidepressant,
+        Icon    =   Iodine,
         Tooltip = Tooltip_item_iodine,
         StaticModel = PillBottle,
         WorldStaticModel = PillBottleGround,
         Medical = TRUE,
         OnEat = OnEat_Iodine,
         EatType = popcan,
-        CustomContextMenu = ContextMenu_item_iodine,
+        CustomContextMenu = item_Iodine,
     }
+}
 
+module Base {
+    item HazmatSuit {
+        DisplayCategory = Clothing,
+        Type = Clothing,
+        DisplayName = Hazmat Suit,
+        ClothingItem = HazmatSuit,
+        BodyLocation = FullSuitHead,
+        Icon = BoilerSuitOrange,
+        BloodLocation = Trousers;Jumper;Head;Neck;Hands;Shoes,
+        Icon = Hazmatsuit,
+        RunSpeedModifier = -0.10,
+        ScratchDefense = 15,
+        Weight = 5,
+        BiteDefense = 5,
+        Insulation = 0.65,
+        WindResistance = 0.9,
+        WorldStaticModel = Hazmat_Ground,
+        Tags = GasMask;HazmatSuit,
+        Tooltip = Tooltip_item_hazmat
+    }
 }

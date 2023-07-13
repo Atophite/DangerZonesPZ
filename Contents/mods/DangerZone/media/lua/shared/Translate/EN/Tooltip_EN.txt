@@ -1,4 +1,5 @@
 Tooltip_EN = {
 	Tooltip_item_geigerteller = "Know when there is radiation. Equip on right or left belt. Or equip Primary/Secondary",
 	Tooltip_item_iodine = "Eat pills to be protected from radiation for 5 hours",
+	Tooltip_item_hazmat = "Hazmat suit gives you protection against radiation. Lookout if there isn't any holes in your suit!"
 }
