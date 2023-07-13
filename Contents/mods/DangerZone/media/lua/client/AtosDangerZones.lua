@@ -5,12 +5,12 @@
 ---
 ---
 
+
 if isServer() and not isClient() then
 	return
 end
 
 local player = getPlayer()
-
 local geigerSound = nil
 --Is radiation detected by the geiger teller
 local isRadiationDetected = false
@@ -28,8 +28,10 @@ local zones
 local AtosClient = AtosDangerZones.Client
 local AtosShared = AtosDangerZones.Shared
 
+
 local function onGameStart()
 	player = getPlayer()
+
 
 	--if client is online send request to server
 	if isClient() then
@@ -39,7 +41,15 @@ local function onGameStart()
 		});
 	else
 		--If client is offline, manually read the file
+		AtosClient:createMoodles()
+
 		zones = AtosShared:readZonesFile()
+	end
+
+  	-- Check if player is wearing hazmat
+	if AtosClient:isPlayerProtected(player) then
+		print("Player has hazmat")
+		AtosClient:setHazmatMoodle(0.1)--float
 	end
 
 end
@@ -69,6 +79,7 @@ local function everyOneMinute()
 
 		if currentWorldHour - isProtectedByPillsSince >= pillDuration then
 			AtosClient:setIsProtectedByPills(false)
+			AtosClient:setIodineMoodle(0.5)--float
 			print("The effects of the Iodine Pills has fallen off")
 		end
 	end
@@ -113,8 +124,10 @@ function AtosClient:onClothingUpdated()
 
 	if AtosClient:isPlayerProtected(player)  then
 		isProtected = true
+		AtosClient:setHazmatMoodle(1.0)
 	else
 		isProtected = false
+		AtosClient:setHazmatMoodle(0.5)
 	end
 end
 
@@ -162,16 +175,16 @@ function AtosClient:validateZone()
 			print(radSickness)
 			print(player:getBodyDamage():getFoodSicknessLevel())
 			print("health: " .. tostring(player:getHealth()))
-			--if(radSickness > 2000) then
-			--	player:Kill(player)
-			--	radSickness = 2000
-			--elseif radSickness > 1000 then
-			--	player:getBodyDamage():setFoodSicknessLevel(100);
-			--elseif radSickness > 400 then
-			--	player:getBodyDamage():setFoodSicknessLevel(80);
-			--elseif radSickness > 200 then
-			--	player:getBodyDamage():setFoodSicknessLevel(40);
-			--end
+			if(radSickness > 2000) then
+				player:Kill(player)
+				radSickness = 2000
+			elseif radSickness > 1000 then
+				player:getBodyDamage():setFoodSicknessLevel(100);
+			elseif radSickness > 400 then
+				player:getBodyDamage():setFoodSicknessLevel(80);
+			elseif radSickness > 200 then
+				player:getBodyDamage():setFoodSicknessLevel(40);
+			end
 
 		end
 

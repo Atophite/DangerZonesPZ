@@ -35,7 +35,7 @@ function AtosClient:isGeigerEquipped(player)
    return false
 end
 
-function getTime()
+function AtosClient:getTime()
    print(GameTime:getInstance():getHour())
 end
 
