@@ -6,9 +6,9 @@
 ---
 local AtosClient = AtosDangerZones.Client
 require "MF_ISMoodle"
-
 MF.createMoodle("Iodine")
 MF.createMoodle("Hazmat")
+
 print("Created moodles")
 
 function AtosClient:getIodineMoodle()
@@ -17,6 +17,7 @@ end
 
 function AtosClient:getHazmatMoodle()
     return MF.getMoodle("Hazmat")
+
 end
 
 function AtosClient:setIodineMoodle(value)
@@ -25,4 +26,5 @@ end
 
 function AtosClient:setHazmatMoodle(value)
     MF.getMoodle("Hazmat"):setValue(value)
+
 end

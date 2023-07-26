@@ -1,4 +1,5 @@
 name=Danger Zone
 id=DangerZone
 description=DangerZone
+require=MoodleFramework
 poster=poster.png

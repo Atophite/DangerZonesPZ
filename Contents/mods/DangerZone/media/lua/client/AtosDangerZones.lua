@@ -29,6 +29,7 @@ local AtosClient = AtosDangerZones.Client
 local AtosShared = AtosDangerZones.Shared
 
 
+
 local function onGameStart()
 	player = getPlayer()
 
@@ -42,6 +43,7 @@ local function onGameStart()
 	else
 		--If client is offline, manually read the file
 		zones = AtosShared:readZonesFile()
+
 	end
 
   	-- Check if player is wearing hazmat
