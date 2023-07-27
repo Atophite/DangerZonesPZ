@@ -102,6 +102,8 @@ local function everyOneMinute()
 	else
 		AtosClient:loopZones()
 	end
+
+	AtosClient:onClothingUpdated()
 end
 
 
@@ -245,23 +247,8 @@ function AtosClient:getRadSickness()
 	return radSickness
 end
 
---function AtosClient:getIsProtectedByPills()
---	return isProtectedByPills
---end
---
---function AtosClient:setIsProtectedByPills(playerIsProtected)
---	isProtectedByPills = playerIsProtected
---end
---
---function AtosClient:getIsProtectedByPillsSince()
---	return isProtectByPillsSince
---end
---
---function AtosClient:setIsProtectedByPillsSince(worldAge)
---	isProtectedByPillsSince = worldAge
---end
 
-Events.OnClothingUpdated.Add(AtosClient.onClothingUpdated)
+Events.OnClothingUpdated.Add()
 Events.OnGameStart.Add(onGameStart)
 Events.EveryOneMinute.Add(everyOneMinute)
 Events.OnConnected.Add(onConnected)

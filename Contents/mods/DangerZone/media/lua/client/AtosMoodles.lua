@@ -9,7 +9,6 @@ require "MF_ISMoodle"
 MF.createMoodle("Iodine")
 MF.createMoodle("Hazmat")
 
-print("Created moodles")
 
 function AtosClient:getIodineMoodle()
     return MF.getMoodle("Iodine")

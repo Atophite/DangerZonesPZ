@@ -3,15 +3,30 @@ module DangerZone {
     {
         DisplayCategory = Electronics,
         Weight  =   0.3,
-        Type    =   Normal,
+        Type    =   Drainable,
+        UseWhileEquipped	=	TRUE,
+        ActivatedItem	=	TRUE,
         DisplayName =   Geiger Teller,
         Icon            = Geigerteller,
         AttachmentType = Walkie,
         Tooltip = Tooltip_item_geigerteller,
         StaticModel     = WalkieTalkieValue,
         WorldStaticModel = Geigerteller,
+        ticksPerEquipUse = 6000,
+        ReplaceOnDeplete	=	EmptyGeigerTeller,
 
     }
+
+    item EmptyGeigerTeller
+    {
+        DisplayCategory = Electronics,
+        Weight  =   0.3,
+        DisplayName =   Empty Geiger Teller,
+        Icon            = Geigerteller,
+        StaticModel     = WalkieTalkieValue,
+        WorldStaticModel = Geigerteller,
+    }
+
     item Iodine {
         DisplayCategory = FirstAid,
         Weight  =   0.02,
@@ -23,7 +38,7 @@ module DangerZone {
         Icon    =   Iodine,
         Tooltip = Tooltip_item_iodine,
         StaticModel = PillBottle,
-        WorldStaticModel = PillBottleGround,
+        WorldStaticModel = Iodine,
         Medical = TRUE,
         OnEat = OnEat_Iodine,
         EatType = popcan,
@@ -41,7 +56,7 @@ module Base {
         Icon = BoilerSuitOrange,
         BloodLocation = Trousers;Jumper;Head;Neck;Hands;Shoes,
         Icon = Hazmatsuit,
-        RunSpeedModifier = -0.10,
+        RunSpeedModifier = -10,
         ScratchDefense = 15,
         Weight = 5,
         BiteDefense = 5,

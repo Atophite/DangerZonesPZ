@@ -36,6 +36,24 @@ table.insert(ProceduralDistributions.list["DrugLabOutfit"].items, 25);
 table.insert(ProceduralDistributions.list["DrugLabSupplies"].items, "DangerZone.Iodine");
 table.insert(ProceduralDistributions.list["DrugLabSupplies"].items, 5);
 
+--ElectronicStoreAppliances
+table.insert(ProceduralDistributions.list["ElectronicStoreAppliances"].items, "DangerZone.GeigerTeller");
+table.insert(ProceduralDistributions.list["ElectronicStoreAppliances"].items, 5);
+
+--LockerArmyBedroom
+table.insert(ProceduralDistributions.list["LockerArmyBedroom"].items, "DangerZone.GeigerTeller");
+table.insert(ProceduralDistributions.list["LockerArmyBedroom"].items, 2);
+table.insert(ProceduralDistributions.list["LockerArmyBedroom"].items, "DangerZone.Iodine");
+table.insert(ProceduralDistributions.list["LockerArmyBedroom"].items, 2);
+
+--MedicalStorageDrugs
+table.insert(ProceduralDistributions.list["MedicalStorageDrugs"].items, "DangerZone.Iodine");
+table.insert(ProceduralDistributions.list["MedicalStorageDrugs"].items, 5);
+
+--MedicalStorageOutfit
+table.insert(ProceduralDistributions.list["MedicalStorageOutfit"].items, "Base.HazmatSuit");
+table.insert(ProceduralDistributions.list["MedicalStorageOutfit"].items, 5);
+
 table.insert(ProceduralDistributions.list["CrateCarpentry"].items, "DangerZone.Iodine");
 table.insert(ProceduralDistributions.list["CrateCarpentry"].items, 100);
 table.insert(ProceduralDistributions.list["CrateCarpentry"].items, "Base.HazmatSuit");

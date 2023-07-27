@@ -24,11 +24,31 @@ function AtosClient:printTable(table)
 
 end
 
+local function getHandItem(equippedItem)
+   if equippedItem ~= nil then
+      if equippedItem:getName() == "Geiger Teller" and
+              equippedItem:getModName() == "Danger Zone" and
+              equippedItem:isActivated() then
+         return true
+
+      end
+   end
+end
+
 function AtosClient:isGeigerEquipped(player)
    local attachedItems = player:getAttachedItems()
+   local primaryEquippedItem = player:getPrimaryHandItem()
+   local secondaryEquippedItem = player:getSecondaryHandItem()
+
+   if getHandItem(primaryEquippedItem) or getHandItem(secondaryEquippedItem) then
+      return true
+   end
+
 
    for count = 0, attachedItems:size() - 1 do
-      if attachedItems:getItemByIndex(count):getName() == "Geiger Teller" then
+      if attachedItems:getItemByIndex(count):getName() == "Geiger Teller"
+         and attachedItems:getItemByIndex(count):isActivated()
+      then
             return true
       end
    end
@@ -45,6 +65,7 @@ function test(player)
    for count = 1, items:size() - 1 do
       if items:getItemByIndex(count):getClothingItemName() == "HazmatSuit" then
          print(tostring(items:getItemByIndex(count):isVanilla()))
+         print(items:getItemByIndex(count):getModData())
       end
    end
 
@@ -59,6 +80,7 @@ function AtosClient:isPlayerProtected(player)
 
    for count = 1, items:size() - 1 do
       if items:getItemByIndex(count):getClothingItemName() == "HazmatSuit"
+
       and items:getItemByIndex(count):getHolesNumber() < 1 then
 
          return true
