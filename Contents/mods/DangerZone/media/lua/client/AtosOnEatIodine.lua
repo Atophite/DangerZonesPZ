@@ -14,6 +14,14 @@ function OnEat_Iodine(food, player, percentage)
         AtosClient:setIsProtectedByPills(true)
         AtosClient:setIsProtectedByPillsSince(GameTime:getInstance():getWorldAgeHours())
         AtosClient:setIodineMoodle(1.0)
+        local rad = AtosClient:getRadiation()
+        local minusRad = 25
+
+        if rad <= 25 then
+            AtosClient:setRadiation(1)
+        else
+            AtosClient:setRadiation(rad - 25)
+        end
     end
 
 end
