@@ -216,10 +216,9 @@ function AtosClient:calculateRadiation()
 	print("health: " .. tostring(player:getHealth()))
 	if(radSickness > 2000) then
 		player:getBodyDamage():setFoodSicknessLevel(100);
-		player:Kill(player)
 		radSickness = 2000
 	elseif radSickness > 1000 then
-		player:getBodyDamage():setFoodSicknessLevel(100);
+		player:getBodyDamage():setFoodSicknessLevel(50);
 	elseif radSickness > 300 then
 		player:getBodyDamage():setFoodSicknessLevel(50);
 	end
