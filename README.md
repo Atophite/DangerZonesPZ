@@ -2,6 +2,11 @@
 
 # TODO LIST
 
+- [x] Make Hazmat suit to protect from radiation
+- [x] Make Geigerteller functional to detect when player is in radiation area
+- [x] Make Iodine to protect from radiation
+- [x] Implement custom moodles with MoodleFramework
+- [x] Implement function to read a text file with coordinates and make them the radiated area's
 - [ ] Distribute Iodine, Hazmat, and Geigerteller
 - [ ] Add a feature to fix holes in the hazmat suit (consider using a new item called rubber)
 - [ ] Radiate different areas of the map
