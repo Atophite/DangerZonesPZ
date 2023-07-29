@@ -20,6 +20,8 @@
 - [ ] Utilize iodine for aiding in the curing process
 - [ ] Implement burn damage when medium radiated
 - [ ] Implement translation texts
+- [ ] Make mod logo/image
+- [ ] Make mod showcase
 
 
 When player gets radiated the player will get sick. The more radiated the player is the more player get sick.
