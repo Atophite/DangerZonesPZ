@@ -7,14 +7,14 @@
 - [x] Make Iodine to protect from radiation
 - [x] Implement custom moodles with MoodleFramework
 - [x] Implement function to read a text file with coordinates and make them the radiated area's
-- [ ] Distribute Iodine, Hazmat, and Geigerteller
-- [ ] Add a feature to fix holes in the hazmat suit (consider using a new item called rubber)
-- [ ] Radiate different areas of the map
 - [x] Save data persistently with ModData
 - [x] Geigerteller is drainable
 - [x] Added recipes to charge the geigerteller with batteries
 - [x] Implement recipecode to add the battery charge to the geigerteller
 - [x] Implement radiation self check with a device maybe geiger teller
+- [ ] Distribute Iodine, Hazmat, and Geigerteller
+- [ ] Add a feature to fix holes in the hazmat suit (consider using a new item called rubber)
+- [ ] Radiate different areas of the map
 - [ ] Implement support for multiplayer
 - [ ] Create a cure for radiation: introduce a chance for daily radiation cure or else player will die from radiation
 - [ ] Utilize iodine for aiding in the curing process
