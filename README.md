@@ -6,7 +6,9 @@
 - [ ] Add a feature to fix holes in the hazmat suit (consider using a new item called rubber)
 - [ ] Radiate different areas of the map
 - [x] Save data persistently with ModData
-- [x] Geigerteller uses batteries.
+- [x] Geigerteller is drainable
+- [x] Added recipes to charge the geigerteller with batteries
+- [x] Implement recipecode to add the battery charge to the geigerteller
 - [x] Implement radiation self check with a device maybe geiger teller
 - [ ] Implement support for multiplayer
 - [ ] Create a cure for radiation: introduce a chance for daily radiation cure or else player will die from radiation
