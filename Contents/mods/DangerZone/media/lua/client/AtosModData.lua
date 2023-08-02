@@ -43,3 +43,19 @@ function AtosClient:setRadiation(value)
     local modData = getPlayer():getModData()
     modData.radiation = value
 end
+
+function AtosClient:getRadiationCured()
+    local modData = getPlayer():getModData()
+    if modData.radiationCured == nil then
+        modData.radiationCured = true
+    end
+    return modData.radiationCured
+end
+
+function AtosClient:setRadiationCured(value)
+    local modData = getPlayer():getModData()
+    modData.radiationCured = value
+end
+
+
+

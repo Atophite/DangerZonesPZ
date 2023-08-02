@@ -2,15 +2,12 @@ module DangerZone {
 
 	recipe Refill Empty Geiger Teller
         {
-
-            EmptyGeigerTeller,
+            destroy EmptyGeigerTeller,
             destroy Battery = 4,
 
             Result:GeigerTeller,
             Time:400.0,
             Category:Electrical,
-            AnimNode:Disassemble
-            Sound:Dismantle
         }
 
     recipe Refill Geiger Teller
@@ -21,7 +18,5 @@ module DangerZone {
             Result:GeigerTeller,
             Time:400.0,
             Category:Electrical,
-            AnimNode:Disassemble
-            Sound:Dismantle
         }
 }

@@ -13,22 +13,25 @@ local function doMenu(player, context, items)
         end
 
         if item:getType() then
-            -- This is where you put your code!
             if item:getType() == "GeigerTeller" then
-                -- Change MyItemsID to the ID you used in your items.txt file.
-                -- (e.g., for base.Axe, this would be Axe)
-                context:addOption("Measure Body Radiation", item, clickMeasureRadiation, player);
+                context:addOption(getText("ContextMenu_measure_radiation"), item, measureRadiation, player);
+            --elseif item:getType() == "Iodine" then
+            --    context:addOption(getText("ContextMenu_Take_pills"), item, takeIodinePill, player);
+
             end
-            -- This is where you put your code!
         end
     end
 end
 
+function takeIodinePill(item, player)
+    local playerObj = getSpecificPlayer(player);
+    ISTimedActionQueue.add(AtosTakeIodinePill:new(playerObj, item))
+end
 
-function clickMeasureRadiation(item, player)
+function measureRadiation(item, player)
     -- This is where the code goes for when someone clicks the option in the menu
-
-    ISTimedActionQueue.add(AtosIsMeasureRadiationAction:new(getPlayer(), item))
+    local playerObj = getSpecificPlayer(player);
+    ISTimedActionQueue.add(AtosIsMeasureRadiationAction:new(playerObj, item))
 
 end
 

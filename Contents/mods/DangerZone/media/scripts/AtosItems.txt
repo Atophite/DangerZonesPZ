@@ -31,8 +31,8 @@ module DangerZone {
         DisplayCategory = FirstAid,
         Weight  =   0.02,
         Type    =   Food,
-        HungerChange = +1,
         UseDelta    =   0.1,
+        Count = 10,
         UseWhileEquipped    =   FALSE,
         DisplayName =   Iodine Pills,
         Icon    =   Iodine,
@@ -43,6 +43,7 @@ module DangerZone {
         OnEat = OnEat_Iodine,
         EatType = popcan,
         CustomContextMenu = item_Iodine,
+        HungerChange = +10,
     }
 }
 

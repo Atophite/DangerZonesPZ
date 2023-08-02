@@ -17,7 +17,6 @@ local isInZone = false
 local isProtected = false
 local isProtectedByPills = false
 local isProtectByPillsSince = null
-local radSickness = 1
 local hasGeiger = false
 local hasEnteredZone = false
 local radLevels = {200, 400, 1000}
@@ -68,6 +67,44 @@ local function OnGameBoot()
 	print("game is booted!")
 end
 
+local function EveryDays()
+	-- Check if player is cured
+	print("Day is over")
+	local modData = getPlayer():getModData()
+	local chance = ZombRand(100) -- Generates a random number between 0 and 1
+	local dieChance = 5
+	local cureChance = 25
+	local currentRadiation = AtosClient:getRadiation()
+	print(chance)
+
+
+	if AtosClient:getRadiationCured() == true or currentRadiation < 300 then
+		AtosClient:setRadiation(currentRadiation / 1.2)
+		return
+	end
+
+	if currentRadiation >= 1000 then
+		dieChance = 10
+		cureChance = 10
+	end
+
+
+	if AtosClient:getRadiationCured() == false then
+		if chance <= dieChance then
+			-- The event occurs, put your event logic here
+			getPlayer():getBodyDamage():setFoodSicknessLevel(100);
+			print("YOU WILL DIE")
+		elseif chance <= cureChance then
+			AtosClient:setRadiationCured(true)
+			getPlayer():getBodyDamage():setFoodSicknessLevel(0);
+			print("radiation CURED")
+		else
+			-- nothing
+			print("radiation not cured")
+		end
+	end
+end
+
 local function everyOneMinute()
 	local player = getPlayer()
 	--Check for pills
@@ -102,12 +139,13 @@ local function everyOneMinute()
 		AtosClient:loopZones()
 	end
 
-	AtosClient:onClothingUpdated()
+	AtosClient:setGeigerAndProtectMoodle()
+	AtosClient:calculateRadiation()
 end
 
 
 
-function AtosClient:onClothingUpdated()
+function AtosClient:setGeigerAndProtectMoodle()
 	local player = getPlayer()
 	--https://zomboid-javadoc.com/41.65/zombie/characters/ILuaGameCharacterClothing.html
 
@@ -169,7 +207,7 @@ function AtosClient:validateZone()
 				player:Say("Radiation detected!")
 			end
 			hasEnteredZone = true
-			AtosClient:onClothingUpdated()
+			AtosClient:setGeigerAndProtectMoodle()
 		end
 
 
@@ -177,7 +215,7 @@ function AtosClient:validateZone()
 			print("player is wearing protection")
 
 		else
-			AtosClient:calculateRadiation()
+			--AtosClient:calculateRadiation()
 		end
 
 		--If the ATOS_player has a geiger the ATOS_player can detect the radiation
@@ -205,22 +243,40 @@ end
 
 function AtosClient:calculateRadiation()
 	local player = getPlayer()
-	print("player is NOT wearing protection")
-	if AtosClient:getIsProtectedByPills() then
-		radSickness = AtosClient:getRadiation() + 3 * 1.02
-	else
-		radSickness = AtosClient:getRadiation() + 6 * 1.02
+
+	local radSickness = AtosClient:getRadiation()
+	local foodSickness = math.floor(player:getBodyDamage():getFoodSicknessLevel())
+
+	if isProtected == false and isInZone then
+		print("player is NOT wearing protection")
+		if AtosClient:getIsProtectedByPills() then
+			radSickness = AtosClient:getRadiation() + 3 * 1.02
+		else
+			radSickness = AtosClient:getRadiation() + 6 * 1.02
+		end
+
 	end
-	print(radSickness)
-	print(player:getBodyDamage():getFoodSicknessLevel())
-	print("health: " .. tostring(player:getHealth()))
+
+	if AtosClient:getRadiationCured() == true and isInZone then
+		AtosClient:setRadiationCured(false)
+	end
+
+	--print(radSickness)
+	--print(player:getBodyDamage():getFoodSicknessLevel())
+	--print("health: " .. tostring(player:getHealth()))
 	if(radSickness > 2000) then
 		player:getBodyDamage():setFoodSicknessLevel(100);
 		radSickness = 2000
 	elseif radSickness > 1000 then
 		player:getBodyDamage():setFoodSicknessLevel(50);
+		-- implement burn damage
 	elseif radSickness > 300 then
-		player:getBodyDamage():setFoodSicknessLevel(50);
+
+		if foodSickness > 50 then
+			player:getBodyDamage():setFoodSicknessLevel(foodSickness);
+		else
+			player:getBodyDamage():setFoodSicknessLevel(50);
+		end
 	end
 	AtosClient:setRadiation(radSickness)
 end
@@ -249,19 +305,11 @@ function AtosClient:setZones(paramZones)
 	zones = paramZones
 end
 
-function AtosClient:setRadSickness(number)
-	radSickness = number
-end
-
-function AtosClient:getRadSickness()
-	return radSickness
-end
-
 
 Events.OnClothingUpdated.Add()
 Events.OnGameStart.Add(onGameStart)
 Events.EveryOneMinute.Add(everyOneMinute)
 Events.OnConnected.Add(onConnected)
 Events.OnGameBoot.Add(OnGameBoot)
-
+Events.EveryDays.Add(EveryDays)
 
