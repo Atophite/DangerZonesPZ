@@ -16,7 +16,7 @@
 - [ ] Add a feature to fix holes in the hazmat suit (consider using a new item called rubber)
 - [ ] Radiate different areas of the map
 - [ ] Implement support for multiplayer
-- [ ] Create a cure for radiation: introduce a chance for daily radiation cure or else player will die from radiation
+- [x] Create a cure for radiation: introduce a chance for daily radiation cure or else player will die from radiation
 - [ ] Utilize iodine for aiding in the curing process
 - [ ] Implement burn damage when medium radiated
 - [ ] Implement translation texts
