@@ -1,5 +1,7 @@
 # RadiatedZonesPZ
 
+![poster](https://github.com/Atophite/RadiatedZonesPZ/assets/14220576/1e210d50-c32f-443d-bec7-1933a599d9e9)
+
 # TODO LIST
 
 - [x] Make Hazmat suit to protect from radiation
@@ -23,6 +25,7 @@
 - [ ] Implement a new sickness to replace foodsickness. Implement fever or use sickness instead?
 - [x] Make mod logo/image
 - [ ] Make mod showcase
+
 
 
 When player gets radiated the player will get sick. The more radiated the player is the more player get sick.
