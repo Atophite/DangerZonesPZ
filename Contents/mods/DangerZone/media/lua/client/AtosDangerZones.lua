@@ -39,6 +39,7 @@ local function onGameStart()
 		});
 	else
 		--If client is offline, manually read the file
+		print("reading zones file cuz offline")
 		zones = AtosShared:readZonesFile()
 
 	end

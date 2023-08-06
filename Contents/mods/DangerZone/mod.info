@@ -1,5 +1,10 @@
-name=Danger Zone
+name=Radiated Zones
 id=DangerZone
-description=DangerZone
+description=Survive toxic zones with hazmat gear and be safe with your geiger teller!
+tags=Zones, Radiation, Danger, Realism
+authors=Atophite
 require=MoodleFramework
 poster=poster.png
+icon=poster-mini.png
+versionMin=41.78.16
+modVersion=1.0
