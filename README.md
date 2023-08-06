@@ -50,9 +50,8 @@ OR if rad is above 1000
 - Radiation is Not Cured (No event occurs): 20%
 
 When lightly radiated or medium the player has everyday a chance to cure from radiation. <br>
-But also has the chance to die. The chance is 10% per day until cured. <br>
-The chance for cured is 25%. <br>
-The chance of being sick from radiated is 65% this will not cure until player hit the luck of being cured. <br>
+But also has the chance to die.
+The chance of being sick from radiated is X% this will not cure until player hit the luck of being cured. <br>
 
 When player reached cured state the radiation will fall off everyday. <br>
 
