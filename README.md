@@ -15,12 +15,13 @@
 - [ ] Distribute Iodine, Hazmat, and Geigerteller
 - [ ] Add a feature to fix holes in the hazmat suit (consider using a new item called rubber)
 - [ ] Radiate different areas of the map
-- [ ] Implement support for multiplayer
+- [x] Implement support for multiplayer
 - [x] Create a cure for radiation: introduce a chance for daily radiation cure or else player will die from radiation
 - [ ] Utilize iodine for aiding in the curing process
-- [ ] Implement burn damage when medium radiated
+- [x] Implement burn damage when medium radiated
 - [ ] Implement translation texts
-- [ ] Make mod logo/image
+- [ ] Implement a new sickness to replace foodsickness. Implement fever or use sickness instead?
+- [x] Make mod logo/image
 - [ ] Make mod showcase
 
 
