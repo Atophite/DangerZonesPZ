@@ -4,7 +4,7 @@
 --- DateTime: 04/10/2022 22:39
 ---
 
-AtosDangerZones = {
+AtosRadiatedZones = {
     Settings = { }, -- configuration options
     Client = { -- client side functions and data
         Events = { }, -- client event hooks
@@ -15,7 +15,7 @@ AtosDangerZones = {
     Shared = { },
 }
 
-local AtosShared = AtosDangerZones.Shared
+local AtosShared = AtosRadiatedZones.Shared
 
 function AtosShared:readZonesFile()
     local zone = {}
@@ -23,7 +23,7 @@ function AtosShared:readZonesFile()
     local counter = 1;
     local x
     local y
-    local reader = getModFileReader("DangerZone", "media/coordinates.txt", false)
+    local reader = getModFileReader("RadiatedZones", "media/coordinates.txt", false)
 
     if reader then
         local line = reader:readLine()

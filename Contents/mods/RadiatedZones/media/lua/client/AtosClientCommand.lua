@@ -9,7 +9,7 @@ if isServer() and not isClient() then
     return
 end
 
-local AtosClient = AtosDangerZones.Client
+local AtosClient = AtosRadiatedZones.Client
 
 --Listen to server commands
 local function OnServerCommand(module, command, arguments)

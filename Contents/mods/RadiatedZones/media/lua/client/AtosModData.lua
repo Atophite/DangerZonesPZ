@@ -3,7 +3,7 @@
 --- Created by Wesley.
 --- DateTime: 13/07/2023 20:18
 ---
-local AtosClient = AtosDangerZones.Client
+local AtosClient = AtosRadiatedZones.Client
 
 function AtosClient:getIsProtectedByPills()
     local modData = getPlayer():getModData()

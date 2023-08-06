@@ -4,7 +4,7 @@
 --- DateTime: 12/07/2023 23:07
 ---
 ---
-local AtosClient = AtosDangerZones.Client
+local AtosClient = AtosRadiatedZones.Client
 require "MF_ISMoodle"
 MF.createMoodle("Iodine")
 MF.createMoodle("Hazmat")

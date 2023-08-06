@@ -23,8 +23,8 @@ local radLevels = {200, 400, 1000}
 
 local zones
 
-local AtosClient = AtosDangerZones.Client
-local AtosShared = AtosDangerZones.Shared
+local AtosClient = AtosRadiatedZones.Client
+local AtosShared = AtosRadiatedZones.Shared
 
 
 

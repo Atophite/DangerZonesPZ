@@ -8,7 +8,7 @@ require "TimedActions/ISBaseTimedAction"
 
 AtosTakeIodinePill = ISBaseTimedAction:derive("AtosTakeIodinePill");
 
-local AtosClient = AtosDangerZones.Client
+local AtosClient = AtosRadiatedZones.Client
 
 function AtosTakeIodinePill:isValid() -- Check if the action can be done
     return true;

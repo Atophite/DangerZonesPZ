@@ -1,4 +1,4 @@
-module DangerZone {
+module RadiatedZones {
     item GeigerTeller
     {
         DisplayCategory = Electronics,

@@ -1,4 +1,4 @@
-module DangerZone {
+module RadiatedZones {
 
 	recipe Refill Empty Geiger Teller
         {

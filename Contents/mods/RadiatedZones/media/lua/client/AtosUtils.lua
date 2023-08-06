@@ -9,7 +9,7 @@ if isServer() and not isClient() then
    return
 end
 
-local AtosClient = AtosDangerZones.Client
+local AtosClient = AtosRadiatedZones.Client
 
 function AtosClient:printCors()
 
@@ -27,7 +27,7 @@ end
 local function getHandItem(equippedItem)
    if equippedItem ~= nil then
       if equippedItem:getName() == "Geiger Teller" and
-              equippedItem:getModName() == "Danger Zone" and
+              equippedItem:getModName() == "Radiated Zones" and
               equippedItem:isActivated() then
          return true
 

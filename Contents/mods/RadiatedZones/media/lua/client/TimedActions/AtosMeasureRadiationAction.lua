@@ -7,7 +7,7 @@
 require "TimedActions/ISBaseTimedAction"
 
 AtosIsMeasureRadiationAction = ISBaseTimedAction:derive("AtosIsMeasureRadiationAction");
-local AtosClient = AtosDangerZones.Client
+local AtosClient = AtosRadiatedZones.Client
 
 function AtosIsMeasureRadiationAction:isValid() -- Check if the action can be done
     return true;

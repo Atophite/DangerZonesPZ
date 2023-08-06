@@ -10,22 +10,22 @@ require "Items/ProceduralDistributions"
 table.insert(ProceduralDistributions.list["ArmySurplusTools"].items, "Base.HazmatSuit");
 table.insert(ProceduralDistributions.list["ArmySurplusTools"].items, 5);
 
-table.insert(ProceduralDistributions.list["ArmySurplusTools"].items, "DangerZone.GeigerTeller");
+table.insert(ProceduralDistributions.list["ArmySurplusTools"].items, "RadiatedZones.GeigerTeller");
 table.insert(ProceduralDistributions.list["ArmySurplusTools"].items, 5);
 
 
 --ArmyStorageMedical
-table.insert(ProceduralDistributions.list["ArmyStorageMedical"].items, "DangerZone.GeigerTeller");
+table.insert(ProceduralDistributions.list["ArmyStorageMedical"].items, "RadiatedZones.GeigerTeller");
 table.insert(ProceduralDistributions.list["ArmyStorageMedical"].items, 10);
-table.insert(ProceduralDistributions.list["ArmyStorageMedical"].items, "DangerZone.Iodine");
+table.insert(ProceduralDistributions.list["ArmyStorageMedical"].items, "RadiatedZones.Iodine");
 table.insert(ProceduralDistributions.list["ArmyStorageMedical"].items, 10);
 
 --ArmyStorageElectronics
-table.insert(ProceduralDistributions.list["ArmyStorageElectronics"].items, "DangerZone.GeigerTeller");
+table.insert(ProceduralDistributions.list["ArmyStorageElectronics"].items, "RadiatedZones.GeigerTeller");
 table.insert(ProceduralDistributions.list["ArmyStorageElectronics"].items, 10);
 
 --ArmySurplusMisc
-table.insert(ProceduralDistributions.list["ArmySurplusMisc"].items, "DangerZone.GeigerTeller");
+table.insert(ProceduralDistributions.list["ArmySurplusMisc"].items, "RadiatedZones.GeigerTeller");
 table.insert(ProceduralDistributions.list["ArmySurplusMisc"].items, 1);
 
 --DrugLabOutfit
@@ -33,36 +33,36 @@ table.insert(ProceduralDistributions.list["DrugLabOutfit"].items, "Base.HazmatSu
 table.insert(ProceduralDistributions.list["DrugLabOutfit"].items, 25);
 
 --DrugLabSupplies
-table.insert(ProceduralDistributions.list["DrugLabSupplies"].items, "DangerZone.Iodine");
+table.insert(ProceduralDistributions.list["DrugLabSupplies"].items, "RadiatedZones.Iodine");
 table.insert(ProceduralDistributions.list["DrugLabSupplies"].items, 5);
 
 --ElectronicStoreAppliances
-table.insert(ProceduralDistributions.list["ElectronicStoreAppliances"].items, "DangerZone.GeigerTeller");
+table.insert(ProceduralDistributions.list["ElectronicStoreAppliances"].items, "RadiatedZones.GeigerTeller");
 table.insert(ProceduralDistributions.list["ElectronicStoreAppliances"].items, 5);
 
 --LockerArmyBedroom
-table.insert(ProceduralDistributions.list["LockerArmyBedroom"].items, "DangerZone.GeigerTeller");
+table.insert(ProceduralDistributions.list["LockerArmyBedroom"].items, "RadiatedZones.GeigerTeller");
 table.insert(ProceduralDistributions.list["LockerArmyBedroom"].items, 2);
-table.insert(ProceduralDistributions.list["LockerArmyBedroom"].items, "DangerZone.Iodine");
+table.insert(ProceduralDistributions.list["LockerArmyBedroom"].items, "RadiatedZones.Iodine");
 table.insert(ProceduralDistributions.list["LockerArmyBedroom"].items, 2);
 
 --MedicalStorageDrugs
-table.insert(ProceduralDistributions.list["MedicalStorageDrugs"].items, "DangerZone.Iodine");
+table.insert(ProceduralDistributions.list["MedicalStorageDrugs"].items, "RadiatedZones.Iodine");
 table.insert(ProceduralDistributions.list["MedicalStorageDrugs"].items, 5);
 
 --MedicalStorageOutfit
 table.insert(ProceduralDistributions.list["MedicalStorageOutfit"].items, "Base.HazmatSuit");
 table.insert(ProceduralDistributions.list["MedicalStorageOutfit"].items, 5);
 
-table.insert(ProceduralDistributions.list["CrateCarpentry"].items, "DangerZone.Iodine");
+table.insert(ProceduralDistributions.list["CrateCarpentry"].items, "RadiatedZones.Iodine");
 table.insert(ProceduralDistributions.list["CrateCarpentry"].items, 100);
 table.insert(ProceduralDistributions.list["CrateCarpentry"].items, "Base.HazmatSuit");
 table.insert(ProceduralDistributions.list["CrateCarpentry"].items, 100);
 
-table.insert(ProceduralDistributions.list["BathroomCabinet"].items, "DangerZone.Iodine");
+table.insert(ProceduralDistributions.list["BathroomCabinet"].items, "RadiatedZones.Iodine");
 table.insert(ProceduralDistributions.list["BathroomCabinet"].items, 2);
 
-table.insert(ProceduralDistributions.list["BookstoreBooks"].items, "DangerZone.Iodine");
+table.insert(ProceduralDistributions.list["BookstoreBooks"].items, "RadiatedZones.Iodine");
 table.insert(ProceduralDistributions.list["BookstoreBooks"].items, 100);
-table.insert(ProceduralDistributions.list["BookstoreMisc"].items, "DangerZone.Iodine");
+table.insert(ProceduralDistributions.list["BookstoreMisc"].items, "RadiatedZones.Iodine");
 table.insert(ProceduralDistributions.list["BookstoreMisc"].items, 100);

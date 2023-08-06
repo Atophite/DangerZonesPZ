@@ -10,8 +10,8 @@ Commands.Atos = {};
 
 local zones = {};
 
-local AtosShared = AtosDangerZones.Shared
-local AtosServer = AtosDangerZones.Server
+local AtosShared = AtosRadiatedZones.Shared
+local AtosServer = AtosRadiatedZones.Server
 
 Commands.Atos.RequestAllZones = function(player, args)
     print("Player is requesting zones")

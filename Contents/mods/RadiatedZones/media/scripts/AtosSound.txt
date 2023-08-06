@@ -1,4 +1,4 @@
-module DangerZone
+module RadiatedZones
 {
 	sound Geiger
 	{

@@ -3,7 +3,7 @@
 --- Created by Wesley.
 --- DateTime: 09/10/2022 21:14
 ---
-local AtosClient = AtosDangerZones.Client
+local AtosClient = AtosRadiatedZones.Client
 
 
 function OnEat_Iodine(food, player, percentage)

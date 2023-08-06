@@ -3,7 +3,7 @@
 --- Created by Wesley.
 --- DateTime: 29/07/2023 15:31
 ---
-local AtosClient = AtosDangerZones.Client
+local AtosClient = AtosRadiatedZones.Client
 
 local function doMenu(player, context, items)
     for i, v in ipairs(items) do
