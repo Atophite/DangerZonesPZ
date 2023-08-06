@@ -26,7 +26,9 @@ local zones
 local AtosClient = AtosRadiatedZones.Client
 local AtosShared = AtosRadiatedZones.Shared
 
-
+local function test()
+	print("test")
+end
 
 local function onGameStart()
 	local player = getPlayer()
@@ -51,15 +53,6 @@ local function onGameStart()
 
 end
 
-function testCommand()
-	zones = AtosShared:readCorsFile()
-	print(isClient())
-	local player = getPlayer()
-	sendClientCommand("Atos", "RequestAllZones", {
-		player = player
-	});
-end
-
 local function onConnected()
 	print("Connected to server")
 end
@@ -68,47 +61,23 @@ local function OnGameBoot()
 	print("game is booted!")
 end
 
-local function EveryDays()
-	-- Check if player is cured
-	print("Day is over")
-	local modData = getPlayer():getModData()
-	local chance = ZombRand(100) -- Generates a random number between 0 and 1
-	local dieChance = 5
-	local cureChance = 25
-	local currentRadiation = AtosClient:getRadiation()
-	print(chance)
+local function setBurnDamage()
+	local bodyParts = getPlayer():getBodyDamage():getBodyParts()
 
+	if bodyParts:size() > 0 then -- Check if the array is not empty
+		local randomIndex = ZombRand(bodyParts:size())
+		local randomBodyPart = bodyParts:get(randomIndex)
 
-	if AtosClient:getRadiationCured() == true or currentRadiation < 300 then
-		AtosClient:setRadiation(currentRadiation / 1.2)
-		return
-	end
+		randomBodyPart:setBurned()
 
-	if currentRadiation >= 1000 then
-		dieChance = 10
-		cureChance = 10
-	end
-
-
-	if AtosClient:getRadiationCured() == false then
-		if chance <= dieChance then
-			-- The event occurs, put your event logic here
-			getPlayer():getBodyDamage():setFoodSicknessLevel(100);
-			print("YOU WILL DIE")
-		elseif chance <= cureChance then
-			AtosClient:setRadiationCured(true)
-			getPlayer():getBodyDamage():setFoodSicknessLevel(0);
-			print("radiation CURED")
-		else
-			-- nothing
-			print("radiation not cured")
-		end
+	else
+		-- Handle the case where the array is empty
+		print("No body parts available.")
 	end
 end
 
-local function everyOneMinute()
-	local player = getPlayer()
-	--Check for pills
+local function EveryTenMinutes()
+	--Check if player is protected by Iodine
 	if AtosClient:getIsProtectedByPills() then
 		local pillTotalDuration = 5 -- 5 hours
 		local pillLowDuration = 4
@@ -124,6 +93,76 @@ local function everyOneMinute()
 			AtosClient:setIodineMoodle(1.0)--float
 		end
 	end
+
+end
+
+
+
+function testCommand()
+	zones = AtosShared:readCorsFile()
+	print(isClient())
+	local player = getPlayer()
+	sendClientCommand("Atos", "RequestAllZones", {
+		player = player
+	});
+end
+
+local function EveryDays()
+	-- Check if player is cured
+	print("Day is over")
+	local modData = getPlayer():getModData()
+	local chance = ZombRand(100) -- Generates a random number between 0 and 1
+	local dieChance = 3
+	local cureChance = 30
+	local burnChance = 50
+	local currentRadiation = AtosClient:getRadiation()
+	print(chance)
+
+
+	if AtosClient:getRadiationCured() == true or currentRadiation < 300 then
+		AtosClient:setRadiation(currentRadiation / 1.2)
+		return
+	end
+
+	if currentRadiation >= 1000 then
+		dieChance = 10
+		cureChance = 20
+
+	end
+
+
+	if AtosClient:getRadiationCured() == false then
+		if chance <= dieChance then
+			-- The event occurs, put your event logic here
+			getPlayer():getBodyDamage():setFoodSicknessLevel(100);
+			print("Player will die from radiation")
+		elseif chance <= cureChance then
+			AtosClient:setRadiationCured(true)
+			getPlayer():getBodyDamage():setFoodSicknessLevel(0);
+			print("radiation is cured")
+		elseif chance <= burnChance then
+
+			if currentRadiation >= 1000 then
+
+				local random = ZombRand(100)
+				print(random)
+				setBurnDamage()
+				print("Burn damage")
+			else
+				print("radiation is not cured")
+			end
+
+		else
+			print("radiation is not cured")
+		end
+
+	end
+end
+
+local function everyOneMinute()
+	local player = getPlayer()
+	--Check for pills
+
 
 	--If zones are empty
 	--sendClientCommand only works on multiplayer
@@ -150,7 +189,6 @@ function AtosClient:setGeigerAndProtectMoodle()
 	local player = getPlayer()
 	--https://zomboid-javadoc.com/41.65/zombie/characters/ILuaGameCharacterClothing.html
 
-	--getModID
 	--Check if player equipped a geiger when clothing is updated
 	--Also checks if the player already has the geiger equipped.
 	if AtosClient:isGeigerEquipped(player) and not hasGeiger then
@@ -200,7 +238,7 @@ function AtosClient:validateZone()
 	-- Check if the player is in the radiation zone
 	if isInZone then
 
-		--Check if its the first time that the ATOS_player has entered the zone.
+		--Check if its the first time that the player has entered the zone.
 		--To prevent a loop
 		if not hasEnteredZone then
 
@@ -219,7 +257,7 @@ function AtosClient:validateZone()
 			--AtosClient:calculateRadiation()
 		end
 
-		--If the ATOS_player has a geiger the ATOS_player can detect the radiation
+		--If the player has a geiger the player can detect the radiation
 		if hasGeiger then
 			isRadiationDetected = true
 			AtosClient:playSound()
@@ -248,6 +286,14 @@ function AtosClient:calculateRadiation()
 	local radSickness = AtosClient:getRadiation()
 	local foodSickness = math.floor(player:getBodyDamage():getFoodSicknessLevel())
 
+	local function checkFoodSickness()
+		if foodSickness > 50 then
+			player:getBodyDamage():setFoodSicknessLevel(foodSickness);
+		else
+			player:getBodyDamage():setFoodSicknessLevel(50);
+		end
+	end
+
 	if isProtected == false and isInZone then
 		print("player is NOT wearing protection")
 		if AtosClient:getIsProtectedByPills() then
@@ -270,14 +316,12 @@ function AtosClient:calculateRadiation()
 		radSickness = 2000
 	elseif radSickness > 1000 then
 		player:getBodyDamage():setFoodSicknessLevel(50);
+		checkFoodSickness()
+
+
 		-- implement burn damage
 	elseif radSickness > 300 then
-
-		if foodSickness > 50 then
-			player:getBodyDamage():setFoodSicknessLevel(foodSickness);
-		else
-			player:getBodyDamage():setFoodSicknessLevel(50);
-		end
+		checkFoodSickness()
 	end
 	AtosClient:setRadiation(radSickness)
 end
@@ -307,10 +351,11 @@ function AtosClient:setZones(paramZones)
 end
 
 
-Events.OnClothingUpdated.Add()
+Events.OnClothingUpdated.Add(test)
 Events.OnGameStart.Add(onGameStart)
 Events.EveryOneMinute.Add(everyOneMinute)
 Events.OnConnected.Add(onConnected)
 Events.OnGameBoot.Add(OnGameBoot)
 Events.EveryDays.Add(EveryDays)
+Events.EveryTenMinutes.Add(EveryTenMinutes)
 
