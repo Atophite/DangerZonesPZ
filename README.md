@@ -21,6 +21,7 @@
 - [x] Create a cure for radiation: introduce a chance for daily radiation cure or else player will die from radiation
 - [ ] Utilize iodine for aiding in the curing process
 - [x] Implement burn damage when medium radiated
+- [ ] Nerf Iodine so the player can't spam Iodine to reduce RADS (its 25 RADS now)
 - [ ] Implement translation texts
 - [ ] Implement a new sickness to replace foodsickness. Implement fever or use sickness instead?
 - [x] Make mod logo/image
