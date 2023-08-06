@@ -28,21 +28,32 @@
 
 
 
-When player gets radiated the player will get sick. The more radiated the player is the more player get sick.
+When player gets radiated the player will get sick. The more radiated the player is the more player get sick.<br>
 There are three stages of radiated:
 - lightly radiated (300 RAD)
 - medium radiated (1000 RAD)
 - heavily radiated (2000 RAD)
 
-if player is lightly radiated longer than a day the player will get 50% sickness
-if player is medium radiated longer than a day the player get 50% sickness.
-If player reach heavily radiated the player will die in a day with 100% sickness.
+if player is lightly radiated longer than a day the player will get 50% sickness. <br>
+if player is medium radiated longer than a day the player get 50% sickness. <br>
+If player reach heavily radiated the player will die in a day with 100% sickness. <br>
 
-When lightly radiated or medium the player has everyday a chance to cure from radiation.
-But also has the chance to die. The chance is 10% per day until cured.
-The chance for cured is 25%.
-The chance of being sick from radiated is 65% this will not cure until player hit the luck of being cured.
+- Die Chance: 3%
+- Cure Chance: 22%
+- Burn Chance: 35%
+- Radiation is Not Cured (No event occurs): 40%
 
-When player reached cured state the radiation will fall off everyday.
-When player has burn damage the burn will dissapear in lightly radiated when curing.
+OR if rad is above 1000
+- Die Chance: 10%
+- Cure Chance: 10%
+- Burn Chance: 60%
+- Radiation is Not Cured (No event occurs): 20%
+
+When lightly radiated or medium the player has everyday a chance to cure from radiation. <br>
+But also has the chance to die. The chance is 10% per day until cured. <br>
+The chance for cured is 25%. <br>
+The chance of being sick from radiated is 65% this will not cure until player hit the luck of being cured. <br>
+
+When player reached cured state the radiation will fall off everyday. <br>
+
 
