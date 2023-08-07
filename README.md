@@ -23,7 +23,7 @@
 - [ ] ~Utilize iodine for aiding in the curing process~
 - [x] Implement burn damage when medium radiated
 - [x] Nerf Iodine so the player can't spam Iodine to reduce RADS (its 25 RADS now)
-- [ ] Nerf Hazmat suit by making it slow and heavy
+- [x] Nerf Hazmat suit by making it slow and heavy
 - [ ] Implement translation texts
 - [x] Use FakeInfectionLevel instead of FoodSicknessLevel
 - [x] Make mod logo
