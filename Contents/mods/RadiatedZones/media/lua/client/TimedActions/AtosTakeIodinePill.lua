@@ -4,6 +4,10 @@
 --- DateTime: 29/07/2023 15:55
 ---
 
+--THIS IS CURRENTLY NOT BEING USED SINCE THE DELTA OF THE PILLS ARE NOT BEING REDUCED WHEN PILLS ARE BEING TAKEN
+--BUGGED OR SOMETHING
+--IODINE ARE FOOD NOW AND USED THE On_Eat FUNCTION LOOK AT AtosItems.txt
+
 require "TimedActions/ISBaseTimedAction"
 
 AtosTakeIodinePill = ISBaseTimedAction:derive("AtosTakeIodinePill");

@@ -10,24 +10,32 @@ AtosIsMeasureRadiationAction = ISBaseTimedAction:derive("AtosIsMeasureRadiationA
 local AtosClient = AtosRadiatedZones.Client
 
 function AtosIsMeasureRadiationAction:isValid() -- Check if the action can be done
+
+    if currentUseDelta <= 0 then
+        self.character:Say("Geiger Teller is out of battery!")
+        return false
+    end
+
     return true;
 end
 
 function AtosIsMeasureRadiationAction:update() -- Trigger every game update when the action is perform
-
+    self.item:setJobDelta(self:getJobDelta());
 end
 
 function AtosIsMeasureRadiationAction:start() -- Trigger when the action start
+    self.item:setJobDelta(0.0);
     self:setOverrideHandModels(nil, self.item);
     self:setActionAnim("MedicalCheck")
 end
 
 function AtosIsMeasureRadiationAction:stop() -- Trigger if the action is cancel
-
+    self.item:setJobDelta(0.0);
     ISBaseTimedAction.stop(self);
 end
 
 function AtosIsMeasureRadiationAction:perform() -- Trigger when the action is complete
+    self.item:setJobDelta(0.0);
     self.character:Say("My radiation level is: " .. math.floor(AtosClient:getRadiation()) .. " RADS")
     ISBaseTimedAction.perform(self);
 end

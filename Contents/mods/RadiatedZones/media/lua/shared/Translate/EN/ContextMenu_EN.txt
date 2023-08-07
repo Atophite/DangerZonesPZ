@@ -1,4 +1,5 @@
 ContextMenu_EN = {
     ContextMenu_item_Iodine = "Take Pill",
     ContextMenu_measure_radiation = "Measure Body Radiation",
+    ContextMenu_check_geiger = "Look at Geiger Teller"
 }

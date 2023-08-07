@@ -74,10 +74,6 @@ end
 function AtosClient:isPlayerProtected(player)
    local items = player:getWornItems()
 
-   --TODO check if the hazmat is from base
-   --TODO check if player has masks
-   --TODO check if there are holes in hazmat
-
    for count = 1, items:size() - 1 do
       if items:getItemByIndex(count):getClothingItemName() == "HazmatSuit"
 

@@ -6,8 +6,10 @@
 RadiatedZones = {}
 RadiatedZones.OnCreate = {}
 
+--TODO
 
 function RadiatedZones.OnCreate.GeigerTellerBatteryInsert(items, result, player)
+    print("insert test")
     --for i=0, items:size()-1 do
     --    -- we found the battery, we change his used delta according to the battery
     --    if items:get(i):getType() == "Battery" then

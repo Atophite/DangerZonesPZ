@@ -15,19 +15,18 @@ local geigerSound = nil
 local isRadiationDetected = false
 local isInZone = false
 local isProtected = false
-local isProtectedByPills = false
-local isProtectByPillsSince = null
 local hasGeiger = false
 local hasEnteredZone = false
-local radLevels = {200, 400, 1000}
+
 
 local zones
 
 local AtosClient = AtosRadiatedZones.Client
 local AtosShared = AtosRadiatedZones.Shared
 
-local function test()
-	print("test")
+local function onClothingUpdated()
+	print("clothing update")
+	AtosClient:setGeigerAndProtectMoodle()
 end
 
 local function onGameStart()
@@ -46,11 +45,7 @@ local function onGameStart()
 
 	end
 
-  	-- Check if player is wearing hazmat
-	--if AtosClient:getIsProtectedByPills() then
-	--	AtosClient:setIodineMoodle(1.0)--float
-	--end
-
+	AtosClient:setGeigerAndProtectMoodle()
 end
 
 local function onConnected()
@@ -97,16 +92,6 @@ local function EveryTenMinutes()
 end
 
 
-
-function testCommand()
-	zones = AtosShared:readCorsFile()
-	print(isClient())
-	local player = getPlayer()
-	sendClientCommand("Atos", "RequestAllZones", {
-		player = player
-	});
-end
-
 local function EveryDays()
 	-- Check if player is cured
 	print("Day is over")
@@ -134,11 +119,11 @@ local function EveryDays()
 	if AtosClient:getRadiationCured() == false then
 		if chance <= dieChance then
 			-- The event occurs, put your event logic here
-			getPlayer():getBodyDamage():setFoodSicknessLevel(100);
+			getPlayer():getBodyDamage():setFakeInfectionLevel(100)
 			print("Player will die from radiation")
 		elseif chance <= cureChance then
 			AtosClient:setRadiationCured(true)
-			getPlayer():getBodyDamage():setFoodSicknessLevel(0);
+			getPlayer():getBodyDamage():setFakeInfectionLevel(0)
 			print("radiation is cured")
 		elseif chance <= burnChance then
 
@@ -179,7 +164,7 @@ local function everyOneMinute()
 		AtosClient:loopZones()
 	end
 
-	AtosClient:setGeigerAndProtectMoodle()
+
 	AtosClient:calculateRadiation()
 end
 
@@ -242,7 +227,7 @@ function AtosClient:validateZone()
 		--To prevent a loop
 		if not hasEnteredZone then
 
-			if hasGeiger then
+			if AtosClient:isGeigerEquipped(player) then
 				player:Say("Radiation detected!")
 			end
 			hasEnteredZone = true
@@ -253,12 +238,10 @@ function AtosClient:validateZone()
 		if isProtected  then
 			print("player is wearing protection")
 
-		else
-			--AtosClient:calculateRadiation()
 		end
 
 		--If the player has a geiger the player can detect the radiation
-		if hasGeiger then
+		if AtosClient:isGeigerEquipped(player) then
 			isRadiationDetected = true
 			AtosClient:playSound()
 		else
@@ -271,7 +254,7 @@ function AtosClient:validateZone()
 		if hasEnteredZone then
 			AtosClient:stopSound()
 			--Send message to server that player left zone.
-			if hasGeiger then
+			if AtosClient:isGeigerEquipped(player) then
 				player:Say("Radiation not detected!")
 			end
 
@@ -284,13 +267,13 @@ function AtosClient:calculateRadiation()
 	local player = getPlayer()
 
 	local radSickness = AtosClient:getRadiation()
-	local foodSickness = math.floor(player:getBodyDamage():getFoodSicknessLevel())
+	local sickness = math.floor(player:getBodyDamage():getFakeInfectionLevel())
 
-	local function checkFoodSickness()
-		if foodSickness > 50 then
-			player:getBodyDamage():setFoodSicknessLevel(foodSickness);
+	local function setSickness(sicknessLevel)
+		if sickness > sicknessLevel then
+			player:getBodyDamage():setFakeInfectionLevel(sickness)
 		else
-			player:getBodyDamage():setFoodSicknessLevel(50);
+			player:getBodyDamage():setFakeInfectionLevel(sicknessLevel)
 		end
 	end
 
@@ -312,26 +295,29 @@ function AtosClient:calculateRadiation()
 	--print(player:getBodyDamage():getFoodSicknessLevel())
 	--print("health: " .. tostring(player:getHealth()))
 	if(radSickness > 2000) then
-		player:getBodyDamage():setFoodSicknessLevel(100);
+		player:getBodyDamage():setFakeInfectionLevel(100)
 		radSickness = 2000
+		player:Kill(player)
 	elseif radSickness > 1000 then
-		player:getBodyDamage():setFoodSicknessLevel(50);
-		checkFoodSickness()
+		setSickness(50)
 
 
 		-- implement burn damage
 	elseif radSickness > 300 then
-		checkFoodSickness()
+		setSickness(25)
 	end
 	AtosClient:setRadiation(radSickness)
 end
 
+function AtosClient:setZones(paramZones)
+	zones = paramZones
+end
 
 function AtosClient:playSound()
 	local player = getPlayer()
 	if geigerSound == nil then
 		geigerSound = player:playSoundLocal("Geiger")
-	elseif geigerSound ~= nil and not player:getEmitter():isPlaying("Geiger") and hasGeiger == true then
+	elseif geigerSound ~= nil and not player:getEmitter():isPlaying("Geiger") and AtosClient:isGeigerEquipped(player) == true then
 		geigerSound = player:playSoundLocal("Geiger")
 
 	end
@@ -346,12 +332,12 @@ function AtosClient:stopSound()
 	end
 end
 
-function AtosClient:setZones(paramZones)
-	zones = paramZones
+function AtosClient:getIsInZone()
+	return isInZone
 end
 
 
-Events.OnClothingUpdated.Add(test)
+Events.OnClothingUpdated.Add(onClothingUpdated)
 Events.OnGameStart.Add(onGameStart)
 Events.EveryOneMinute.Add(everyOneMinute)
 Events.OnConnected.Add(onConnected)

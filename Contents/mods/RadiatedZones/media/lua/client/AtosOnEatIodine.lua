@@ -9,19 +9,23 @@ local AtosClient = AtosRadiatedZones.Client
 function OnEat_Iodine(food, player, percentage)
 
     if player == getPlayer() then
-
-        --print(player:getUsername() + "Taking iodine")
-        AtosClient:setIsProtectedByPills(true)
-        AtosClient:setIsProtectedByPillsSince(GameTime:getInstance():getWorldAgeHours())
-        AtosClient:setIodineMoodle(1.0)
         local rad = AtosClient:getRadiation()
-        local minusRad = 25
+        local radHeal = 50
+        local currentWorldHour = GameTime:getInstance():getWorldAgeHours()
+        local isProtectedByPillsHours = currentWorldHour - AtosClient:getIsProtectedByPillsSince()
 
-        if rad <= 25 then
-            AtosClient:setRadiation(1)
-        else
-            AtosClient:setRadiation(rad - 25)
+        if isProtectedByPillsHours >= 24 then
+            -- I change the protectedbyPillsSince so the player doesn't get punished if player takes it too early.
+            -- Pills cannot be spammed and player needs to wait 24 hours before player can take new pills
+            AtosClient:setIsProtectedByPillsSince(GameTime:getInstance():getWorldAgeHours())
+            if rad <= radHeal then
+                AtosClient:setRadiation(1)
+            else
+                AtosClient:setRadiation(rad - radHeal)
+            end
         end
-    end
 
+        AtosClient:setIsProtectedByPills(true)
+        AtosClient:setIodineMoodle(1.0)
+    end
 end

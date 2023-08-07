@@ -13,8 +13,6 @@ module RadiatedZones {
         StaticModel     = WalkieTalkieValue,
         WorldStaticModel = Geigerteller,
         ticksPerEquipUse = 6000,
-        ReplaceOnDeplete	=	EmptyGeigerTeller,
-
     }
 
     item EmptyGeigerTeller
@@ -25,6 +23,7 @@ module RadiatedZones {
         Icon            = Geigerteller,
         StaticModel     = WalkieTalkieValue,
         WorldStaticModel = Geigerteller,
+        Tooltip = Tooltip_item_empty_geigerteller,
     }
 
     item Iodine {
@@ -57,9 +56,9 @@ module Base {
         Icon = BoilerSuitOrange,
         BloodLocation = Trousers;Jumper;Head;Neck;Hands;Shoes,
         Icon = Hazmatsuit,
-        RunSpeedModifier = -10,
+        RunSpeedModifier = -5.0,
         ScratchDefense = 15,
-        Weight = 5,
+        Weight = 10,
         BiteDefense = 5,
         Insulation = 0.65,
         WindResistance = 0.9,
