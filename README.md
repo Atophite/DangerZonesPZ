@@ -15,6 +15,7 @@
 - [x] Added recipes to charge the geigerteller with batteries
 - [x] Implement recipecode to add the battery charge to the geigerteller
 - [x] Implement radiation self check with a device maybe geiger teller
+- [x] Implement a function that the geiger teller is unusable when out of delta
 - [ ] Distribute Iodine, Hazmat, and Geigerteller
 - [ ] ~Add a feature to fix holes in the hazmat suit (consider using a new item called rubber)~
 - [ ] Radiate different areas of the map
