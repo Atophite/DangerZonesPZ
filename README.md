@@ -21,6 +21,7 @@
 - [ ] Radiate different areas of the map
 - [x] Implement support for multiplayer
 - [x] Create a cure for radiation: introduce a chance for daily radiation cure or else player will die from radiation
+- [ ] Implement an air filter. The air filter can be used for the hazmat to work.
 - [ ] ~Utilize iodine for aiding in the curing process~
 - [x] Implement burn damage when medium radiated
 - [x] Nerf Iodine so the player can't spam Iodine to reduce RADS (its 25 RADS now)
