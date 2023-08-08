@@ -67,7 +67,7 @@ ISInventoryPaneContextMenu.unequipItem = function(item, player)
     if not getSpecificPlayer(player):isEquipped(item) then return end
     if item ~= nil and item:getType() == "CandleLit" then item = ISInventoryPaneContextMenu.litCandleExtinguish(item, player) end
     if item:getClothingItemName() == "HazmatSuit" then
-        ISTimedActionQueue.add(ISUnequipAction:new(getSpecificPlayer(player), item, 800));
+        ISTimedActionQueue.add(ISUnequipAction:new(getSpecificPlayer(player), item, 500));
     else
         ISTimedActionQueue.add(ISUnequipAction:new(getSpecificPlayer(player), item, 50));
     end

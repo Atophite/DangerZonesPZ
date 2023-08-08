@@ -24,9 +24,11 @@ local zones
 local AtosClient = AtosRadiatedZones.Client
 local AtosShared = AtosRadiatedZones.Shared
 
-local function onClothingUpdated()
+local function onClothingUpdated(player)
 	print("clothing update")
 	AtosClient:setGeigerAndProtectMoodle()
+
+
 end
 
 local function onGameStart()
