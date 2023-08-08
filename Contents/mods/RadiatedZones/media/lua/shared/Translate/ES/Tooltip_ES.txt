@@ -1,0 +1,6 @@
+Tooltip_ES = {
+    Tooltip_item_geigerteller = "¡Permanece vigilante ante la radiación! Equípalo en el cinturón (derecho o izquierdo) o usa los espacios Primario/Secundario. Recuerda activarlo y estar atento a la duración de la batería.",
+    Tooltip_item_iodine = "Píldoras de protección contra la radiación durante 5 horas. Sana la radiación al tomar una cada 24 horas.",
+    Tooltip_item_hazmat = "El traje de protección contra productos químicos proporciona protección completa contra la radiación. ¡Verifica si hay agujeros en el traje!",
+    Tooltip_item_empty_geigerteller = "Un geiger teller vacío. ¡Usa 4 baterías para cargarlo completamente de nuevo!"
+}

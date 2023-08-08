@@ -1,0 +1,9 @@
+Moodles_DE {
+    Moodles_Iodine_Good_lvl4 = "Iodinschutzstufe 4",
+    Moodles_Iodine_Good_desc_lvl4 = "Die Wirkung von Iodin macht dich widerstandsfähiger gegen Strahlung.",
+    Moodles_Iodine_Bad_lvl3 = "Iodinschutzstufe 3",
+    Moodles_Iodine_Bad_desc_lvl3 = "Die Wirkung von Iodin lässt langsam nach.",
+
+    Moodles_Hazmat_Good_lvl4 = "Schutzanzug vor Gefahrstoffen Stufe 4",
+    Moodles_Hazmat_Good_desc_lvl4 = "Der Schutzanzug vor Gefahrstoffen macht dich vollständig resistent gegen Strahlung."
+}
