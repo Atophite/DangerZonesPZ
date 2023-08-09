@@ -18,11 +18,11 @@
 - [x] Implement a function that the geiger teller is unusable when out of delta
 - [ ] Distribute Iodine, Hazmat, and Geigerteller
 - [ ] ~Add a feature to fix holes in the hazmat suit (consider using a new item called rubber)~
-- [ ] Radiate different areas of the map
+- [x] Radiate different areas of the map
 - [x] Implement support for multiplayer
 - [x] Create a cure for radiation: introduce a chance for daily radiation cure or else player will die from radiation
-- [ ] Implement an air filter. The air filter can be used for the hazmat to work.
-- [ ] Implement a function to randomize radiated zones when the world is being made.
+- [ ] ~Implement an air filter. The air filter can be used for the hazmat to work~
+- [ ] ~Implement a function to randomize radiated zones when the world is being made~
 - [ ] ~Utilize iodine for aiding in the curing process~
 - [x] Implement burn damage when medium radiated
 - [x] Nerf Iodine so the player can't spam Iodine to reduce RADS (its 25 RADS now)
