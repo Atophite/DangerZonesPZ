@@ -1,6 +1,6 @@
 Tooltip_EN = {
 	Tooltip_item_geigerteller = "Stay vigilant for radiation! Equip on belt (right or left) or use Primary/Secondary slots. Remember to activate it and keep an eye on the battery life.",
 	Tooltip_item_iodine = "5-hour radiation protection pills. Heal radiation when taken every 24 hours.",
-	Tooltip_item_hazmat = "Hazmat suit provides full radiation protection. Check for any holes in the suit!"
-	Tooltip_item_empty_geigerteller = "An empty geiger teller. Use 4 batteries to fully charge it again!"
+	Tooltip_item_hazmat = "Hazmat suit provides full radiation protection. Check for any holes in the suit!",
+	Tooltip_item_empty_geigerteller = "An empty geiger teller. Use 4 batteries to fully charge it again!",
 }

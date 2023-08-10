@@ -3,8 +3,13 @@
 --- Created by Wesley.
 --- DateTime: 13/07/2023 22:03
 ---
+---
 
+require 'Items/SuburbsDistributions'
+require 'Vehicles/VehicleDistributions'
 require "Items/ProceduralDistributions"
+require 'Items/Distributions'
+require 'Items/ItemPicker'
 
 --ArmySurplusTools
 table.insert(ProceduralDistributions.list["ArmySurplusTools"].items, "Base.HazmatSuit");
@@ -175,3 +180,9 @@ table.insert(ProceduralDistributions.list["BathroomCounter"].items, 1);
 --CrateElectronics
 table.insert(ProceduralDistributions.list["CrateCarpentry"].items, "RadiatedZones.GeigerTeller");
 table.insert(ProceduralDistributions.list["CrateCarpentry"].items, 3);
+
+
+table.insert(VehicleDistributions["GloveBox"].items, "RadiatedZones.GeigerTeller");
+table.insert(VehicleDistributions["GloveBox"].items, 0.1);
+table.insert(VehicleDistributions["GloveBox"].items, "RadiatedZones.Iodine");
+table.insert(VehicleDistributions["GloveBox"].items, 0.5);

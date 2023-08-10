@@ -78,13 +78,20 @@ function AtosClient:isPlayerProtected(player)
 
    for count = 1, items:size() - 1 do
       if items:getItemByIndex(count):getClothingItemName() == "HazmatSuit" then
-         SpeedFramework.SetPlayerSpeed(player, 0.7)
-         if items:getItemByIndex(count):getHolesNumber() < 1 then
+
+         if getActivatedMods():contains("SpeedFrameWork") then
+            SpeedFramework.SetPlayerSpeed(player, 0.7)
+         end
+
+         if items:getItemByIndex(count):getHolesNumber() < 1
+         and items:getItemByIndex(count):getCurrentCondition() > 0 then
             return true
          end
          return false
       else
-         SpeedFramework.SetPlayerSpeed(player, nil)
+         if getActivatedMods():contains("SpeedFrameWork") then
+            SpeedFramework.SetPlayerSpeed(player, nil)
+         end
       end
 
    end

@@ -13,7 +13,7 @@ function AtosIsCheckGeigerAction:isValid() -- Check if the action can be done
     local currentUseDelta = self.item:getUsedDelta()
 
     if currentUseDelta <= 0 then
-        self.character:Say("Geiger Teller is out of battery!")
+        self.character:Say(getText("ContextMenu_out_of_battery"))
         return false
     end
 
@@ -25,6 +25,7 @@ function AtosIsCheckGeigerAction:update() -- Trigger every game update when the 
 end
 
 function AtosIsCheckGeigerAction:start() -- Trigger when the action start
+    self.item:setJobType(getText("ContextMenu_check_geiger"));
     self.item:setJobDelta(0.0);
     self:setOverrideHandModels(nil, self.item);
     self:setActionAnim("MedicalCheck")
@@ -38,9 +39,9 @@ end
 function AtosIsCheckGeigerAction:perform() -- Trigger when the action is complete
     self.item:setJobDelta(0.0);
     if AtosClient:getIsInZone() then
-        self.character:Say("Radiation detected!")
+        self.character:Say(getText("ContextMenu_radiation_detected"))
     else
-        self.character:Say("Radiation not detected!")
+        self.character:Say(getText("ContextMenu_radiation_not_detected"))
     end
 
     local currentUseDelta = self.item:getUsedDelta()
