@@ -28,7 +28,7 @@
 - [x] Nerf Iodine so the player can't spam Iodine to reduce RADS (its 25 RADS now)
 - [x] Nerf Hazmat suit by making it slow and heavy
 - [x] Implement backup in case geiger teller sound effect stops working. Player can look at the geiger teller manually to see if there is radiation.
-- [ ] Implement translation texts
+- [x] Implement translation texts
 - [x] Use FakeInfectionLevel instead of FoodSicknessLevel
 - [x] Make mod logo
 - [ ] Make mod showcase images
