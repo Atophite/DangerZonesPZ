@@ -1,22 +1,25 @@
 module RadiatedZones {
 
-	recipe Refill Empty Geiger Teller
-        {
-            destroy EmptyGeigerTeller,
-            destroy Battery = 4,
+	recipe Insert Batteries Into Geiger Teller
+    {
+        destroy GeigerTeller,
+        destroy Battery = 4,
 
-            Result:GeigerTeller,
-            Time:400.0,
-            Category:Electrical,
-        }
+        Result:GeigerTeller,
+        Time:400.0,
+        Category:Electrical,
+        OnTest:RadiatedZones.OnTest.GeigerTellerBatteriesInsert,
+        OnCreate:RadiatedZones.OnCreate.GeigerTellerBatteriesInsert,
+    }
 
-    recipe Refill Geiger Teller
-        {
-            destroy GeigerTeller,
-            destroy Battery = 4,
+    recipe Remove Batteries From Geiger Teller
+    {
+        keep GeigerTeller,
 
-            Result:GeigerTeller,
-            Time:400.0,
-            Category:Electrical,
-        }
+        Result:Battery,
+        Time:400.0,
+        Category:Electrical,
+        OnTest:RadiatedZones.OnTest.GeigerTellerBatteriesRemove,
+        OnCreate:RadiatedZones.OnCreate.GeigerTellerBatteriesRemove,
+    }
 }

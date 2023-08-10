@@ -1,5 +1,5 @@
-ContextMenu_DE {
+ContextMenu_DE = {
     ContextMenu_item_Iodine = "Pille nehmen",
     ContextMenu_measure_radiation = "Körperstrahlung messen",
-    ContextMenu_check_geiger = "Geigerzähler überprüfen"
+    ContextMenu_check_geiger = "Geigerzähler anzeigen"
 }

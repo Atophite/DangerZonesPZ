@@ -1,6 +1,6 @@
 Tooltip_DE = {
-    Tooltip_item_geigerteller = "Bleiben Sie wachsam in Bezug auf Strahlung! Ausrüstbar am Gürtel (rechts oder links) oder in den Primär-/Sekundär-Slots. Denken Sie daran, es zu aktivieren und die Batterielebensdauer im Auge zu behalten.",
-    Tooltip_item_iodine = "5-stündige Strahlungsschutzpillen. Reduzieren Strahlungseffekte, wenn alle 24 Stunden eingenommen.",
-    Tooltip_item_hazmat = "Der Schutzanzug vor Gefahrstoffen bietet vollständigen Strahlungsschutz. Prüfen Sie auf eventuelle Löcher im Anzug!",
-    Tooltip_item_empty_geigerteller = "Ein leerer Geigerzähler. Verwenden Sie 4 Batterien, um ihn vollständig aufzuladen!"
+    Tooltip_item_geigerteller = "Seien Sie aufmerksam auf Strahlung! An Gürtel (rechts oder links) anbringen oder in den Haupt-/Sekundär-Slots verwenden. Denken Sie daran, es zu aktivieren und die Batterielebensdauer im Auge zu behalten.",
+    Tooltip_item_iodine = "Strahlungsschutzpillen für 5 Stunden. Heilen Strahlung, wenn alle 24 Stunden eingenommen.",
+    Tooltip_item_hazmat = "Der Hazmat-Anzug bietet vollen Strahlungsschutz. Überprüfen Sie auf Löcher im Anzug!",
+    Tooltip_item_empty_geigerteller = "Ein leerer Geigerzähler. Verwenden Sie 4 Batterien, um ihn wieder vollständig aufzuladen!",
 }

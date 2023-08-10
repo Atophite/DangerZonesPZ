@@ -1,0 +1,5 @@
+ContextMenu_FR = {
+    ContextMenu_item_Iodine = "Prendre une Pilule",
+    ContextMenu_measure_radiation = "Mesurer la Radiologie Corporelle",
+    ContextMenu_check_geiger = "Vérifier le Compteur Geiger"
+}

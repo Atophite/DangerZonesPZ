@@ -18,8 +18,6 @@ local function doMenu(player, context, items)
                     context:addOption(getText("ContextMenu_measure_radiation"), item, measureRadiation, player);
                     context:addOption(getText("ContextMenu_check_geiger"), item, lookAtGeiger, player);
                 end
-            --elseif item:getType() == "Iodine" then
-            --    context:addOption(getText("ContextMenu_Take_pills"), item, takeIodinePill, player);
 
             end
         end

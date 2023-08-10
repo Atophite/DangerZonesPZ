@@ -1,0 +1,4 @@
+Recipes_DE = {
+    Recipe_Insert_Batteries_Into_Geiger_Teller = "Batterien in den Geigerzähler einlegen",
+    Recipe_Remove_Batteries_From_Geiger_Teller = "Batterien entfernen",
+}

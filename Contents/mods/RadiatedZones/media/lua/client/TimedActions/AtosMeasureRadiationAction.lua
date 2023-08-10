@@ -10,7 +10,7 @@ AtosIsMeasureRadiationAction = ISBaseTimedAction:derive("AtosIsMeasureRadiationA
 local AtosClient = AtosRadiatedZones.Client
 
 function AtosIsMeasureRadiationAction:isValid() -- Check if the action can be done
-
+    local currentUseDelta = self.item:getUsedDelta()
     if currentUseDelta <= 0 then
         self.character:Say("Geiger Teller is out of battery!")
         return false

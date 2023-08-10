@@ -39,6 +39,7 @@ function AtosClient:isGeigerEquipped(player)
    local attachedItems = player:getAttachedItems()
    local primaryEquippedItem = player:getPrimaryHandItem()
    local secondaryEquippedItem = player:getSecondaryHandItem()
+   local currentUseDelta
 
    if getHandItem(primaryEquippedItem) or getHandItem(secondaryEquippedItem) then
       return true
@@ -48,6 +49,7 @@ function AtosClient:isGeigerEquipped(player)
    for count = 0, attachedItems:size() - 1 do
       if attachedItems:getItemByIndex(count):getName() == "Geiger Teller"
          and attachedItems:getItemByIndex(count):isActivated()
+         and attachedItems:getItemByIndex(count):getUsedDelta() > 0
       then
             return true
       end

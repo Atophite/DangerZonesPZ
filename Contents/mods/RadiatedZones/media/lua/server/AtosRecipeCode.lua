@@ -5,15 +5,55 @@
 ---
 RadiatedZones = {}
 RadiatedZones.OnCreate = {}
+RadiatedZones.OnTest = {}
 
 --TODO
 
-function RadiatedZones.OnCreate.GeigerTellerBatteryInsert(items, result, player)
-    print("insert test")
-    --for i=0, items:size()-1 do
-    --    -- we found the battery, we change his used delta according to the battery
-    --    if items:get(i):getType() == "Battery" then
-    --        result:setUsedDelta(items:get(i):getUsedDelta());
-    --    end
-    --end
+-- Return true if recipe is valid, false otherwise
+function RadiatedZones.OnTest.GeigerTellerBatteriesInsert(sourceItem, result)
+    if sourceItem:getType() == "GeigerTeller" then
+        return sourceItem:getUsedDelta() == 0; -- Only allow the batteries inserting if the geigerteller has no batteries left in it.
+    end
+
+    return true -- the battery
+end
+
+function RadiatedZones.OnCreate.GeigerTellerBatteriesInsert(items, result, player)
+
+    local totalDelta = 0
+
+    for i=0, items:size()-1 do
+        -- we found the battery, we change his used delta according to the battery
+        if items:get(i):getType() == "Battery" then
+            totalDelta = totalDelta + items:get(i):getUsedDelta() / 4
+            result:setUsedDelta(totalDelta);
+        end
+    end
+end
+
+-- Return true if recipe is valid, false otherwise
+function RadiatedZones.OnTest.GeigerTellerBatteriesRemove(sourceItem, result)
+    return sourceItem:getUsedDelta() > 0;
+end
+
+function RadiatedZones.OnCreate.GeigerTellerBatteriesRemove(items, result, player)
+
+    for i=0, items:size()-1 do
+        local item = items:get(i)
+        if item:getType() == "GeigerTeller" then
+
+            --Unfortunately if the result of the recipe is 4 batteries the code sees it as one battery instead of 4.
+            --So I have to give the 3 batteries manually in a ugly way
+            local battery1 = player:getInventory():AddItem("Battery")
+            local battery2 = player:getInventory():AddItem("Battery")
+            local battery3 = player:getInventory():AddItem("Battery")
+            battery1:setUsedDelta(item:getUsedDelta())
+            battery2:setUsedDelta(item:getUsedDelta())
+            battery3:setUsedDelta(item:getUsedDelta())
+            result:setUsedDelta(item:getUsedDelta())
+
+            -- then we empty the geiger teller used delta (his energy)
+            item:setUsedDelta(0);
+        end
+    end
 end
