@@ -1,0 +1,10 @@
+ContextMenu_IT = {
+    ContextMenu_item_Iodine = "Prendi la Pasticca",
+    ContextMenu_measure_radiation = "Misura Radiazione Corporea",
+    ContextMenu_check_geiger = "Guarda il Contatore Geiger",
+
+    ContextMenu_measure_body_radiation = "Il mio livello di radiazione è: ",
+    ContextMenu_out_of_battery = "Il Contatore Geiger è scarico!",
+    ContextMenu_radiation_detected = "Rilevata radiazione!",
+    ContextMenu_radiation_not_detected = "Nessuna radiazione rilevata!",
+}

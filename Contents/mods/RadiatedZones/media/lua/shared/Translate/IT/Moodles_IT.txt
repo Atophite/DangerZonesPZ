@@ -1,0 +1,9 @@
+Moodles_IT = {
+    Moodles_Iodine_Good_lvl4 = "Protetto dall'Iodio",
+    Moodles_Iodine_Good_desc_lvl4 = "Gli effetti dell'iodio ti rendono più resistente alla radiazione.",
+    Moodles_Iodine_Bad_lvl3 = "Protetto dall'Iodio",
+    Moodles_Iodine_Bad_desc_lvl3 = "Gli effetti dell'iodio stanno per terminare.",
+
+    Moodles_Hazmat_Good_lvl4 = "Protetto da Tuta Antiradiazioni",
+    Moodles_Hazmat_Good_desc_lvl4 = "La tuta antiradiazioni ti rende completamente resistente alla radiazione."
+}

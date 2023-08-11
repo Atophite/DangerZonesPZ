@@ -1,0 +1,6 @@
+Tooltip_IT = {
+    Tooltip_item_geigerteller = "Rimani vigile per la radiazione! Equipaggialo sulla cintura (destra o sinistra) o usa gli slot Primario/Secondario. Ricorda di attivarlo e tieni d'occhio la durata della batteria.",
+    Tooltip_item_iodine = "Pasticche protettive dalla radiazione per 5 ore. Guarisce dalla radiazione quando assunte ogni 24 ore.",
+    Tooltip_item_hazmat = "La tuta antiradiazioni fornisce una protezione totale dalla radiazione. Controlla se ci sono buchi nella tuta!",
+    Tooltip_item_empty_geigerteller = "Un contatore Geiger vuoto e inutile. Usa 4 batterie per caricarlo completamente!"
+}

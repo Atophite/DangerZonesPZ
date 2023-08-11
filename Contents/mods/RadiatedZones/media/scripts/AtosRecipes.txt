@@ -2,7 +2,7 @@ module RadiatedZones {
 
 	recipe Insert Batteries Into Geiger Teller
     {
-        destroy GeigerTeller,
+        destroy GeigerTeller/EmptyGeigerTeller,
         destroy Battery = 4,
 
         Result:GeigerTeller,

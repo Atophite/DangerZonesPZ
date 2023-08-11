@@ -21,7 +21,7 @@ end
 function AtosClient:getIsProtectedByPillsSince()
     local modData = getPlayer():getModData()
     if modData.isProtectedByPillsSince == nil then
-        modData.isProtectedByPills = 0
+        modData.isProtectedByPillsSince = 0
     end
     return modData.isProtectedByPillsSince
 end

@@ -2,7 +2,5 @@ Tooltip_FR = {
     Tooltip_item_geigerteller = "Restez vigilant face à la radiation ! Équipez-le à la ceinture (à droite ou à gauche) ou utilisez les emplacements Principal/Secondaire. N'oubliez pas de l'activer et surveillez la durée de vie de la batterie.",
     Tooltip_item_iodine = "Pilules de protection contre la radiation pendant 5 heures. Guérit la radiation lorsqu'elle est prise toutes les 24 heures.",
     Tooltip_item_hazmat = "La combinaison de protection offre une protection totale contre la radiation. Vérifiez s'il y a des trous dans la combinaison !",
-    Tooltip_item_empty_geigerteller = "Un compteur Geiger vide. Utilisez 4 piles pour le recharger complètement !",
-    Tooltip_item_batterypack = "Un pack de piles pour le compteur Geiger.",
-    Tooltip_item_empty_batterypack = "Un pack de piles vide pour le compteur Geiger."
+    Tooltip_item_empty_geigerteller = "Un compteur Geiger vide et inutile. Utilisez 4 piles pour le charger complètement !"
 }

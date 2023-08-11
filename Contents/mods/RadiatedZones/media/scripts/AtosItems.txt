@@ -32,7 +32,7 @@ module RadiatedZones {
         Weight  =   0.02,
         Type    =   Food,
         UseDelta    =   0.1,
-        Count = 10,
+        Count = 6,
         UseWhileEquipped    =   FALSE,
         DisplayName =   Iodine Pills,
         Icon    =   Iodine,

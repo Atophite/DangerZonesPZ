@@ -1,5 +1,10 @@
 ContextMenu_FR = {
     ContextMenu_item_Iodine = "Prendre une Pilule",
     ContextMenu_measure_radiation = "Mesurer la Radiologie Corporelle",
-    ContextMenu_check_geiger = "Vérifier le Compteur Geiger"
+    ContextMenu_check_geiger = "Vérifier le Compteur Geiger",
+
+    ContextMenu_measure_body_radiation = "Mon niveau de radiation est : ",
+    ContextMenu_out_of_battery = "Le compteur Geiger est à court de batterie !",
+    ContextMenu_radiation_detected = "Radiation détectée !",
+    ContextMenu_radiation_not_detected = "Aucune radiation détectée !",
 }
