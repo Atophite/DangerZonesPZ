@@ -2,40 +2,30 @@
 
 ![poster](https://github.com/Atophite/RadiatedZonesPZ/assets/14220576/1e210d50-c32f-443d-bec7-1933a599d9e9)
 
-# TODO LIST
+# Project Zomboid Radiation Mod Feature List
 
-- [x] Make Hazmat suit to protect from radiation
-- [x] Make Geigerteller functional to detect when player is in radiation area
-- [x] Make Iodine to protect from radiation
-- [x] Implement custom moodles with MoodleFramework
-- [x] Implement function to read a text file with coordinates and make them the radiated area's
-- [x] Implement function that the text file reader is Server sided so players cannot cheat by editing coordinates file. (Unless its singleplayer)
-- [x] Save data persistently with ModData
-- [x] Geigerteller is drainable
-- [x] Added recipes to charge the geigerteller with batteries
-- [x] Implement recipecode to add the battery charge to the geigerteller
-- [x] Implement radiation self check with a device maybe geiger teller
-- [x] Implement a function that the geiger teller is unusable when out of delta
-- [x] Distribute Iodine, Hazmat, and Geigerteller
-- [ ] ~Add a feature to fix holes in the hazmat suit (consider using a new item called rubber)~
-- [x] Radiate different areas of the map
-- [x] Implement support for multiplayer
-- [x] Create a cure for radiation: introduce a chance for daily radiation cure or else player will die from radiation
-- [ ] ~Implement an air filter. The air filter can be used for the hazmat to work~
-- [ ] ~Implement a function to randomize radiated zones when the world is being made~
-- [ ] ~Utilize iodine for aiding in the curing process~
-- [x] Implement burn damage when medium radiated
-- [x] Nerf Iodine so the player can't spam Iodine to reduce RADS (its 25 RADS now)
-- [x] Nerf Hazmat suit by making it slow and heavy
-- [x] Implement backup in case geiger teller sound effect stops working. Player can look at the geiger teller manually to see if there is radiation.
-- [x] Implement translation texts
-- [x] Use FakeInfectionLevel instead of FoodSicknessLevel
-- [x] Make mod logo
-- [ ] Make mod showcase images
-- [ ] Make mod showcase video
+## Radiation Protection and Detection
+- Lootable Hazmat Suit to protect from radiation.
+- Functional Geigerteller (Geiger Counter) to detect radiation areas.
+- Craftable Iodine as radiation protection.
+- Geigerteller drains battery, requiring recharging.
+- Battery charging recipes for Geigerteller.
+- Geigerteller checks radiation levels and becomes unusable when out of battery.
+- Manual inspection of Geigerteller as a backup to sound effects.
 
+## Map Mechanics
+- Implementation of radiated zones across the map.
+- Custom text file with coordinates defines radiated areas.
+- Server-sided control for coordinates file to prevent cheating (except singleplayer).
+- Multiplayer compatibility for all mod features.
 
+## Radiation Effects and Gameplay
+- Daily chance for radiation cure; failure leads to player death.
+- Introduction of burn damage when medium radiated.
+- Iodine effectiveness nerfed to 25 RADS.
+- Hazmat Suit nerfed for reduced mobility due to weight and slowness.
 
+## Radiation Mechanics
 When player gets radiated the player will get sick. The more radiated the player is the more player get sick.<br>
 There are three stages of radiated:
 - lightly radiated (300 RAD)
