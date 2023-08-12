@@ -47,15 +47,15 @@ if player is medium radiated longer than a day the player get 50% sickness. <br>
 If player reach heavily radiated the player will die in a day with 100% sickness. <br>
 
 - Die Chance: 3%
-- Cure Chance: 22%
-- Burn Chance: 35%
-- Radiation is Not Cured (No event occurs): 40%
+- Cure Chance: 27%
+- Burn Chance: 20%
+- Radiation is Not Cured (No event occurs): 50%
 
 OR if rad is above 1000
 - Die Chance: 10%
 - Cure Chance: 10%
-- Burn Chance: 60%
-- Radiation is Not Cured (No event occurs): 20%
+- Burn Chance: 30%
+- Radiation is Not Cured (No event occurs): 50%
 
 When lightly radiated or medium the player has everyday a chance to cure from radiation. <br>
 But also has the chance to die.
