@@ -2,6 +2,8 @@
 This mod was a fun project I had in 2022. Finally I decided to finish it.
 The mod is multiplayer compatible.
 
+There are around 20 radiated zones scattered in the map. When you are wearing a geiger teller you will know when you are in a radiated area. The geiger teller makes sound and has a visual text that says there is some radiation detected. You need Iodine and a Hazmat suit to protect yourself. Iodine protect you for 50%, the Hazmat suit protects you 100%. The Iodine can be used to remove some radiation but this can only be done every 24 hours. Iodine can always be used to protect you from radiation. Iodine has a 5 hour long duration.
+
 [h2] Installation: [/h2]
 The mod doesn't require any extra installation steps.
 If you would like to add more or change radiated zones. You can edit the coordinates.txt file which is located in the mod folder.
