@@ -13,10 +13,12 @@ function OnEat_Iodine(food, player, percentage)
     local currentWorldHour = GameTime:getInstance():getWorldAgeHours()
     local isProtectedByPillsHours = currentWorldHour - AtosClient:getIsProtectedByPillsSince()
 
-    if isProtectedByPillsHours >= 24 then
+    AtosClient:setIsProtectedByPillsSince(GameTime:getInstance():getWorldAgeHours())
+
+    if isProtectedByPillsHours >= 12  then
+
         -- I change the protectedbyPillsSince so the player doesn't get punished if player takes it too early.
-        -- Pills cannot be spammed and player needs to wait 24 hours before player can take new pills
-        AtosClient:setIsProtectedByPillsSince(GameTime:getInstance():getWorldAgeHours())
+        -- Pills cannot be spammed and player needs to wait 14 hours before player can take a new pill
         if rad <= radHeal then
             AtosClient:setRadiation(1)
         else
