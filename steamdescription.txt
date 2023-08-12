@@ -12,8 +12,10 @@ You can use the following website to generate a compatible coordinate that the m
 [url=https://atophite.github.io/RadiatedZonesCoordinatesGen/] Coordinate generator [/url]
 Just remember you need to have 4 different coordinates of X and Y.
 
-[h2]Recommend mods:[/h2]
+[h2]Required mods[/h2]
+The mod requires MoodleFramework to have custom moodles.
 
+[h2]Recommend optional mods:[/h2]
 [h3]SpeedFramework[/h3]
 Is an optional mod. When player is wearing hazmat suit. The player moves 30% slower.
 [url=https://steamcommunity.com/workshop/filedetails/?id=2941768575][/url]
@@ -95,6 +97,8 @@ The 4 batteries needs to have at least 1% of battery charge.
 Q: I'm running so slow with the hazmat suit
 A: You can disable SpeedFramework mod, to make your character faster with hazmat suit on.
 
+Q: I'm wearing a hazmat suit but I'm not protected and I don't see the hazmat moodle.
+A: Possibly there is a hole in your suit or the condition of the suit is 0. I might make a feature to make hazmat suits fixable.
 
 [h1]My other mods:[/h1]
 If you want even longer smoke time:
@@ -108,7 +112,7 @@ This mod can only be added to and extended with the express permission from the 
 If no permission is received you may not alter the mod.
  [/quote]
 
-You wanna support? A nice word is always welcome. Constructive feedback too. Else you can
+Wanna support? Kind words and helpful feedback appreciated. Feel free to buy me a hot coffee otherwise!.
 [url=https://ko-fi.com/atophite] [img]https://i.imgur.com/q3tKS4P.png[/img][/url]
 
 Workshop ID: 3019024205
