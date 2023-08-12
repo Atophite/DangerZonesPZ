@@ -79,7 +79,7 @@ function AtosClient:isPlayerProtected(player)
    for count = 1, items:size() - 1 do
       if items:getItemByIndex(count):getClothingItemName() == "HazmatSuit" then
 
-         if getActivatedMods():contains("SpeedFrameWork") then
+         if getActivatedMods():contains("SpeedFramework") then
             SpeedFramework.SetPlayerSpeed(player, 0.7)
          end
 
@@ -89,7 +89,7 @@ function AtosClient:isPlayerProtected(player)
          end
          return false
       else
-         if getActivatedMods():contains("SpeedFrameWork") then
+         if getActivatedMods():contains("SpeedFramework") then
             SpeedFramework.SetPlayerSpeed(player, nil)
          end
       end

@@ -1,0 +1,6 @@
+version=1
+id=3019024205
+title=Radiated Zones
+description=Gear up in hazmat suits and safeguard yourself with a trusty Geiger counter in this intense Project Zomboid mod
+tags=Build 41;Balance;Hardmode;Multiplayer;Realistic
+visibility=public
