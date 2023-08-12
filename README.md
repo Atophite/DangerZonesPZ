@@ -13,7 +13,7 @@
 - Geigerteller checks radiation levels and becomes unusable when out of battery.
 - Manual inspection of Geigerteller as a backup to sound effects.
 
-## Map Mechanics
+## Server Mechanics
 - Implementation of radiated zones across the map.
 - Custom text file with coordinates defines radiated areas.
 - Server-sided control for coordinates file to prevent cheating (except singleplayer).
@@ -53,4 +53,9 @@ The chance of being sick from radiated is X% this will not cure until player hit
 
 When player reached cured state the radiation will fall off everyday. <br>
 
+# My other mods:
+- [Longer smoke mod](https://steamcommunity.com/sharedfiles/filedetails/?id=2855493549)
+- [Better smoke sound mod](https://steamcommunity.com/sharedfiles/filedetails/?id=2858157800)
 
+You wanna support? A nice word is always welcome. Constructive feedback too. Else you can
+[![Donation image](https://i.imgur.com/GGnjlGL.png)](https://ko-fi.com/atophite)
