@@ -17,8 +17,8 @@ function OnEat_Iodine(food, player, percentage)
 
     if isProtectedByPillsHours >= 12  then
 
-        -- I change the protectedbyPillsSince so the player doesn't get punished if player takes it too early.
-        -- Pills cannot be spammed and player needs to wait 14 hours before player can take a new pill
+
+        -- Pills cannot be spammed and player needs to wait 12 hours before player can take a new pill
         if rad <= radHeal then
             AtosClient:setRadiation(1)
         else

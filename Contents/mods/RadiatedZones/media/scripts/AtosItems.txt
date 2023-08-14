@@ -45,6 +45,53 @@ module RadiatedZones {
         CustomContextMenu = item_Iodine,
         HungerChange = +10,
     }
+
+    item GasMaskFilter
+    {
+        DisplayCategory = Tool,
+        Weight  =   0.3,
+        Type    =   Drainable,
+        UseWhileEquipped	=	FALSE,
+        ActivatedItem	=	FALSE,
+        KeepOnDeplete = TRUE,
+        DisplayName =   Gas Mask Filter,
+        Icon            = Airfilter,
+        Tooltip = Tooltip_item_airfilter,
+        StaticModel     = Airfilter,
+        WorldStaticModel = Airfilter,
+    }
+
+    item ImprovisedGasMaskFilter
+        {
+            DisplayCategory = Tool,
+            Weight  =   0.3,
+            Type    =   Drainable,
+            UseWhileEquipped	=	FALSE,
+            ActivatedItem	=	FALSE,
+            KeepOnDeplete = TRUE,
+            DisplayName =   Improvised Gas Mask Filter,
+            Icon            = Airfilter,
+            Tooltip = Tooltip_item_airfilter,
+            StaticModel     = Airfilter,
+            WorldStaticModel = Airfilter,
+        }
+
+    item Hat_EmptyGasMask
+    {
+        DisplayCategory = Accessory,
+        Type = Clothing,
+        DisplayName = Empty Gas Mask,
+        ClothingItem = Hat_GasMask,
+        BodyLocation = MaskEyes,
+        Icon = GasMask,
+        CanHaveHoles = false,
+        BloodLocation = Head,
+        Insulation = 0.75,
+        WindResistance = 0.60,
+        WaterResistance = 1.0,
+        Tags = GasMask,
+        Weight = 0.2,
+    }
 }
 
 module Base {
@@ -66,4 +113,21 @@ module Base {
         Tags = GasMask;HazmatSuit,
         Tooltip = Tooltip_item_hazmat
     }
+
+    item Hat_GasMask
+    	{
+    	    DisplayCategory = Accessory,
+    		Type = Clothing,
+    		DisplayName = Gas Mask,
+    		ClothingItem = Hat_GasMask,
+    		BodyLocation = MaskEyes,
+    		Icon = GasMask,
+    		CanHaveHoles = false,
+            BloodLocation = Head,
+            Insulation = 0.75,
+            WindResistance = 0.60,
+            WaterResistance = 1.0,
+    		Tags = GasMask,
+    		Weight = 0.5,
+    	}
 }

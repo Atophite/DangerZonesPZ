@@ -8,6 +8,7 @@ local AtosClient = AtosRadiatedZones.Client
 require "MF_ISMoodle"
 MF.createMoodle("Iodine")
 MF.createMoodle("Hazmat")
+MF.createMoodle("GasMask")
 
 
 function AtosClient:getIodineMoodle()
@@ -16,7 +17,6 @@ end
 
 function AtosClient:getHazmatMoodle()
     return MF.getMoodle("Hazmat")
-
 end
 
 function AtosClient:setIodineMoodle(value)
@@ -25,5 +25,12 @@ end
 
 function AtosClient:setHazmatMoodle(value)
     MF.getMoodle("Hazmat"):setValue(value)
+end
 
+function AtosClient:getGasMaskMoodle()
+    return MF.getMoodle("GasMask")
+end
+
+function AtosClient:setGasMaskMoodle(value)
+    MF.getMoodle("GasMask"):setValue(value)
 end

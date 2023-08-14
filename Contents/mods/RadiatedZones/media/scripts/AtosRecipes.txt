@@ -22,4 +22,58 @@ module RadiatedZones {
         OnTest:RadiatedZones.OnTest.GeigerTellerBatteriesRemove,
         OnCreate:RadiatedZones.OnCreate.GeigerTellerBatteriesRemove,
     }
+
+    recipe Remove Gas Mask Filter
+    {
+        Hat_GasMask,
+
+        Result:GasMaskFilter,
+        Time:150.0,
+        Category:Survivalist,
+        OnTest:RadiatedZones.OnTest.GasMaskAirFilterRemove,
+        OnCreate:RadiatedZones.OnCreate.GasMaskAirFilterRemove,
+    }
+
+    recipe Insert Gas Mask Filter
+    {
+        destroy Hat_EmptyGasMask,
+        destroy GasMaskFilter,
+
+        Result:Hat_GasMask,
+        Time:150.0,
+        Category:Survivalist,
+        OnTest:RadiatedZones.OnTest.GasMaskAirFilterInsert,
+        OnCreate:RadiatedZones.OnCreate.GasMaskAirFilterInsert,
+    }
+
+    recipe Repair Hazmat Suit
+        {
+            keep Scissors,
+            destroy HazmatSuit,
+            DuctTape=2,
+
+
+
+            Result:HazmatSuit,
+            Time:150.0,
+            Category:Survivalist,
+            OnTest:RadiatedZones.OnTest.RepairHazmatSuit,
+            OnCreate:RadiatedZones.OnCreate.RepairHazmatSuit,
+        }
+
+    recipe Craft Improvised Gas Mask Filter
+        {
+            keep Scissors,
+            WaterBottleEmpty,
+            RippedSheets=2,
+    	    LeatherStrips/DenimStrips=1,
+            CottonBalls=4,
+            DuctTape=2,
+            Charcoal=1,
+            Result:GasMaskFilter,
+            NeedToBeLearn:true,
+            Time:250.0,
+            Category:Survivalist,
+        }
+
 }

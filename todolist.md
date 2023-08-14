@@ -27,5 +27,7 @@
 - [x] Implement translation texts
 - [x] Use FakeInfectionLevel instead of FoodSicknessLevel
 - [x] Make mod logo
-- [ ] Make mod showcase images
-- [ ] Make mod showcase video
+- [x] Make mod showcase images
+- [x] Make mod showcase video
+- [x] Implement functional gas mask
+- [ ] 

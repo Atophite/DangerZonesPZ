@@ -65,6 +65,7 @@ function test(player)
    local items = player:getWornItems()
 
    for count = 1, items:size() - 1 do
+      print(items:getItemByIndex(count):getClothingItemName())
       if items:getItemByIndex(count):getClothingItemName() == "HazmatSuit" then
          print(tostring(items:getItemByIndex(count):isVanilla()))
          print(items:getItemByIndex(count):getModData())
@@ -73,11 +74,13 @@ function test(player)
 
 end
 
-function AtosClient:isPlayerProtected(player)
+function AtosClient:playerIsProtectedByClothingType(player)
    local items = player:getWornItems()
 
    for count = 1, items:size() - 1 do
-      if items:getItemByIndex(count):getClothingItemName() == "HazmatSuit" then
+      local clothingItemName = items:getItemByIndex(count):getType()
+      --print(items:getItemByIndex(count):getClothingItemName())
+      if clothingItemName == "HazmatSuit" then
 
          if getActivatedMods():contains("SpeedFramework") then
             SpeedFramework.SetPlayerSpeed(player, 0.7)
@@ -85,16 +88,21 @@ function AtosClient:isPlayerProtected(player)
 
          if items:getItemByIndex(count):getHolesNumber() < 1
          and items:getItemByIndex(count):getCurrentCondition() > 0 then
-            return true
+            return "Hazmat"
          end
-         return false
-      else
-         if getActivatedMods():contains("SpeedFramework") then
-            SpeedFramework.SetPlayerSpeed(player, nil)
-         end
+
+      elseif clothingItemName == "Hat_GasMask" then
+         return "GasMask"
+
+
       end
 
    end
+
+   if getActivatedMods():contains("SpeedFramework") then
+      SpeedFramework.SetPlayerSpeed(player, nil)
+   end
+   return "Nothing"
 
 end
 

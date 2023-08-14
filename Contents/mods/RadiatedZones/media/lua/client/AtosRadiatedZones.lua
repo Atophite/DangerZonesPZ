@@ -190,12 +190,18 @@ function AtosClient:setGeigerAndProtectMoodle()
 		hasGeiger = false
 	end
 
-	if AtosClient:isPlayerProtected(player)  then
+	if AtosClient:playerIsProtectedByClothingType(player) == "Hazmat"  then
 		isProtected = true
 		AtosClient:setHazmatMoodle(1.0)
+		AtosClient:setGasMaskMoodle(0.5)
+	elseif AtosClient:playerIsProtectedByClothingType(player) == "GasMask" then
+		isProtected = true
+		AtosClient:setGasMaskMoodle(1.0)
+		AtosClient:setHazmatMoodle(0.5)
 	else
 		isProtected = false
 		AtosClient:setHazmatMoodle(0.5)
+		AtosClient:setGasMaskMoodle(0.5)
 	end
 end
 
@@ -236,7 +242,7 @@ function AtosClient:validateZone()
 		end
 
 
-		if isProtected  then
+		if AtosClient:playerIsProtectedByClothingType() == "Hazmat" or AtosClient:playerIsProtectedByType() == "GasMask"  then
 			print("player is wearing protection")
 
 		end
@@ -269,20 +275,23 @@ function AtosClient:calculateRadiation()
 
 	local radSickness = AtosClient:getRadiation()
 	local sickness = math.floor(player:getBodyDamage():getFakeInfectionLevel())
+	local playerWearClothingType = AtosClient:playerIsProtectedByClothingType(player)
 
 	local function setSickness(sicknessLevel)
 		player:getBodyDamage():setFakeInfectionLevel(sicknessLevel)
 	end
 
-	if isProtected == false and isInZone then
+	if playerWearClothingType == "Nothing" and isInZone then
 		print("player is NOT wearing protection")
 		if AtosClient:getIsProtectedByPills() then
-			radSickness = AtosClient:getRadiation() + 3 * 1.02
+			radSickness = AtosClient:getRadiation() + 3 * 1.10
 		else
-			radSickness = AtosClient:getRadiation() + 6 * 1.02
+			radSickness = AtosClient:getRadiation() + 6 * 1.10
 		end
-
+	elseif playerWearClothingType == "GasMask" and isInZone then
+		radSickness = AtosClient:getRadiation() + 2 * 1.02
 	end
+
 
 	if AtosClient:getRadiationCured() == true and isInZone then
 		AtosClient:setRadiationCured(false)

@@ -7,6 +7,8 @@ RadiatedZones = {}
 RadiatedZones.OnCreate = {}
 RadiatedZones.OnTest = {}
 
+local AtosClient = AtosRadiatedZones.Client
+
 --TODO
 
 -- Return true if recipe is valid, false otherwise
@@ -57,3 +59,70 @@ function RadiatedZones.OnCreate.GeigerTellerBatteriesRemove(items, result, playe
         end
     end
 end
+
+function RadiatedZones.OnTest.GasMaskAirFilterInsert(sourceItem, result)
+    return true
+end
+
+function RadiatedZones.OnCreate.GasMaskAirFilterInsert(items, result, player)
+
+    for i=0, items:size()-1 do
+        local item = items:get(i)
+        if items:get(i):getType() == "GasMaskFilter" then
+            AtosClient:setUsedDelta(result, item:getUsedDelta() * 100)
+        end
+    end
+
+    --if sourceItem:getType() == "Airfilter" then
+    --    setUsedDeltaFromModData(result, 100)
+    --end
+end
+
+function RadiatedZones.OnTest.GasMaskAirFilterRemove(sourceItem, result)
+    --return getUsedDeltaFromModData(sourceItem) > 0 or sourceItem:getType() ~= "Hat_EmptyGasMask"
+    return true
+
+end
+
+function RadiatedZones.OnCreate.GasMaskAirFilterRemove(items, result, player)
+    for i=0, items:size()-1 do
+        local item = items:get(i)
+        if item:getClothingItemName() == "Hat_GasMask" then
+
+            -- Fill the air filter with useddelta from gasmask
+            --result:setUsedDelta(getUsedDeltaFromModData(item))
+
+            -- then we give an empty gas mask
+            --setUsedDeltaFromModData(result, 0)
+            player:getInventory():AddItem("RadiatedZones.Hat_EmptyGasMask")
+            result:setUsedDelta(AtosClient:getUsedDelta(item)/100)
+        end
+    end
+end
+
+function RadiatedZones.OnTest.RepairHazmatSuit(sourceItem, result)
+    return sourceItem:getHolesNumber() > 0
+end
+
+function RadiatedZones.OnCreate.RepairHazmatSuit(items, result, player)
+
+
+    for i=0, items:size()-1 do
+        local item = items:get(i)
+        if item:getClothingItemName() == "HazmatSuit" then
+            local holesNumber = sourceItem:getHolesNumber()
+            local itemCondition = sourceItem:getCondition()
+            -- Fill the air filter with useddelta from gasmask
+            --result:setUsedDelta(getUsedDeltaFromModData(item))
+
+            -- then we give an empty gas mask
+            --setUsedDeltaFromModData(result, 0)
+            player:getInventory():AddItem("RadiatedZones.Hat_EmptyGasMask")
+            result:setUsedDelta(AtosClient:getUsedDelta(item)/100)
+        end
+    end
+end
+
+
+
+

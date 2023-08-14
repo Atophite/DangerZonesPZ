@@ -57,5 +57,20 @@ function AtosClient:setRadiationCured(value)
     modData.radiationCured = value
 end
 
+function AtosClient:getUsedDelta(item)
+    randomUsedDelta = ZombRand(100)
+    if item:getModData().usedDelta == nil then
+        item:getModData().usedDelta = randomUsedDelta
+        return item:getModData().usedDelta
+    end
+
+    return item:getModData().usedDelta
+
+end
+
+function AtosClient:setUsedDelta(item, usedDelta)
+    item:getModData().usedDelta = usedDelta
+end
+
 
 
