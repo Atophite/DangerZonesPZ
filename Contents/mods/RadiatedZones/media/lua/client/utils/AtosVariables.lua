@@ -6,16 +6,29 @@
 
 local AtosClient = AtosRadiatedZones.Client
 
-local lightMask = "LightMask"
-local gasMask = "GasMask"
-local hazmat = "HazmatSuit"
+-- Contants for clothing types
+local LIGHTMASK = "LightMask"
+local GASMASK = "GasMask"
+local HAZMAT = "HazmatSuit"
 
 AtosClient.protectionTypeMap = {
-    ["Hat_DustMask"] = lightMask,
-    ["Hat_SurgicalMask_Green"] = lightMask,
-    ["Hat_SurgicalMask_Blue"] = lightMask,
-    ["Hat_BandanaMaskTINT"] = lightMask,
-    ["Hat_BandanaMask"] = lightMask,
-    ["Hat_GasMask"] = gasMask,
-    ["HazmatSuit"] = hazmat,
+    ["Hat_DustMask"] = LIGHTMASK,
+    ["Hat_SurgicalMask_Green"] = LIGHTMASK,
+    ["Hat_SurgicalMask_Blue"] = LIGHTMASK,
+    ["Hat_BandanaMaskTINT"] = LIGHTMASK,
+    ["Hat_BandanaMask"] = LIGHTMASK,
+    ["Hat_GasMask"] = GASMASK,
+    ["HazmatSuit"] = HAZMAT,
+}
+
+-- Constants for radiation multipliers
+local BASE_MULTIPLIER = 1.10
+local PILL_PROTECTION_MULTIPLIER = 1.05
+
+-- Define radiation values for each clothing type
+AtosClient.clothingRadiation = {
+    ["Nothing"] = { noPills = 6, withPills = 4.5},
+    ["GasMask"] = { noPills = 1.5, withPills = 1.0 },
+    ["LightMask"] = { noPills = 4.5, withPills = 3.5 },
+    ["HazmatSuit"] = { noPills = 0, withPills = 0 }
 }

@@ -312,32 +312,22 @@ function AtosClient:calculateRadiation()
 
 	if isInZone then
 
-		if playerWearClothingType == "Nothing" then
-			print("player is NOT wearing protection")
+		-- Calculate player radiation based on clothing type
+		local radiationValues = AtosClient.clothingRadiation[playerWearClothingType]
+		if radiationValues then
 			if playerIsProtectedByPills then
-				playerRadiation = playerRadiation + 3 * 1.10
-			else
-				playerRadiation = playerRadiation + 6 * 1.10
-			end
-		elseif playerWearClothingType == "GasMask" then
+				print(radiationValues.withPills)
+				playerRadiation = playerRadiation + radiationValues.withPills
+				print(playerRadiation)
 
-			if playerIsProtectedByPills then
-				playerRadiation = playerRadiation + 1.5 * 1.05
 			else
-				playerRadiation = playerRadiation + 2 * 1.05
-			end
+				print(radiationValues.noPills)
+				playerRadiation = playerRadiation + radiationValues.noPills
+				print(playerRadiation)
 
-		elseif playerWearClothingType == "LightMask" then
 
-			if playerIsProtectedByPills then
-				playerRadiation = playerRadiation + 2.5 * 1.05
-			else
-				playerRadiation = playerRadiation + 4.5 * 1.05
 
 			end
-
-		elseif playerWearClothingType == "HazmatSuit" then
-			--Nothing
 		end
 
 		if AtosClient:getRadiationCured() == true then

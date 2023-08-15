@@ -53,7 +53,7 @@ module RadiatedZones {
             DuctTape=2,
 
             Result:HazmatSuit,
-            Time:400.0,
+            Time:450.0,
             Category:Survivalist,
             OnTest:RadiatedZones.OnTest.RepairHazmatSuit,
             OnCreate:RadiatedZones.OnCreate.RepairHazmatSuit,

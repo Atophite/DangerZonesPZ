@@ -1,7 +1,4 @@
-{Lowest point of X, Highest point of X}, {Lowest point of Z, highest point of Z}
-{10623, 10633}, {9707, 9715}
-{10599, 10610}, {9688, 9694}
-{10616, 10630}, {9642, 9661}
+{Lowest point of X, Highest point of X}, {Lowest point of Y, highest point of Y}
 {13215, 13674}, {4881, 5142}
 {12424, 12954}, {4110, 4579}
 {13410, 14172}, {3916, 4318}

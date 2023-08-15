@@ -19,7 +19,7 @@ local function doMenu(player, context, items)
                     context:addOption(getText("ContextMenu_check_geiger"), item, lookAtGeiger, player);
                 end
             elseif item:getType() == "Hat_GasMask" then
-                context:addOption(getText("Check Gas Mask Filter"), item, checkGasMaskFilter, player);
+                context:addOption(getText("ContextMenu_check_gasmask_filter"), item, checkGasMaskFilter, player);
             end
         end
     end
@@ -46,13 +46,13 @@ function checkGasMaskFilter(item, player)
     local usedDelta = AtosClient:getUsedDelta(item)
 
     if usedDelta <= 0 then
-        playerObj:Say("The quality of the filter is EMPTY")
+        playerObj:Say(getText("ContextMenu_filter_quality_empty"))
     elseif usedDelta < 25 then
-        playerObj:Say("The quality of the filter is BAD")
+        playerObj:Say(getText("ContextMenu_filter_quality_bad"))
     elseif usedDelta < 65 then
-        playerObj:Say("The quality of the filter is MEDIUM")
+        playerObj:Say(getText("ContextMenu_filter_quality_medium"))
     elseif usedDelta >= 65 then
-        playerObj:Say("The quality of the filter is GOOD")
+        playerObj:Say(getText("ContextMenu_filter_quality_good"))
 
     end
 
