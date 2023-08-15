@@ -11,12 +11,44 @@ require "Items/ProceduralDistributions"
 require 'Items/Distributions'
 require 'Items/ItemPicker'
 
+--LivingRoomShelf
+table.insert(ProceduralDistributions.list["LivingRoomShelf"].items, "RadiatedZones.EmptyGeigerTeller");
+table.insert(ProceduralDistributions.list["LivingRoomShelf"].items, 0.5);
+table.insert(ProceduralDistributions.list["LivingRoomShelf"].items, "RadiatedZones.NukeSurvivalGuide");
+table.insert(ProceduralDistributions.list["LivingRoomShelf"].items, 1);
+
+--BookstoreBooks
+table.insert(ProceduralDistributions.list["BookstoreBooks"].items, "RadiatedZones.NukeSurvivalGuide");
+table.insert(ProceduralDistributions.list["BookstoreBooks"].items, 1);
+
+--BookstoreMics
+table.insert(ProceduralDistributions.list["BookstoreMisc"].items, "RadiatedZones.NukeSurvivalGuide");
+table.insert(ProceduralDistributions.list["BookstoreMisc"].items, 1);
+
+--LibraryBooks
+table.insert(ProceduralDistributions.list["LibraryBooks"].items, "RadiatedZones.NukeSurvivalGuide");
+table.insert(ProceduralDistributions.list["LibraryBooks"].items, 1);
+
+--CampingStoreBooks
+table.insert(ProceduralDistributions.list["CampingStoreBooks"].items, "TheNuclearSurvivorsMag");
+table.insert(ProceduralDistributions.list["CampingStoreBooks"].items, 1);
+
+--CrateBooks
+table.insert(ProceduralDistributions.list["CrateBooks"].items, "TheNuclearSurvivorsMag");
+table.insert(ProceduralDistributions.list["CrateBooks"].items, 1);
+
+--MagazineRackMixed
+table.insert(ProceduralDistributions.list["MagazineRackMixed"].items, "TheNuclearSurvivorsMag");
+table.insert(ProceduralDistributions.list["MagazineRackMixed"].items, 0.25);
+
 --ArmySurplusTools
 table.insert(ProceduralDistributions.list["ArmySurplusTools"].items, "Base.HazmatSuit");
 table.insert(ProceduralDistributions.list["ArmySurplusTools"].items, 1);
 
 table.insert(ProceduralDistributions.list["ArmySurplusTools"].items, "RadiatedZones.GeigerTeller");
 table.insert(ProceduralDistributions.list["ArmySurplusTools"].items, 5);
+table.insert(ProceduralDistributions.list["ArmySurplusTools"].items, "RadiatedZones.GasMaskFilter");
+table.insert(ProceduralDistributions.list["ArmySurplusTools"].items, 1);
 
 
 --ArmyStorageMedical
@@ -24,9 +56,13 @@ table.insert(ProceduralDistributions.list["ArmyStorageMedical"].items, "Radiated
 table.insert(ProceduralDistributions.list["ArmyStorageMedical"].items, 10);
 table.insert(ProceduralDistributions.list["ArmyStorageMedical"].items, "RadiatedZones.Iodine");
 table.insert(ProceduralDistributions.list["ArmyStorageMedical"].items, 10);
+table.insert(ProceduralDistributions.list["ArmyStorageMedical"].items, "RadiatedZones.GasMaskFilter");
+table.insert(ProceduralDistributions.list["ArmyStorageMedical"].items, 10);
 
 --ArmyStorageOutfit
 table.insert(ProceduralDistributions.list["ArmyStorageOutfit"].items, "Base.HazmatSuit");
+table.insert(ProceduralDistributions.list["ArmyStorageOutfit"].items, 5);
+table.insert(ProceduralDistributions.list["ArmyStorageOutfit"].items, "Hat_GasMask");
 table.insert(ProceduralDistributions.list["ArmyStorageOutfit"].items, 5);
 
 --ArmySurplusOutfit
@@ -34,10 +70,14 @@ table.insert(ProceduralDistributions.list["ArmySurplusOutfit"].items, "RadiatedZ
 table.insert(ProceduralDistributions.list["ArmySurplusOutfit"].items, 1);
 table.insert(ProceduralDistributions.list["ArmySurplusOutfit"].items, "Base.HazmatSuit");
 table.insert(ProceduralDistributions.list["ArmySurplusOutfit"].items, 5);
+table.insert(ProceduralDistributions.list["ArmySurplusOutfit"].items, "Hat_GasMask");
+table.insert(ProceduralDistributions.list["ArmySurplusOutfit"].items, 10);
 
 --ArmyHangarOutfit
 table.insert(ProceduralDistributions.list["ArmyHangarOutfit"].items, "Base.HazmatSuit");
 table.insert(ProceduralDistributions.list["ArmyHangarOutfit"].items, 2);
+table.insert(ProceduralDistributions.list["ArmyHangarOutfit"].items, "Hat_GasMask");
+table.insert(ProceduralDistributions.list["ArmyHangarOutfit"].items, 10);
 
 
 --ArmyStorageElectronics
@@ -50,6 +90,8 @@ table.insert(ProceduralDistributions.list["ArmySurplusMisc"].items, 1);
 
 --DrugLabOutfit
 table.insert(ProceduralDistributions.list["DrugLabOutfit"].items, "Base.HazmatSuit");
+table.insert(ProceduralDistributions.list["DrugLabOutfit"].items, 15);
+table.insert(ProceduralDistributions.list["DrugLabOutfit"].items, "Hat_GasMask");
 table.insert(ProceduralDistributions.list["DrugLabOutfit"].items, 25);
 
 --DrugLabSupplies
@@ -72,12 +114,18 @@ table.insert(ProceduralDistributions.list["ElectronicStoreMisc"].items, 2);
 --FireStorageOutfit
 table.insert(ProceduralDistributions.list["FireStorageOutfit"].items, "Base.HazmatSuit");
 table.insert(ProceduralDistributions.list["FireStorageOutfit"].items, 2);
+table.insert(ProceduralDistributions.list["FireStorageOutfit"].items, "Hat_GasMask");
+table.insert(ProceduralDistributions.list["FireStorageOutfit"].items, 10);
 
 --FireDeptLockers
 table.insert(ProceduralDistributions.list["FireDeptLockers"].items, "RadiatedZones.GeigerTeller");
 table.insert(ProceduralDistributions.list["FireDeptLockers"].items, 1);
 table.insert(ProceduralDistributions.list["FireDeptLockers"].items, "RadiatedZones.Iodine");
 table.insert(ProceduralDistributions.list["FireDeptLockers"].items, 1);
+table.insert(ProceduralDistributions.list["FireDeptLockers"].items, "RadiatedZones.Hat_EmptyGasMask");
+table.insert(ProceduralDistributions.list["FireDeptLockers"].items, 1);
+table.insert(ProceduralDistributions.list["FireDeptLockers"].items, "RadiatedZones.GasMaskFilter");
+table.insert(ProceduralDistributions.list["FireDeptLockers"].items, 5);
 
 --LockerArmyBedroom
 table.insert(ProceduralDistributions.list["LockerArmyBedroom"].items, "RadiatedZones.GeigerTeller");
@@ -86,18 +134,26 @@ table.insert(ProceduralDistributions.list["LockerArmyBedroom"].items, "RadiatedZ
 table.insert(ProceduralDistributions.list["LockerArmyBedroom"].items, 5);
 table.insert(ProceduralDistributions.list["LockerArmyBedroom"].items, "Base.HazmatSuit");
 table.insert(ProceduralDistributions.list["LockerArmyBedroom"].items, 5);
+table.insert(ProceduralDistributions.list["LockerArmyBedroom"].items, "Hat_GasMask");
+table.insert(ProceduralDistributions.list["LockerArmyBedroom"].items, 5);
 
 --MedicalClinicOutfit
 table.insert(ProceduralDistributions.list["MedicalClinicOutfit"].items, "Base.HazmatSuit");
 table.insert(ProceduralDistributions.list["MedicalClinicOutfit"].items, 3);
+table.insert(ProceduralDistributions.list["MedicalClinicOutfit"].items, "RadiatedZones.Hat_EmptyGasMask");
+table.insert(ProceduralDistributions.list["MedicalClinicOutfit"].items, 5);
 
 --MedicalStorageDrugs
 table.insert(ProceduralDistributions.list["MedicalStorageDrugs"].items, "RadiatedZones.Iodine");
 table.insert(ProceduralDistributions.list["MedicalStorageDrugs"].items, 5);
+table.insert(ProceduralDistributions.list["MedicalStorageDrugs"].items, "RadiatedZones.GasMaskFilter");
+table.insert(ProceduralDistributions.list["MedicalStorageDrugs"].items, 2);
 
 --MedicalStorageOutfit
 table.insert(ProceduralDistributions.list["MedicalStorageOutfit"].items, "Base.HazmatSuit");
 table.insert(ProceduralDistributions.list["MedicalStorageOutfit"].items, 5);
+table.insert(ProceduralDistributions.list["MedicalStorageOutfit"].items, "Hat_GasMask");
+table.insert(ProceduralDistributions.list["MedicalStorageOutfit"].items, 10);
 
 --MedicalClinicDrugs
 table.insert(ProceduralDistributions.list["MedicalClinicDrugs"].items, "Base.HazmatSuit");
@@ -109,11 +165,19 @@ table.insert(ProceduralDistributions.list["MedicalClinicDrugs"].items, 5);
 table.insert(ProceduralDistributions.list["MedicalStorageTools"].items, "RadiatedZones.GeigerTeller");
 table.insert(ProceduralDistributions.list["MedicalStorageTools"].items, 10);
 table.insert(ProceduralDistributions.list["MedicalStorageTools"].items, "RadiatedZones.Iodine");
-table.insert(ProceduralDistributions.list["MedicalStorageTools"].items, 2);
+table.insert(ProceduralDistributions.list["MedicalStorageTools"].items, 10);
+table.insert(ProceduralDistributions.list["MedicalStorageTools"].items, "RadiatedZones.GasMaskFilter");
+table.insert(ProceduralDistributions.list["MedicalStorageTools"].items, 10);
+table.insert(ProceduralDistributions.list["MedicalStorageTools"].items, "RadiatedZones.Hat_EmptyGasMask");
+table.insert(ProceduralDistributions.list["MedicalStorageTools"].items, 5);
+table.insert(ProceduralDistributions.list["MedicalStorageTools"].items, "Hat_GasMask");
+table.insert(ProceduralDistributions.list["MedicalStorageTools"].items, 5);
 
 --MorgueOutfit
 table.insert(ProceduralDistributions.list["MorgueOutfit"].items, "Base.HazmatSuit");
-table.insert(ProceduralDistributions.list["MorgueOutfit"].items, 2);
+table.insert(ProceduralDistributions.list["MorgueOutfit"].items, 10);
+table.insert(ProceduralDistributions.list["MorgueOutfit"].items, "Hat_GasMask");
+table.insert(ProceduralDistributions.list["MorgueOutfit"].items, 10);
 
 --PharmacyCosmetics
 table.insert(ProceduralDistributions.list["PharmacyCosmetics"].items, "RadiatedZones.Iodine");
@@ -122,10 +186,14 @@ table.insert(ProceduralDistributions.list["PharmacyCosmetics"].items, 1);
 --SafehouseMedical
 table.insert(ProceduralDistributions.list["SafehouseMedical"].items, "RadiatedZones.Iodine");
 table.insert(ProceduralDistributions.list["SafehouseMedical"].items, 3);
+table.insert(ProceduralDistributions.list["SafehouseMedical"].items, "RadiatedZones.GasMaskFilter");
+table.insert(ProceduralDistributions.list["SafehouseMedical"].items, 5);
 
 --SafehouseArmor
 table.insert(ProceduralDistributions.list["SafehouseArmor"].items, "Base.HazmatSuit");
 table.insert(ProceduralDistributions.list["SafehouseArmor"].items, 5);
+table.insert(ProceduralDistributions.list["SafehouseArmor"].items, "Hat_GasMask");
+table.insert(ProceduralDistributions.list["SafehouseArmor"].items, 10);
 
 
 --SecurityLockers
@@ -138,35 +206,54 @@ table.insert(ProceduralDistributions.list["PoliceEvidence"].items, 0.5);
 
 --PoliceLockers
 table.insert(ProceduralDistributions.list["PoliceLockers"].items, "RadiatedZones.Iodine");
-table.insert(ProceduralDistributions.list["PoliceLockers"].items, 1);
+table.insert(ProceduralDistributions.list["PoliceLockers"].items, 5);
 table.insert(ProceduralDistributions.list["PoliceLockers"].items, "RadiatedZones.GeigerTeller");
 table.insert(ProceduralDistributions.list["PoliceLockers"].items, 1);
+table.insert(ProceduralDistributions.list["PoliceLockers"].items, "Hat_GasMask");
+table.insert(ProceduralDistributions.list["PoliceLockers"].items, 5);
 
 --PoolLockers
 table.insert(ProceduralDistributions.list["PoolLockers"].items, "RadiatedZones.Iodine");
 table.insert(ProceduralDistributions.list["PoolLockers"].items, 0.25);
+table.insert(ProceduralDistributions.list["PoolLockers"].items, "RadiatedZones.NukeSurvivalGuide");
+table.insert(ProceduralDistributions.list["PoolLockers"].items, 5);
 
 --PrisonGuardLockers
 table.insert(ProceduralDistributions.list["PrisonGuardLockers"].items, "RadiatedZones.Iodine");
-table.insert(ProceduralDistributions.list["PrisonGuardLockers"].items, 1);
+table.insert(ProceduralDistributions.list["PrisonGuardLockers"].items, 2);
+table.insert(ProceduralDistributions.list["PrisonGuardLockers"].items, "RadiatedZones.NukeSurvivalGuide");
+table.insert(ProceduralDistributions.list["PrisonGuardLockers"].items, 5);
 
 --StoreShelfMedical
 table.insert(ProceduralDistributions.list["StoreShelfMedical"].items, "RadiatedZones.Iodine");
 table.insert(ProceduralDistributions.list["StoreShelfMedical"].items, 5);
 table.insert(ProceduralDistributions.list["StoreShelfMedical"].items, "RadiatedZones.EmptyGeigerTeller");
+table.insert(ProceduralDistributions.list["StoreShelfMedical"].items, 5);
+table.insert(ProceduralDistributions.list["StoreShelfMedical"].items, "Hat_GasMask");
 table.insert(ProceduralDistributions.list["StoreShelfMedical"].items, 1);
+table.insert(ProceduralDistributions.list["StoreShelfMedical"].items, "RadiatedZones.GasMaskFilter");
+table.insert(ProceduralDistributions.list["StoreShelfMedical"].items, 5);
+table.insert(ProceduralDistributions.list["StoreShelfMedical"].items, "RadiatedZones.Hat_EmptyGasMask");
+table.insert(ProceduralDistributions.list["StoreShelfMedical"].items, 5);
 
 --TestingLab
 table.insert(ProceduralDistributions.list["TestingLab"].items, "RadiatedZones.Iodine");
 table.insert(ProceduralDistributions.list["TestingLab"].items, 5);
 table.insert(ProceduralDistributions.list["TestingLab"].items, "RadiatedZones.GeigerTeller");
-table.insert(ProceduralDistributions.list["TestingLab"].items, 1);
+table.insert(ProceduralDistributions.list["TestingLab"].items, 5);
 table.insert(ProceduralDistributions.list["TestingLab"].items, "Base.HazmatSuit");
-table.insert(ProceduralDistributions.list["TestingLab"].items, 1);
+table.insert(ProceduralDistributions.list["TestingLab"].items, 10);
+table.insert(ProceduralDistributions.list["TestingLab"].items, "Hat_GasMask");
+table.insert(ProceduralDistributions.list["TestingLab"].items, 15);
 
 --WardrobeRedneck
-table.insert(ProceduralDistributions.list["TestingLab"].items, "Base.HazmatSuit");
-table.insert(ProceduralDistributions.list["TestingLab"].items, 0.25);
+table.insert(ProceduralDistributions.list["WardrobeRedneck"].items, "Base.HazmatSuit");
+table.insert(ProceduralDistributions.list["WardrobeRedneck"].items, 0.25);
+table.insert(ProceduralDistributions.list["WardrobeRedneck"].items, "Hat_GasMask");
+table.insert(ProceduralDistributions.list["WardrobeRedneck"].items, 1.0);
+table.insert(ProceduralDistributions.list["WardrobeRedneck"].items, "RadiatedZones.NukeSurvivalGuide");
+table.insert(ProceduralDistributions.list["WardrobeRedneck"].items, 1.0);
+
 
 --ToolStoreTools
 table.insert(ProceduralDistributions.list["ToolStoreTools"].items, "RadiatedZones.EmptyGeigerTeller");
@@ -177,6 +264,13 @@ table.insert(ProceduralDistributions.list["SurvivalGear"].items, "RadiatedZones.
 table.insert(ProceduralDistributions.list["SurvivalGear"].items, 3);
 table.insert(ProceduralDistributions.list["SurvivalGear"].items, "RadiatedZones.Iodine");
 table.insert(ProceduralDistributions.list["SurvivalGear"].items, 10);
+table.insert(ProceduralDistributions.list["SurvivalGear"].items, "RadiatedZones.GasMaskFilter");
+table.insert(ProceduralDistributions.list["SurvivalGear"].items, 10);
+table.insert(ProceduralDistributions.list["SurvivalGear"].items, "RadiatedZones.Hat_EmptyGasMask");
+table.insert(ProceduralDistributions.list["SurvivalGear"].items, 10);
+table.insert(ProceduralDistributions.list["SurvivalGear"].items, "RadiatedZones.NukeSurvivalGuide");
+table.insert(ProceduralDistributions.list["SurvivalGear"].items, 1);
+
 
 --CrateCarpentry
 table.insert(ProceduralDistributions.list["CrateCarpentry"].items, "RadiatedZones.EmptyGeigerTeller");
@@ -189,6 +283,8 @@ table.insert(ProceduralDistributions.list["BathroomCabinet"].items, 2);
 --BathroomCounter
 table.insert(ProceduralDistributions.list["BathroomCounter"].items, "RadiatedZones.Iodine");
 table.insert(ProceduralDistributions.list["BathroomCounter"].items, 1);
+table.insert(ProceduralDistributions.list["BathroomCounter"].items, "RadiatedZones.GasMaskFilter");
+table.insert(ProceduralDistributions.list["BathroomCounter"].items, 0.08);
 
 --CrateElectronics
 table.insert(ProceduralDistributions.list["CrateCarpentry"].items, "RadiatedZones.GeigerTeller");
@@ -196,21 +292,28 @@ table.insert(ProceduralDistributions.list["CrateCarpentry"].items, 3);
 
 --WardrobeMan
 table.insert(ProceduralDistributions.list["WardrobeMan"].items, "Base.HazmatSuit");
+table.insert(ProceduralDistributions.list["WardrobeMan"].items, 0.1);
+table.insert(ProceduralDistributions.list["WardrobeMan"].items, "Hat_GasMask");
 table.insert(ProceduralDistributions.list["WardrobeMan"].items, 0.25);
 
 --WardrobeWoman
 table.insert(ProceduralDistributions.list["WardrobeWoman"].items, "Base.HazmatSuit");
+table.insert(ProceduralDistributions.list["WardrobeWoman"].items, 0.1);
+table.insert(ProceduralDistributions.list["WardrobeWoman"].items, "Hat_GasMask");
 table.insert(ProceduralDistributions.list["WardrobeWoman"].items, 0.25);
-
 
 --GarageTools
 table.insert(ProceduralDistributions.list["GarageTools"].items, "RadiatedZones.EmptyGeigerTeller");
 table.insert(ProceduralDistributions.list["GarageTools"].items, 3);
+table.insert(ProceduralDistributions.list["GarageTools"].items, "RadiatedZones.GasMaskFilter");
+table.insert(ProceduralDistributions.list["GarageTools"].items, 1);
 
 
 --MedicalClinicTools
 table.insert(ProceduralDistributions.list["MedicalClinicTools"].items, "RadiatedZones.EmptyGeigerTeller");
 table.insert(ProceduralDistributions.list["MedicalClinicTools"].items, 3);
+table.insert(ProceduralDistributions.list["MedicalClinicTools"].items, "Hat_GasMask");
+table.insert(ProceduralDistributions.list["MedicalClinicTools"].items, 2);
 
 --ToolStoreAccessories
 table.insert(ProceduralDistributions.list["ToolStoreAccessories"].items, "RadiatedZones.EmptyGeigerTeller");
@@ -219,22 +322,20 @@ table.insert(ProceduralDistributions.list["ToolStoreAccessories"].items, 3);
 --ArmyHangarTools
 table.insert(ProceduralDistributions.list["ArmyHangarTools"].items, "RadiatedZones.EmptyGeigerTeller");
 table.insert(ProceduralDistributions.list["ArmyHangarTools"].items, 3);
+table.insert(ProceduralDistributions.list["ArmyHangarTools"].items, "RadiatedZones.GasMaskFilter");
+table.insert(ProceduralDistributions.list["ArmyHangarTools"].items, 3);
 
 --CrateTools
 table.insert(ProceduralDistributions.list["CrateTools"].items, "RadiatedZones.EmptyGeigerTeller");
 table.insert(ProceduralDistributions.list["CrateTools"].items, 3);
-
---LivingRoomShelf
-table.insert(ProceduralDistributions.list["LivingRoomShelf"].items, "RadiatedZones.EmptyGeigerTeller");
-table.insert(ProceduralDistributions.list["LivingRoomShelf"].items, 0.5);
-table.insert(ProceduralDistributions.list["LivingRoomShelf"].items, "RadiatedZones.EmptyGeigerTeller");
-table.insert(ProceduralDistributions.list["LivingRoomShelf"].items, 0.5);
+table.insert(ProceduralDistributions.list["CrateTools"].items, "RadiatedZones.GasMaskFilter");
+table.insert(ProceduralDistributions.list["CrateTools"].items, 1);
 
 --GymLockers
 table.insert(ProceduralDistributions.list["GymLockers"].items, "RadiatedZones.EmptyGeigerTeller");
 table.insert(ProceduralDistributions.list["GymLockers"].items, 1);
 table.insert(ProceduralDistributions.list["GymLockers"].items, "RadiatedZones.GasMaskFilter");
-table.insert(ProceduralDistributions.list["GymLockers"].items, 0.1);
+table.insert(ProceduralDistributions.list["GymLockers"].items, 0.2);
 
 --GunStoreShelf
 table.insert(ProceduralDistributions.list["GunStoreShelf"].items, "RadiatedZones.EmptyGeigerTeller");
@@ -257,6 +358,7 @@ table.insert(ProceduralDistributions.list["OfficeDrawers"].items, 0.5);
 table.insert(ProceduralDistributions.list["OfficeDrawers"].items, "RadiatedZones.Iodine");
 table.insert(ProceduralDistributions.list["OfficeDrawers"].items, 1);
 
+--glovebox
 table.insert(VehicleDistributions["GloveBox"].items, "RadiatedZones.GeigerTeller");
 table.insert(VehicleDistributions["GloveBox"].items, 0.1);
 table.insert(VehicleDistributions["GloveBox"].items, "RadiatedZones.Iodine");
@@ -264,20 +366,25 @@ table.insert(VehicleDistributions["GloveBox"].items, 0.5);
 table.insert(VehicleDistributions["GloveBox"].items, "RadiatedZones.Iodine");
 table.insert(VehicleDistributions["GloveBox"].items, 0.5);
 
+--postbox
+table.insert(SuburbsDistributions["all"]["postbox"].items, "RadiatedZones.NukeSurvivalGuide");
+table.insert(SuburbsDistributions["all"]["postbox"].items, 0.02);
+
 
 
 table.insert(SuburbsDistributions["all"]["inventorymale"].items, "RadiatedZones.EmptyGeigerTeller");
 table.insert(SuburbsDistributions["all"]["inventorymale"].items, 0.05);
 table.insert(SuburbsDistributions["all"]["inventorymale"].items, "RadiatedZones.Iodine");
 table.insert(SuburbsDistributions["all"]["inventorymale"].items, 0.1);
-table.insert(SuburbsDistributions["all"]["inventorymale"].items, "RadiatedZones.Hat_EmptyGasMask");
+table.insert(SuburbsDistributions["all"]["inventorymale"].items, "RadiatedZones.GasMaskFilter");
 table.insert(SuburbsDistributions["all"]["inventorymale"].items, 0.05);
 
 table.insert(SuburbsDistributions["all"]["inventoryfemale"].items, "RadiatedZones.EmptyGeigerTeller");
 table.insert(SuburbsDistributions["all"]["inventoryfemale"].items, 0.05);
 table.insert(SuburbsDistributions["all"]["inventoryfemale"].items, "RadiatedZones.Iodine");
 table.insert(SuburbsDistributions["all"]["inventoryfemale"].items, 0.1);
-table.insert(SuburbsDistributions["all"]["inventoryfemale"].items, "Hat_EmptyGasMask");
+table.insert(SuburbsDistributions["all"]["inventoryfemale"].items, "RadiatedZones.GasMaskFilter");
 table.insert(SuburbsDistributions["all"]["inventoryfemale"].items, 0.05);
+
 
 

@@ -73,10 +73,7 @@ local function setBurnDamage()
 	end
 end
 
-local function EveryTenMinutes()
-
-	local player = getPlayer()
-
+local function checkIfPlayerProtectedByPills()
 	--Check if player is protected by Iodine
 	if AtosClient:getIsProtectedByPills() then
 		local pillTotalDuration = 5 -- 5 hours
@@ -93,6 +90,14 @@ local function EveryTenMinutes()
 			AtosClient:setIodineMoodle(1.0)--float
 		end
 	end
+end
+
+local function EveryTenMinutes()
+
+	local player = getPlayer()
+
+	--Check if player is protected by pills
+	checkIfPlayerProtectedByPills()
 
 	--If player is wearing gaskmask
 	AtosClient:useGasMask(player)
@@ -104,8 +109,8 @@ local function EveryDays()
 	-- Check if player is cured
 	print("Day is over")
 	local modData = getPlayer():getModData()
-	local chance = ZombRand(100) -- Generates a random number between 0 and 1
-	local dieChance = 3
+	local chance = ZombRand(100) -- Generates a random number between 0 and 100
+	local dieChance = -1
 	local cureChance = 30
 	local burnChance = 50
 	local currentRadiation = AtosClient:getRadiation()
@@ -124,13 +129,15 @@ local function EveryDays()
 
 
 	if AtosClient:getRadiationCured() == false then
+		local player = getPlayer()
 		if chance <= dieChance then
-			-- The event occurs, put your event logic here
-			getPlayer():getBodyDamage():setFakeInfectionLevel(100)
 			print("Player will die from radiation")
+			player:getBodyDamage():setFoodSicknessLevel(100)
+			--player:Kill(player)
+
 		elseif chance <= cureChance then
 			AtosClient:setRadiationCured(true)
-			getPlayer():getBodyDamage():setFakeInfectionLevel(0)
+			player:getBodyDamage():setFakeInfectionLevel(0)
 			print("radiation is cured")
 		elseif chance <= burnChance then
 
@@ -196,18 +203,28 @@ function AtosClient:setGeigerAndProtectMoodle()
 		hasGeiger = false
 	end
 
-	if AtosClient:playerIsProtectedByClothingType(player) == "Hazmat"  then
+	local playerIsProtectedByClothingType = AtosClient:playerIsProtectedByClothingType(player)
+
+	--TODO optimize
+	if playerIsProtectedByClothingType == "HazmatSuit"  then
 		isProtected = true
 		AtosClient:setHazmatMoodle(1.0)
 		AtosClient:setGasMaskMoodle(0.5)
-	elseif AtosClient:playerIsProtectedByClothingType(player) == "GasMask" then
+		AtosClient:setLightMaskMoodle(0.5)
+	elseif playerIsProtectedByClothingType == "GasMask" then
 		isProtected = true
 		AtosClient:setGasMaskMoodle(1.0)
+		AtosClient:setHazmatMoodle(0.5)
+		AtosClient:setLightMaskMoodle(0.5)
+	elseif playerIsProtectedByClothingType == "LightMask" then
+		AtosClient:setLightMaskMoodle(1.0)
+		AtosClient:setGasMaskMoodle(0.5)
 		AtosClient:setHazmatMoodle(0.5)
 	else
 		isProtected = false
 		AtosClient:setHazmatMoodle(0.5)
 		AtosClient:setGasMaskMoodle(0.5)
+		AtosClient:setLightMaskMoodle(0.5)
 	end
 end
 
@@ -249,9 +266,10 @@ function AtosClient:validateZone()
 
 		local playerIsProtectedByClothingType = AtosClient:playerIsProtectedByClothingType(player)
 
-		if playerIsProtectedByClothingType == "Hazmat" or playerIsProtectedByClothingType == "GasMask"  then
+		if playerIsProtectedByClothingType == "HazmatSuit" or playerIsProtectedByClothingType == "GasMask"  then
 			print("player is wearing hazmat or gasmask protection")
-
+		elseif playerIsProtectedByClothingType == "LightMask" then
+			print("player is wearing light mask protection like dustmask")
 		end
 
 		--If the player has a geiger the player can detect the radiation
@@ -280,48 +298,70 @@ end
 function AtosClient:calculateRadiation()
 	local player = getPlayer()
 
-	local radSickness = AtosClient:getRadiation()
+	local playerRadiation = AtosClient:getRadiation()
 	local sickness = math.floor(player:getBodyDamage():getFakeInfectionLevel())
 	local playerWearClothingType = AtosClient:playerIsProtectedByClothingType(player)
+	local playerIsProtectedByPills = AtosClient:getIsProtectedByPills()
+
+	local pillsReduction = 3
+
 
 	local function setSickness(sicknessLevel)
 		player:getBodyDamage():setFakeInfectionLevel(sicknessLevel)
 	end
 
-	if playerWearClothingType == "Nothing" and isInZone then
-		print("player is NOT wearing protection")
-		if AtosClient:getIsProtectedByPills() then
-			radSickness = AtosClient:getRadiation() + 3 * 1.10
-		else
-			radSickness = AtosClient:getRadiation() + 6 * 1.10
+	if isInZone then
+
+		if playerWearClothingType == "Nothing" then
+			print("player is NOT wearing protection")
+			if playerIsProtectedByPills then
+				playerRadiation = playerRadiation + 3 * 1.10
+			else
+				playerRadiation = playerRadiation + 6 * 1.10
+			end
+		elseif playerWearClothingType == "GasMask" then
+
+			if playerIsProtectedByPills then
+				playerRadiation = playerRadiation + 1.5 * 1.05
+			else
+				playerRadiation = playerRadiation + 2 * 1.05
+			end
+
+		elseif playerWearClothingType == "LightMask" then
+
+			if playerIsProtectedByPills then
+				playerRadiation = playerRadiation + 2.5 * 1.05
+			else
+				playerRadiation = playerRadiation + 4.5 * 1.05
+
+			end
+
+		elseif playerWearClothingType == "HazmatSuit" then
+			--Nothing
 		end
-	elseif playerWearClothingType == "GasMask" and isInZone then
 
-		radSickness = AtosClient:getRadiation() + 2 * 1.02
+		if AtosClient:getRadiationCured() == true then
+			AtosClient:setRadiationCured(false)
+		end
 	end
 
 
-	if AtosClient:getRadiationCured() == true and isInZone then
-		AtosClient:setRadiationCured(false)
-	end
+	if(playerRadiation > 2000) then
 
-	--print(radSickness)
-	--print(player:getBodyDamage():getFoodSicknessLevel())
-	--print("health: " .. tostring(player:getHealth()))
-	if(radSickness > 2000) then
-		player:getBodyDamage():setFakeInfectionLevel(100)
-		radSickness = 2000
-		player:Kill(player)
-	elseif radSickness > 1000 then
+		--When player reaches 2000 RADS, player will die
+		playerRadiation = 2000
+		player:getBodyDamage():setFoodSicknessLevel(100)
+
+	elseif playerRadiation > 1000 then
 		setSickness(75)
 
-	elseif radSickness > 300 then
+	elseif playerRadiation > 300 then
 		setSickness(50)
 	else
 		setSickness(0)
 	end
 
-	AtosClient:setRadiation(radSickness)
+	AtosClient:setRadiation(playerRadiation)
 end
 
 function AtosClient:setZones(paramZones)

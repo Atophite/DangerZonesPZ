@@ -81,9 +81,10 @@ function AtosClient:playerIsProtectedByClothingType(player)
    for count = 1, items:size() - 1 do
       local clothingItem = items:getItemByIndex(count)
       local clothingItemType = clothingItem:getType()
+      local protectionTypeByMap = AtosClient.protectionTypeMap[clothingItemType]
 
       --print(items:getItemByIndex(count):getClothingItemName())
-      if clothingItemType == "HazmatSuit" then
+      if protectionTypeByMap == "HazmatSuit" then
 
          if isSpeedFrameworkActivated then
             SpeedFramework.SetPlayerSpeed(player, 0.7)
@@ -91,15 +92,17 @@ function AtosClient:playerIsProtectedByClothingType(player)
 
          if clothingItem:getHolesNumber() < 1
          and clothingItem:getCurrentCondition() > 0 then
-            return "Hazmat"
+            return protectionTypeByMap
          end
 
-      elseif clothingItemType == "Hat_GasMask" then
+      elseif protectionTypeByMap == "GasMask" then
          if AtosClient:getUsedDelta(clothingItem) > 0 then
-            return "GasMask"
+            return protectionTypeByMap
 
          end
-         
+
+      elseif protectionTypeByMap == "LightMask" then
+         return protectionTypeByMap
       end
 
    end

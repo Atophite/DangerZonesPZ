@@ -1,5 +1,19 @@
-# TODO LIST
+# TODO LIST new version
+- [x] Fixed an issue when reaching max RADS. Player will die now.
+- [x] Implement functional gas mask
+- [ ] Implement repairable hazmat suits with rubber and ducttape
+- [ ] Fix that the empty gasmask finds the best gasmask filter
+- [ ] Implement lucky soda
+- [ ] Implement cigarette heals radiation
+- [x] Remove chance of dying when lightly radiated
+- [ ] Change some chances of burning, etc.
+- [ ] Add option to spawn with geiger teller (modoptions).
 
+
+- boolean	contains(InventoryItem inventoryItem) use
+- are you considering compatibility for SMUI? that mod had a MOPP suit and it'd be pretty cool if that could work with this one
+
+# DONE
 - [x] Make Hazmat suit to protect from radiation
 - [x] Make Geigerteller functional to detect when player is in radiation area
 - [x] Make Iodine to protect from radiation
@@ -28,13 +42,5 @@
 - [x] Make mod logo
 - [x] Make mod showcase images
 - [x] Make mod showcase video
-- [x] Implement functional gas mask
-- [ ] Implement repairable hazmat suits with rubber and ducttape
-- [ ] Implement lucky soda
-- [ ] Implement cigarette heals radiation
-- [ ] Remove chance of dying when lightly radiated
-- [ ] Change some chances of burning, etc.
-- [ ] Add option to spawn with geiger teller (modoptions).
 
-- boolean	contains(InventoryItem inventoryItem) use
-- are you considering compatibility for SMUI? that mod had a MOPP suit and it'd be pretty cool if that could work with this one
+

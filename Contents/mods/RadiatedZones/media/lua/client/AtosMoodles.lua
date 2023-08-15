@@ -9,6 +9,7 @@ require "MF_ISMoodle"
 MF.createMoodle("Iodine")
 MF.createMoodle("Hazmat")
 MF.createMoodle("GasMask")
+MF.createMoodle("LightMask")
 
 
 function AtosClient:getIodineMoodle()
@@ -33,4 +34,12 @@ end
 
 function AtosClient:setGasMaskMoodle(value)
     MF.getMoodle("GasMask"):setValue(value)
+end
+
+function AtosClient:getLightMaskMoodle()
+    return MF.getMoodle("LightMask")
+end
+
+function AtosClient:setLightMaskMoodle(value)
+    MF.getMoodle("LightMask"):setValue(value)
 end
