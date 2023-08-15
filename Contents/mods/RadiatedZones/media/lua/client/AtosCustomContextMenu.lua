@@ -45,7 +45,9 @@ function checkGasMaskFilter(item, player)
 
     local usedDelta = AtosClient:getUsedDelta(item)
 
-    if usedDelta < 25 then
+    if usedDelta <= 0 then
+        playerObj:Say("The quality of the filter is EMPTY")
+    elseif usedDelta < 25 then
         playerObj:Say("The quality of the filter is BAD")
     elseif usedDelta < 65 then
         playerObj:Say("The quality of the filter is MEDIUM")

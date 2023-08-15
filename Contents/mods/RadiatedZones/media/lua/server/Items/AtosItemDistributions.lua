@@ -226,11 +226,15 @@ table.insert(ProceduralDistributions.list["CrateTools"].items, 3);
 
 --LivingRoomShelf
 table.insert(ProceduralDistributions.list["LivingRoomShelf"].items, "RadiatedZones.EmptyGeigerTeller");
-table.insert(ProceduralDistributions.list["LivingRoomShelf"].items, 1);
+table.insert(ProceduralDistributions.list["LivingRoomShelf"].items, 0.5);
+table.insert(ProceduralDistributions.list["LivingRoomShelf"].items, "RadiatedZones.EmptyGeigerTeller");
+table.insert(ProceduralDistributions.list["LivingRoomShelf"].items, 0.5);
 
 --GymLockers
 table.insert(ProceduralDistributions.list["GymLockers"].items, "RadiatedZones.EmptyGeigerTeller");
 table.insert(ProceduralDistributions.list["GymLockers"].items, 1);
+table.insert(ProceduralDistributions.list["GymLockers"].items, "RadiatedZones.GasMaskFilter");
+table.insert(ProceduralDistributions.list["GymLockers"].items, 0.1);
 
 --GunStoreShelf
 table.insert(ProceduralDistributions.list["GunStoreShelf"].items, "RadiatedZones.EmptyGeigerTeller");
@@ -238,9 +242,13 @@ table.insert(ProceduralDistributions.list["GunStoreShelf"].items, 1);
 
 --BedroomSideTable
 table.insert(ProceduralDistributions.list["BedroomSideTable"].items, "RadiatedZones.EmptyGeigerTeller");
-table.insert(ProceduralDistributions.list["BedroomSideTable"].items, 0.5);
+table.insert(ProceduralDistributions.list["BedroomSideTable"].items, 0.25);
 table.insert(ProceduralDistributions.list["BedroomSideTable"].items, "RadiatedZones.Iodine");
 table.insert(ProceduralDistributions.list["BedroomSideTable"].items, 1);
+table.insert(ProceduralDistributions.list["BedroomSideTable"].items, "Hat_GasMask");
+table.insert(ProceduralDistributions.list["BedroomSideTable"].items, 0.1);
+table.insert(ProceduralDistributions.list["BedroomSideTable"].items, "RadiatedZones.GasMaskFilter");
+table.insert(ProceduralDistributions.list["BedroomSideTable"].items, 0.1);
 
 
 --OfficeDrawers
@@ -253,16 +261,23 @@ table.insert(VehicleDistributions["GloveBox"].items, "RadiatedZones.GeigerTeller
 table.insert(VehicleDistributions["GloveBox"].items, 0.1);
 table.insert(VehicleDistributions["GloveBox"].items, "RadiatedZones.Iodine");
 table.insert(VehicleDistributions["GloveBox"].items, 0.5);
+table.insert(VehicleDistributions["GloveBox"].items, "RadiatedZones.Iodine");
+table.insert(VehicleDistributions["GloveBox"].items, 0.5);
+
 
 
 table.insert(SuburbsDistributions["all"]["inventorymale"].items, "RadiatedZones.EmptyGeigerTeller");
 table.insert(SuburbsDistributions["all"]["inventorymale"].items, 0.05);
 table.insert(SuburbsDistributions["all"]["inventorymale"].items, "RadiatedZones.Iodine");
+table.insert(SuburbsDistributions["all"]["inventorymale"].items, 0.1);
+table.insert(SuburbsDistributions["all"]["inventorymale"].items, "RadiatedZones.Hat_EmptyGasMask");
 table.insert(SuburbsDistributions["all"]["inventorymale"].items, 0.05);
 
 table.insert(SuburbsDistributions["all"]["inventoryfemale"].items, "RadiatedZones.EmptyGeigerTeller");
 table.insert(SuburbsDistributions["all"]["inventoryfemale"].items, 0.05);
 table.insert(SuburbsDistributions["all"]["inventoryfemale"].items, "RadiatedZones.Iodine");
+table.insert(SuburbsDistributions["all"]["inventoryfemale"].items, 0.1);
+table.insert(SuburbsDistributions["all"]["inventoryfemale"].items, "Hat_EmptyGasMask");
 table.insert(SuburbsDistributions["all"]["inventoryfemale"].items, 0.05);
 
 

@@ -13,12 +13,11 @@
 - [x] Implement radiation self check with a device maybe geiger teller
 - [x] Implement a function that the geiger teller is unusable when out of delta
 - [x] Distribute Iodine, Hazmat, and Geigerteller
-- [ ] ~Add a feature to fix holes in the hazmat suit (consider using a new item called rubber)~
 - [x] Radiate different areas of the map
 - [x] Implement support for multiplayer
 - [x] Create a cure for radiation: introduce a chance for daily radiation cure or else player will die from radiation
 - [ ] ~Implement an air filter. The air filter can be used for the hazmat to work~
-- [ ] ~Implement a function to randomize radiated zones when the world is being made~
+- [ ] Implement a function to randomize radiated zones when the world is being made
 - [ ] ~Utilize iodine for aiding in the curing process~
 - [x] Implement burn damage when medium radiated
 - [x] Nerf Iodine so the player can't spam Iodine to reduce RADS (its 25 RADS now)
@@ -30,4 +29,12 @@
 - [x] Make mod showcase images
 - [x] Make mod showcase video
 - [x] Implement functional gas mask
-- [ ] 
+- [ ] Implement repairable hazmat suits with rubber and ducttape
+- [ ] Implement lucky soda
+- [ ] Implement cigarette heals radiation
+- [ ] Remove chance of dying when lightly radiated
+- [ ] Change some chances of burning, etc.
+- [ ] Add option to spawn with geiger teller (modoptions).
+
+- boolean	contains(InventoryItem inventoryItem) use
+- are you considering compatibility for SMUI? that mod had a MOPP suit and it'd be pretty cool if that could work with this one

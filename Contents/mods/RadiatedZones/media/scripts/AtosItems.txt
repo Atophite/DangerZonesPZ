@@ -92,6 +92,19 @@ module RadiatedZones {
         Tags = GasMask,
         Weight = 0.2,
     }
+
+    item NukeSurvivalGuide
+    {
+        DisplayCategory = SkillBook,
+        Weight	=	0.1,
+        Type	=	Literature,
+        DisplayName	=	NukeSurvival Guide,
+        Icon	=	MagazineMechanics,
+        TeachedRecipes  =   Craft Improvised Gas Mask Filter,
+        ReplaceOnUse    =   NukeSurvivalGuide,
+        StaticModel = Magazine,
+        WorldStaticModel = MagazineEngi1Ground,
+    }
 }
 
 module Base {

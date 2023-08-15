@@ -74,6 +74,9 @@ local function setBurnDamage()
 end
 
 local function EveryTenMinutes()
+
+	local player = getPlayer()
+
 	--Check if player is protected by Iodine
 	if AtosClient:getIsProtectedByPills() then
 		local pillTotalDuration = 5 -- 5 hours
@@ -90,6 +93,9 @@ local function EveryTenMinutes()
 			AtosClient:setIodineMoodle(1.0)--float
 		end
 	end
+
+	--If player is wearing gaskmask
+	AtosClient:useGasMask(player)
 
 end
 
@@ -241,9 +247,10 @@ function AtosClient:validateZone()
 			AtosClient:setGeigerAndProtectMoodle()
 		end
 
+		local playerIsProtectedByClothingType = AtosClient:playerIsProtectedByClothingType(player)
 
-		if AtosClient:playerIsProtectedByClothingType() == "Hazmat" or AtosClient:playerIsProtectedByType() == "GasMask"  then
-			print("player is wearing protection")
+		if playerIsProtectedByClothingType == "Hazmat" or playerIsProtectedByClothingType == "GasMask"  then
+			print("player is wearing hazmat or gasmask protection")
 
 		end
 
@@ -289,6 +296,7 @@ function AtosClient:calculateRadiation()
 			radSickness = AtosClient:getRadiation() + 6 * 1.10
 		end
 	elseif playerWearClothingType == "GasMask" and isInZone then
+
 		radSickness = AtosClient:getRadiation() + 2 * 1.02
 	end
 
@@ -314,41 +322,41 @@ function AtosClient:calculateRadiation()
 	end
 
 	AtosClient:setRadiation(radSickness)
-	end
+end
 
-	function AtosClient:setZones(paramZones)
+function AtosClient:setZones(paramZones)
 	zones = paramZones
-	end
+end
 
-	function AtosClient:playSound()
+function AtosClient:playSound()
 	local player = getPlayer()
 	if geigerSound == nil then
-	geigerSound = player:playSoundLocal("Geiger")
+		geigerSound = player:playSoundLocal("Geiger")
 	elseif geigerSound ~= nil and not player:getEmitter():isPlaying("Geiger") and AtosClient:isGeigerEquipped(player) == true then
-	geigerSound = player:playSoundLocal("Geiger")
+		geigerSound = player:playSoundLocal("Geiger")
 
 	end
-	end
+end
 
-	function AtosClient:stopSound()
+function AtosClient:stopSound()
 	local player = getPlayer()
 	if geigerSound ~= nil and isRadiationDetected or not hasGeiger then
-	player:getEmitter():stopSoundByName("Geiger")
+		player:getEmitter():stopSoundByName("Geiger")
 
-	geigerSound = nil
+		geigerSound = nil
 	end
-	end
+end
 
-	function AtosClient:getIsInZone()
+function AtosClient:getIsInZone()
 	return isInZone
-	end
+end
 
 
-	Events.OnClothingUpdated.Add(onClothingUpdated)
-	Events.OnGameStart.Add(onGameStart)
-	Events.EveryOneMinute.Add(everyOneMinute)
-	Events.OnConnected.Add(onConnected)
-	Events.OnGameBoot.Add(OnGameBoot)
-	Events.EveryDays.Add(EveryDays)
-	Events.EveryTenMinutes.Add(EveryTenMinutes)
+Events.OnClothingUpdated.Add(onClothingUpdated)
+Events.OnGameStart.Add(onGameStart)
+Events.EveryOneMinute.Add(everyOneMinute)
+Events.OnConnected.Add(onConnected)
+Events.OnGameBoot.Add(OnGameBoot)
+Events.EveryDays.Add(EveryDays)
+Events.EveryTenMinutes.Add(EveryTenMinutes)
 

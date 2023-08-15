@@ -9,8 +9,6 @@ RadiatedZones.OnTest = {}
 
 local AtosClient = AtosRadiatedZones.Client
 
---TODO
-
 -- Return true if recipe is valid, false otherwise
 function RadiatedZones.OnTest.GeigerTellerBatteriesInsert(sourceItem, result)
     if sourceItem:getType() == "GeigerTeller" then
@@ -101,7 +99,12 @@ function RadiatedZones.OnCreate.GasMaskAirFilterRemove(items, result, player)
 end
 
 function RadiatedZones.OnTest.RepairHazmatSuit(sourceItem, result)
-    return sourceItem:getHolesNumber() > 0
+
+    if sourceItem:getType() == "HazmatSuit" then
+
+        return sourceItem:getHolesNumber() > 0
+    end
+    return true
 end
 
 function RadiatedZones.OnCreate.RepairHazmatSuit(items, result, player)
@@ -110,15 +113,12 @@ function RadiatedZones.OnCreate.RepairHazmatSuit(items, result, player)
     for i=0, items:size()-1 do
         local item = items:get(i)
         if item:getClothingItemName() == "HazmatSuit" then
-            local holesNumber = sourceItem:getHolesNumber()
-            local itemCondition = sourceItem:getCondition()
-            -- Fill the air filter with useddelta from gasmask
-            --result:setUsedDelta(getUsedDeltaFromModData(item))
+            local itemCondition = item:getCondition()
+            local itemDirtyness = item:getDirtyness()
 
-            -- then we give an empty gas mask
-            --setUsedDeltaFromModData(result, 0)
-            player:getInventory():AddItem("RadiatedZones.Hat_EmptyGasMask")
-            result:setUsedDelta(AtosClient:getUsedDelta(item)/100)
+            result:setCondition(itemCondition)
+            result:setDirtyness(itemDirtyness)
+
         end
     end
 end

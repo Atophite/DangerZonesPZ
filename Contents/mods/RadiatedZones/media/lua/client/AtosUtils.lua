@@ -76,33 +76,59 @@ end
 
 function AtosClient:playerIsProtectedByClothingType(player)
    local items = player:getWornItems()
+   local isSpeedFrameworkActivated = getActivatedMods():contains("SpeedFramework")
 
    for count = 1, items:size() - 1 do
-      local clothingItemName = items:getItemByIndex(count):getType()
-      --print(items:getItemByIndex(count):getClothingItemName())
-      if clothingItemName == "HazmatSuit" then
+      local clothingItem = items:getItemByIndex(count)
+      local clothingItemType = clothingItem:getType()
 
-         if getActivatedMods():contains("SpeedFramework") then
+      --print(items:getItemByIndex(count):getClothingItemName())
+      if clothingItemType == "HazmatSuit" then
+
+         if isSpeedFrameworkActivated then
             SpeedFramework.SetPlayerSpeed(player, 0.7)
          end
 
-         if items:getItemByIndex(count):getHolesNumber() < 1
-         and items:getItemByIndex(count):getCurrentCondition() > 0 then
+         if clothingItem:getHolesNumber() < 1
+         and clothingItem:getCurrentCondition() > 0 then
             return "Hazmat"
          end
 
-      elseif clothingItemName == "Hat_GasMask" then
-         return "GasMask"
+      elseif clothingItemType == "Hat_GasMask" then
+         if AtosClient:getUsedDelta(clothingItem) > 0 then
+            return "GasMask"
 
-
+         end
+         
       end
 
    end
 
-   if getActivatedMods():contains("SpeedFramework") then
+   if isSpeedFrameworkActivated then
       SpeedFramework.SetPlayerSpeed(player, nil)
    end
    return "Nothing"
+
+end
+
+function AtosClient:useGasMask(player)
+   local items = player:getWornItems()
+
+   for count = 1, items:size() - 1 do
+      local item = items:getItemByIndex(count)
+      local itemType = item:getType()
+
+      if itemType == "Hat_GasMask" then
+         local currentUseDelta = AtosClient:getUsedDelta(item)
+         local usage = 2.5
+         if currentUseDelta <= 0 then
+            AtosClient:setUsedDelta(item, 0)
+         else
+            AtosClient:setUsedDelta(item, currentUseDelta - usage)
+         end
+      end
+
+   end
 
 end
 

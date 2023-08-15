@@ -49,16 +49,15 @@ module RadiatedZones {
     recipe Repair Hazmat Suit
         {
             keep Scissors,
-            destroy HazmatSuit,
+            HazmatSuit,
             DuctTape=2,
 
-
-
             Result:HazmatSuit,
-            Time:150.0,
+            Time:400.0,
             Category:Survivalist,
             OnTest:RadiatedZones.OnTest.RepairHazmatSuit,
             OnCreate:RadiatedZones.OnCreate.RepairHazmatSuit,
+            Sound:PutItemInBag,
         }
 
     recipe Craft Improvised Gas Mask Filter
