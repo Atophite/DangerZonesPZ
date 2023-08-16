@@ -101,7 +101,7 @@ function AtosClient:playerIsProtectedByClothingType(player)
 
          end
 
-      elseif protectionTypeByMap == "LightMask" then
+      elseif protectionTypeByMap == "LightMask" or protectionTypeByMap == "ClothMask"  then
          return protectionTypeByMap
       end
 

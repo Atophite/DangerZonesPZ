@@ -73,6 +73,17 @@ module RadiatedZones {
             NeedToBeLearn:true,
             Time:250.0,
             Category:Survivalist,
+            IsHidden:false,
+        }
+
+    recipe Craft Improvised Mask
+        {
+            RippedSheets,
+
+            Result:ImprovisedMask,
+            Time:80.0,
+            Category:Survivalist,
+            IsHidden:false,
         }
 
 }

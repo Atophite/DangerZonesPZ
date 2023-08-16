@@ -91,6 +91,7 @@ module RadiatedZones {
         WaterResistance = 1.0,
         Tags = GasMask,
         Weight = 0.2,
+        Tooltip = Tooltip_item_empty_gasmask
     }
 
     item NukeSurvivalGuide
@@ -103,8 +104,51 @@ module RadiatedZones {
         TeachedRecipes  =   Craft Improvised Gas Mask Filter,
         ReplaceOnUse    =   NukeSurvivalGuide,
         StaticModel = Magazine,
-        WorldStaticModel = MagazineEngi1Ground,
+        WorldStaticModel = MagazineMechanics,
+        Tooltip = Tooltip_item_nukesurivival_guide
     }
+
+    item LuckySoda
+    {
+		DisplayName = Lucky Soda,
+		DisplayCategory = Food,
+		Type = Food,
+		Weight = 0.2,
+		Icon = LuckySoda,
+		FoodType = SoftDrink,
+		CantBeFrozen = TRUE,
+		EatType = popcan,
+		HungerChange = -8,
+		ThirstChange = -60,
+		UnhappyChange = -10,
+		Calories = 140,
+		Carbohydrates = 39,
+		Lipids = 0,
+		Proteins = 0,
+		OnEat = OnEat_LuckySoda,
+		CustomContextMenu = Drink,
+		CustomEatSound = DrinkingFromCan,
+		StaticModel = PopCanDiet,
+		WorldStaticModel = LuckySoda,
+		Tooltip = Tooltip_item_luckysoda,
+		Tags = HasMetal,
+    }
+
+    item ImprovisedMask
+    {
+        DisplayCategory = Accessory,
+        Type = Clothing,
+        DisplayName = Improvised Mask,
+        ClothingItem = Hat_BandanaMaskTINT,
+        BodyLocation = Mask,
+        Icon = Handkerchief,
+        CanHaveHoles = false,
+        ChanceToFall = 30,
+        Insulation = 0.10,
+        Weight = 0.1,
+        Tooltip = Tooltip_item_improvised_mask,
+    }
+
 }
 
 module Base {
@@ -124,7 +168,7 @@ module Base {
         WindResistance = 0.9,
         WorldStaticModel = Hazmat_Ground,
         Tags = GasMask;HazmatSuit,
-        Tooltip = Tooltip_item_hazmat
+        Tooltip = Tooltip_item_hazmat,
     }
 
     item Hat_GasMask
@@ -142,5 +186,6 @@ module Base {
             WaterResistance = 1.0,
     		Tags = GasMask,
     		Weight = 0.5,
+    		Tooltip = Tooltip_item_gasmask,
     	}
 }

@@ -14,7 +14,7 @@ local geigerSound = nil
 --Is radiation detected by the geiger teller
 local isRadiationDetected = false
 local isInZone = false
-local isProtected = false
+local isProtected = false --OBSOLETE
 local hasGeiger = false
 local hasEnteredZone = false
 
@@ -25,10 +25,8 @@ local AtosClient = AtosRadiatedZones.Client
 local AtosShared = AtosRadiatedZones.Shared
 
 local function onClothingUpdated(player)
-	print("clothing update")
+	--print("clothing update")
 	AtosClient:setGeigerAndProtectMoodle()
-
-
 end
 
 local function onGameStart()
@@ -48,6 +46,14 @@ local function onGameStart()
 	end
 
 	AtosClient:setGeigerAndProtectMoodle()
+end
+
+local function OnCreatePlayer(playerIndex, player)
+	print("new player created")
+	local spawnWithGeigerTeller = SandboxVars.RadiatedZones.SpawnWithGeigerTeller
+	if spawnWithGeigerTeller == true then
+		player:getInventory():AddItem("RadiatedZones.GeigerTeller")
+	end
 end
 
 local function onConnected()
@@ -107,24 +113,33 @@ end
 
 local function EveryDays()
 	-- Check if player is cured
-	print("Day is over")
+
 	local modData = getPlayer():getModData()
 	local chance = ZombRand(100) -- Generates a random number between 0 and 100
 	local dieChance = -1
 	local cureChance = 30
 	local burnChance = 50
 	local currentRadiation = AtosClient:getRadiation()
-	print(chance)
+	print("Day is over. The dice has been rolled: " .. chance)
 
 
-	if AtosClient:getRadiationCured() == true or currentRadiation < 300 then
+	if AtosClient:getRadiationCured() == true or currentRadiation < 450 then
 		AtosClient:setRadiation(currentRadiation / 1.2)
 		return
 	end
 
 	if currentRadiation >= 1000 then
-		dieChance = 10
-		cureChance = 20
+		dieChance = 10 --5%
+		cureChance = 20 --10%
+		burnChance = 50 --30%
+	end
+
+	if AtosClient:getHasLuckySodaUsage() then
+		print("player drank lucky soda. Chances has been altered.")
+		dieChance = -1 --0%
+		cureChance = 60--50%
+		burnChance = 10--10%
+		AtosClient:setHasLuckySodaUsage(false)
 	end
 
 
@@ -139,17 +154,9 @@ local function EveryDays()
 			AtosClient:setRadiationCured(true)
 			player:getBodyDamage():setFakeInfectionLevel(0)
 			print("radiation is cured")
-		elseif chance <= burnChance then
+		elseif chance <= burnChance and currentRadiation >= 1000 then
 
-			if currentRadiation >= 1000 then
-
-				local random = ZombRand(100)
-				print(random)
-				setBurnDamage()
-				print("Burn damage")
-			else
-				print("radiation is not cured")
-			end
+			print("Burn damage")
 
 		else
 			print("radiation is not cured")
@@ -216,7 +223,7 @@ function AtosClient:setGeigerAndProtectMoodle()
 		AtosClient:setGasMaskMoodle(1.0)
 		AtosClient:setHazmatMoodle(0.5)
 		AtosClient:setLightMaskMoodle(0.5)
-	elseif playerIsProtectedByClothingType == "LightMask" then
+	elseif playerIsProtectedByClothingType == "LightMask" or playerIsProtectedByClothingType == "ClothMask" then
 		AtosClient:setLightMaskMoodle(1.0)
 		AtosClient:setGasMaskMoodle(0.5)
 		AtosClient:setHazmatMoodle(0.5)
@@ -270,6 +277,8 @@ function AtosClient:validateZone()
 			print("player is wearing hazmat or gasmask protection")
 		elseif playerIsProtectedByClothingType == "LightMask" then
 			print("player is wearing light mask protection like dustmask")
+		else
+			print("player is not wearing protection")
 		end
 
 		--If the player has a geiger the player can detect the radiation
@@ -299,11 +308,8 @@ function AtosClient:calculateRadiation()
 	local player = getPlayer()
 
 	local playerRadiation = AtosClient:getRadiation()
-	local sickness = math.floor(player:getBodyDamage():getFakeInfectionLevel())
 	local playerWearClothingType = AtosClient:playerIsProtectedByClothingType(player)
 	local playerIsProtectedByPills = AtosClient:getIsProtectedByPills()
-
-	local pillsReduction = 3
 
 
 	local function setSickness(sicknessLevel)
@@ -316,9 +322,9 @@ function AtosClient:calculateRadiation()
 		local radiationValues = AtosClient.clothingRadiation[playerWearClothingType]
 		if radiationValues then
 			if playerIsProtectedByPills then
-				print(radiationValues.withPills)
+				--print(radiationValues.withPills)
 				playerRadiation = playerRadiation + radiationValues.withPills
-				print(playerRadiation)
+				--print(playerRadiation)
 
 			else
 				print(radiationValues.noPills)
@@ -339,7 +345,6 @@ function AtosClient:calculateRadiation()
 	if(playerRadiation > 2000) then
 
 		--When player reaches 2000 RADS, player will die
-		playerRadiation = 2000
 		player:getBodyDamage():setFoodSicknessLevel(100)
 
 	elseif playerRadiation > 1000 then
@@ -389,4 +394,5 @@ Events.OnConnected.Add(onConnected)
 Events.OnGameBoot.Add(OnGameBoot)
 Events.EveryDays.Add(EveryDays)
 Events.EveryTenMinutes.Add(EveryTenMinutes)
+Events.OnCreatePlayer.Add(OnCreatePlayer)
 

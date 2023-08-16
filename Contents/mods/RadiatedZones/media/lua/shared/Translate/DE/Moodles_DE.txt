@@ -10,6 +10,6 @@ Moodles_DE = {
     Moodles_GasMask_Good_lvl4 = "Gasmaske geschützt",
     Moodles_GasMask_Good_desc_lvl4 = "Die Gasmaske macht dich widerstandsfähiger gegen Strahlung.",
 
-    Moodles_LightMask_Good_lvl4 = "Maskengeschützt",
+    Moodles_LightMask_Good_lvl4 = "Masken geschützt",
     Moodles_LightMask_Good_desc_lvl4 = "Eine Maske macht dich etwas widerstandsfähiger gegen Strahlung."
 }

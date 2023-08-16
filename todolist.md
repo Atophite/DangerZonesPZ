@@ -3,11 +3,14 @@
 - [x] Implement functional gas mask
 - [x] Implement repairable hazmat suits with rubber and ducttape
 - [x] Remove chance of dying when lightly radiated
+- [x] Add distrubitions/ gasmask/luckysoda
+- [ ] Add new translations
+- [x] Tooltip empty gasmask/book
 - [ ] Fix that the empty gasmask finds the best gasmask filter
-- [ ] Implement lucky soda
-- [ ] Implement cigarette heals radiation
-- [ ] Change some chances of burning, etc.
-- [ ] Add option to spawn with geiger teller (modoptions).
+- [x] Implement lucky soda
+- [x] Implement cigarette heals radiation
+- [x] Change some chances of burning, etc.
+- [x] Add option to spawn with geiger teller (modoptions).
 - [ ] Look into SMUI (MOPP suit)
 
 - boolean	contains(InventoryItem inventoryItem) use
@@ -17,8 +20,6 @@
 - [ ] Test translations
 - [ ] Test multiplayer
 - [ ] 
-
-
 
 
 # DONE
