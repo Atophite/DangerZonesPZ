@@ -71,6 +71,7 @@ function OnEat_Cigarettes(food, character, percent)
         end
     end
 
+    --NEW CODE BY RADIATED ZONES
     local getCurrentRadiation = AtosClient:getRadiation()
     local radiationReductionFromSmoking = 2.0
     local newRadiationValue = (getCurrentRadiation - radiationReductionFromSmoking)
