@@ -43,15 +43,15 @@ end
 function checkGasMaskFilter(item, player)
     local playerObj = getSpecificPlayer(player);
 
-    local usedDelta = AtosClient:getUsedDelta(item)
+    local condition = item:getCondition()
 
-    if usedDelta <= 0 then
+    if condition <= 0 then
         playerObj:Say(getText("ContextMenu_filter_quality_empty"))
-    elseif usedDelta < 25 then
+    elseif condition < 3 then
         playerObj:Say(getText("ContextMenu_filter_quality_bad"))
-    elseif usedDelta < 65 then
+    elseif condition < 6 then
         playerObj:Say(getText("ContextMenu_filter_quality_medium"))
-    elseif usedDelta >= 65 then
+    elseif condition >= 6 then
         playerObj:Say(getText("ContextMenu_filter_quality_good"))
 
     end

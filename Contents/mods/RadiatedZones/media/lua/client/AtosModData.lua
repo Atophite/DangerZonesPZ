@@ -80,7 +80,30 @@ end
 
 
 
--- ITEMS -----------------------------------------------------------
+---- ITEMS -----------------------------------------------------------
+--For some stupid reason item:setCondition for gasmask is not a float but a int so I have to improvise
+function AtosClient:getFilterTicks(item)
+    if item:getModData().filterTicks == nil then
+        item:getModData().filterTicks = 0
+        return item:getModData().filterTicks
+    end
+
+    return item:getModData().filterTicks
+end
+
+function AtosClient:addFilterTicks(item, tick)
+    item:getModData().filterTicks = (AtosClient:getFilterTicks(item) + tick)
+end
+
+function AtosClient:setFilterTicks(item, tick)
+    item:getModData().filterTicks = tick
+end
+
+function AtosClient:resetFilterTicks(item)
+    item:getModData().filterTicks = 0
+end
+
+------OBSOLETE FOR NOW------------------
 function AtosClient:getUsedDelta(item)
     randomUsedDelta = ZombRand(100)
     if item:getModData().usedFilterDelta == nil then

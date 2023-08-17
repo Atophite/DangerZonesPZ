@@ -1,13 +1,13 @@
-[h1] RadiatedZonesPZ[/h1]
+[h1] RadiatedZones [/h1]
 This mod was a fun project I had in 2022. Finally I decided to finish it.
 The mod is multiplayer compatible.
 
-It's recommended to use this mod on a new save.
+It's recommended to use this mod on a new save. I'm not responsible if you lose your character progress.
 
 The following start locations are relatively safe:
 Maldraugh, Riverside, Rosewood, West Point
 
-There are around 20 radiated zones scattered in the map. When you are wearing a geiger teller you will know when you are in a radiated area. The geiger teller makes sound and has a visual text that says there is some radiation detected. You need Iodine and a Hazmat suit to protect yourself. Iodine protect you for 50%, the Hazmat suit protects you 100%. The Iodine can be used to remove some radiation but this can only be done every 12 hours. Iodine can always be used to protect you from radiation. Iodine has a 5 hour long duration.
+There are around 20 radiated zones scattered in the map. When you are wearing a geiger teller you will know when you are in a radiated area. The geiger teller makes sound and has a visual text that says there is some radiation detected. You need Iodine and a Hazmat suit to protect yourself. Iodine give you some protection, the Hazmat suit protects you 100% protection. Gas masks and other masks works too. The Iodine can be used to remove some radiation but this can only be done every 12 hours. Iodine can always be used to protect you from radiation. Iodine has a 5 hour long duration.
 
 There is a chance to be cured from radiation. Read below how it works.
 
@@ -18,6 +18,9 @@ If you would like to add more or change radiated zones. You can edit the coordin
 You can use the following website to generate a compatible coordinate that the mod can use:
 [url=https://atophite.github.io/RadiatedZonesCoordinatesGen/] Coordinate generator [/url]
 Just remember you need to have 4 different coordinates of X and Y.
+
+If you need more help:
+https://steamcommunity.com/workshop/filedetails/discussion/3019024205/3816290897713623821/
 
 [h2]Required mods[/h2]
 The mod requires MoodleFramework to have custom moodles.
@@ -37,8 +40,7 @@ https://steamcommunity.com/sharedfiles/filedetails/?id=2746846231
 [*]Lootable Hazmat Suit to protect from radiation.
 [*]Functional Geigerteller (Geiger Counter) to detect radiation areas.
 [*]Lootable Iodine as radiation protection.
-[*]Geigerteller drains battery, requiring recharging.
-[*]Battery charging recipes for Geigerteller.
+[*]Geigerteller drains battery, needs 4 batteries.
 [*]Geigerteller checks radiation levels and becomes unusable when out of battery.
 [*]Manual inspection of Geigerteller as a backup to sound effects.
 [/list]
@@ -56,7 +58,7 @@ https://steamcommunity.com/sharedfiles/filedetails/?id=2746846231
 [list]
 [*]Daily chance for radiation cure; failure has a chance to die.
 [*]Introduction of burn damage when medium radiated.
-[*]Iodine effectiveness nerfed to 25 RADS.
+[*]Iodine effectiveness heals 50 RADS.
 [*]Hazmat Suit nerfed for reduced mobility due to weight and slowness (Use speedframework).
 [/list]
 
@@ -73,25 +75,27 @@ if player is lightly radiated the player will get 50% sickness.
 if player is medium radiated the player get 75% sickness.
 If player reach heavily radiated the player will die with 100% sickness.
 
+If player has more than 300 RADS:
 [list]
-[*]Die Chance: 3%
-[*]Cure Chance: 27%
+[*]Die Chance: 0%
+[*]Cure Chance: 30%
 [*]Burn Chance: 20%
 [*]Radiation is Not Cured (No event occurs): 50%
 [/list]
 OR if rad is above 1000
 [list]
-[*]Die Chance: 10%
+[*]Die Chance: 5%
 [*]Cure Chance: 10%
-[*]Burn Chance: 30%
+[*]Burn Chance: 35%
 [*]Radiation is Not Cured (No event occurs): 50%
 [/list]
 
 When lightly radiated or medium the player has everyday a chance to cure from radiation.
-But also has the chance to die.
+But when medium radiated also has the chance to die.
 The chance of being sick from radiated is X% this will not cure until player hit the luck of being cured.
 
 When player reached cured state the radiation will fall off everyday.
+When player reached cured state and gets into a radiated zone again the cure is gone.
 
 [h1] Q&A [/h1]
 Q: Is this mod multiplayer compatible?
@@ -103,6 +107,9 @@ A: Make sure the geiger teller is not empty. You need 4 batteries to fill up the
 Q: I'm running so slow with the hazmat suit
 A: You can disable SpeedFramework mod, to make your character faster with hazmat suit on.
 
+Q: How does curing work?
+A: Everyday you have a chance to cure. If you reached the curing state you are not sick anymore and the radiation slowly decreases.
+
 Q: I'm wearing a hazmat suit but I'm not protected and I don't see the hazmat moodle.
 A: Possibly there is a hole in your suit or the condition of the suit is 0. I might make a feature to make hazmat suits fixable.
 
@@ -112,12 +119,23 @@ A: Hazmat can be found in any logical place, it's rare in wardrobes, can be foun
 Q: How can I mute the geiger teller sound?
 A: You can by turning it off. Or right click and click on "Look at Geiger Teller" to see if there is any radiation. But be aware this option also uses battery so it can't be abused!
 
-[h1] Features that are being worked on: [/h1]
-Functional gas mask with replaceable airfilters.
-Fixable hazmat suit with ductape.
-A Self Contained Breathing Apparatus (SCBA) for the hazmat suit.
-I might implement some "fun" things like a Soda Can that can give you more luck with curing from radiation, etc.
-Washing yourself will do something useful against radiation.
+[h1] Version 1.1 [/h1]
+[h1] Here's what's new: [/h1]
+
+[h2] New Gear and Features: [/h2]
+[list]
+    [*]Functional Gas Masks: Equip gas masks to protect yourself from hazardous environments. Craft or find replaceable gas mask filters to stay safe. Learn the recipe to craft an improvised gas mask filter.
+    [*]Variety of Masks: Choose from a range of protective masks, including improvised cloth masks, surgical masks, bandanas, and dust masks. Each offers varying degrees of protection.
+    [*]Repairable Hazmat Suits: Hazmat suits can now be repaired using duct tape. Keep your suits hole free to maximize your defense against radiation.
+    [*]Geiger Teller Spawn Option: In sandbox mode, you can now choose to start with a Geiger Teller.
+    [*]Lucky Soda Can: Discover a rare lucky soda can that boosts your luck with radiation recovery for a day. This valuable find might just be your saving grace.
+    [*]Cigarettes now have a small radiation-reducing effect.
+[/list]
+
+[h2] Bug Fixes and Improvements: [/h2]
+[list]
+    [*]Various minor bug fixes and optimizations have been implemented.
+[/list]
 
 
 [h1]My other mods:[/h1]

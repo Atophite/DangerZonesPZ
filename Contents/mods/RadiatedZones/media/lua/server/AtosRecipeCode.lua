@@ -67,7 +67,10 @@ function RadiatedZones.OnCreate.GasMaskAirFilterInsert(items, result, player)
     for i=0, items:size()-1 do
         local item = items:get(i)
         if items:get(i):getType() == "GasMaskFilter" then
-            AtosClient:setUsedDelta(result, item:getUsedDelta() * 100)
+            --AtosClient:setUsedDelta(result, item:getUsedDelta() * 100)
+            print(item:getUsedDelta())
+            result:setCondition(item:getUsedDelta() * 10)
+            AtosClient:setFilterTicks(result, AtosClient:getFilterTicks(item))
         end
     end
 
@@ -90,7 +93,10 @@ function RadiatedZones.OnCreate.GasMaskAirFilterRemove(items, result, player)
             -- then we give an empty gas mask
             --setUsedDeltaFromModData(result, 0)
             player:getInventory():AddItem("RadiatedZones.Hat_EmptyGasMask")
-            result:setUsedDelta(AtosClient:getUsedDelta(item)/100)
+            --result:setUsedDelta(AtosClient:getUsedDelta(item)/100)
+            result:setUsedDelta(item:getCondition()/10)
+            AtosClient:setFilterTicks(result, AtosClient:getFilterTicks(item))
+
         end
     end
 end

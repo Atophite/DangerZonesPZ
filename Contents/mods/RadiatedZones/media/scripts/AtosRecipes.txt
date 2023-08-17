@@ -32,18 +32,20 @@ module RadiatedZones {
         Category:Survivalist,
         OnTest:RadiatedZones.OnTest.GasMaskAirFilterRemove,
         OnCreate:RadiatedZones.OnCreate.GasMaskAirFilterRemove,
+        NoBrokenItems:false,
     }
 
     recipe Insert Gas Mask Filter
     {
         destroy Hat_EmptyGasMask,
-        destroy GasMaskFilter,
+        destroy GasMaskFilter/ImprovisedGasMaskFilter,
 
         Result:Hat_GasMask,
         Time:150.0,
         Category:Survivalist,
         OnTest:RadiatedZones.OnTest.GasMaskAirFilterInsert,
         OnCreate:RadiatedZones.OnCreate.GasMaskAirFilterInsert,
+        NoBrokenItems:false,
     }
 
     recipe Repair Hazmat Suit

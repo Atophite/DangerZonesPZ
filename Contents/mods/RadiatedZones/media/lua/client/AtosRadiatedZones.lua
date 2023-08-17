@@ -122,9 +122,6 @@ local function EveryTenMinutes()
 			zones = AtosShared:readZonesFile()
 		end
 	end
-
-
-
 end
 
 
@@ -356,12 +353,13 @@ function AtosClient:calculateRadiation()
 		player:getBodyDamage():setFoodSicknessLevel(100)
 
 	elseif playerRadiation > 1000 then
-		setSickness(75)
+		setSickness(50)
 
 	elseif playerRadiation > 300 then
-		setSickness(50)
+		setSickness(25)
 	else
 		setSickness(0)
+
 	end
 
 	AtosClient:setRadiation(playerRadiation)

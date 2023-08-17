@@ -96,9 +96,8 @@ function AtosClient:playerIsProtectedByClothingType(player)
          end
 
       elseif protectionTypeByMap == "GasMask" then
-         if AtosClient:getUsedDelta(clothingItem) > 0 then
+         if clothingItem:getCondition() > 0 then
             return protectionTypeByMap
-
          end
 
       elseif protectionTypeByMap == "LightMask" or protectionTypeByMap == "ClothMask"  then
@@ -119,16 +118,29 @@ function AtosClient:useGasMask(player)
 
    for count = 1, items:size() - 1 do
       local item = items:getItemByIndex(count)
-      local itemType = item:getType()
 
-      if itemType == "Hat_GasMask" then
-         local currentUseDelta = AtosClient:getUsedDelta(item)
-         local usage = 2.5
-         if currentUseDelta <= 0 then
-            AtosClient:setUsedDelta(item, 0)
+      if item and item:getType() == "Hat_GasMask" then
+         --local currentUseDelta = AtosClient:getUsedDelta(item)
+         local currentCondition = item:getCondition()
+         --max item condition = 10
+         -- For some fucking reason the argument in setCondition function is not a float but a int. So I have to improvise.
+         local usage = 1
+
+
+         if AtosClient:getFilterTicks(item) >= 4 then
+            print("gasmask condition: " .. item:getCondition())
+            if currentCondition <= 0 then
+               item:setCondition(0)
+            else
+               item:setCondition(currentCondition - usage)
+            end
+            --When item gasmask reached 4 ticks, reset the ticks
+            AtosClient:resetFilterTicks(item)
          else
-            AtosClient:setUsedDelta(item, currentUseDelta - usage)
+            --Add one tick
+            AtosClient:addFilterTicks(item, 1)
          end
+
       end
 
    end
