@@ -121,8 +121,6 @@ local function EveryTenMinutes()
 		else
 			zones = AtosShared:readZonesFile()
 		end
-	else
-		AtosClient:loopZones()
 	end
 
 
@@ -196,7 +194,7 @@ local function EveryDays()
 end
 
 local function everyOneMinute()
-
+	AtosClient:loopZones()
 	AtosClient:calculateRadiation()
 end
 
