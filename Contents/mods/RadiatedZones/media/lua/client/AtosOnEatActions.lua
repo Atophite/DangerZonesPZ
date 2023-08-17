@@ -34,6 +34,7 @@ function OnEat_LuckySoda(food, player, percentage)
     if percentage == 1 then
         print("player drank fully lucky soda")
         AtosClient:setHasLuckySodaUsage(true)
+        player:Say("I'm gonna get lucky today!")
     end
 
 end

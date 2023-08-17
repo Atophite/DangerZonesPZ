@@ -26,6 +26,7 @@ function AtosShared:readZonesFile()
     local x
     local y
     local reader = getModFileReader("RadiatedZones", "media/coordinates.txt", false)
+    print("reading zones file")
 
     if reader then
         local line = reader:readLine()
@@ -33,7 +34,6 @@ function AtosShared:readZonesFile()
         while line do
             print(line)
             for number in string.gmatch(line, "%d+") do
-                print(number)
                 if counter == 1 then
                     x = tonumber(number)
                 end

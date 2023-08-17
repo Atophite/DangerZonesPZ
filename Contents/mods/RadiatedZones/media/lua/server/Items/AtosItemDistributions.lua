@@ -428,7 +428,7 @@ table.insert(ProceduralDistributions.list["StoreShelfDrinks"].items, 0.1);
 
 --TheatreDrinks
 table.insert(ProceduralDistributions.list["TheatreDrinks"].items, "RadiatedZones.LuckySoda");
-table.insert(ProceduralDistributions.list["TheatreDrinks"].items, 0.15);
+table.insert(ProceduralDistributions.list["TheatreDrinks"].items, 0.05);
 
 --BandPracticeFridge
 table.insert(ProceduralDistributions.list["BandPracticeFridge"].items, "RadiatedZones.LuckySoda");

@@ -2,7 +2,14 @@
 This mod was a fun project I had in 2022. Finally I decided to finish it.
 The mod is multiplayer compatible.
 
-There are around 20 radiated zones scattered in the map. When you are wearing a geiger teller you will know when you are in a radiated area. The geiger teller makes sound and has a visual text that says there is some radiation detected. You need Iodine and a Hazmat suit to protect yourself. Iodine protect you for 50%, the Hazmat suit protects you 100%. The Iodine can be used to remove some radiation but this can only be done every 24 hours. Iodine can always be used to protect you from radiation. Iodine has a 5 hour long duration.
+It's recommended to use this mod on a new save.
+
+The following start locations are relatively safe:
+Maldraugh, Riverside, Rosewood, West Point
+
+There are around 20 radiated zones scattered in the map. When you are wearing a geiger teller you will know when you are in a radiated area. The geiger teller makes sound and has a visual text that says there is some radiation detected. You need Iodine and a Hazmat suit to protect yourself. Iodine protect you for 50%, the Hazmat suit protects you 100%. The Iodine can be used to remove some radiation but this can only be done every 12 hours. Iodine can always be used to protect you from radiation. Iodine has a 5 hour long duration.
+
+There is a chance to be cured from radiation. Read below how it works.
 
 [h2] Installation: [/h2]
 The mod doesn't require any extra installation steps.
@@ -17,7 +24,7 @@ The mod requires MoodleFramework to have custom moodles.
 
 [h2]Recommend optional mods:[/h2]
 [h3]SpeedFramework[/h3]
-Is an optional mod. When player is wearing hazmat suit. The player moves 30% slower.
+Is an optional mod but I highly recommend it. When player is wearing hazmat suit. The player moves 30% slower.
 [url=https://steamcommunity.com/workshop/filedetails/?id=2941768575][/url]
 
 [h3]Where's Hazmat Suit?[/h3]
@@ -62,9 +69,9 @@ There are three stages of radiated:
 [*]heavily radiated (2000 RAD)
 [/list]
 
-if player is lightly radiated longer than a day the player will get 50% sickness. 
-if player is medium radiated longer than a day the player get 50% sickness. 
-If player reach heavily radiated the player will die in a day with 100% sickness. 
+if player is lightly radiated the player will get 50% sickness.
+if player is medium radiated the player get 75% sickness.
+If player reach heavily radiated the player will die with 100% sickness.
 
 [list]
 [*]Die Chance: 3%
@@ -80,19 +87,18 @@ OR if rad is above 1000
 [*]Radiation is Not Cured (No event occurs): 50%
 [/list]
 
-When lightly radiated or medium the player has everyday a chance to cure from radiation. 
+When lightly radiated or medium the player has everyday a chance to cure from radiation.
 But also has the chance to die.
-The chance of being sick from radiated is X% this will not cure until player hit the luck of being cured. 
+The chance of being sick from radiated is X% this will not cure until player hit the luck of being cured.
 
-When player reached cured state the radiation will fall off everyday. 
+When player reached cured state the radiation will fall off everyday.
 
 [h1] Q&A [/h1]
 Q: Is this mod multiplayer compatible?
 A: Yes.
 
 Q: My geiger teller is not working
-A: Make sure the geiger teller is empty and if there are any batteries in it.
-The 4 batteries needs to have at least 1% of battery charge.
+A: Make sure the geiger teller is not empty. You need 4 batteries to fill up the geiger teller. If there are batteries already in it. You can remove the batteries and place new batteries. It works similar to the flashlight.
 
 Q: I'm running so slow with the hazmat suit
 A: You can disable SpeedFramework mod, to make your character faster with hazmat suit on.
@@ -100,9 +106,23 @@ A: You can disable SpeedFramework mod, to make your character faster with hazmat
 Q: I'm wearing a hazmat suit but I'm not protected and I don't see the hazmat moodle.
 A: Possibly there is a hole in your suit or the condition of the suit is 0. I might make a feature to make hazmat suits fixable.
 
+Q: Where can I loot the hazmat, geigerteller and Iodine?
+A: Hazmat can be found in any logical place, it's rare in wardrobes, can be found in medical and army area's. Geigerteller can be found in electronic stuff and Iodine can be found pretty much anywhere like bedtables, bathrooms, medical and army area's, etc.
+
+Q: How can I mute the geiger teller sound?
+A: You can by turning it off. Or right click and click on "Look at Geiger Teller" to see if there is any radiation. But be aware this option also uses battery so it can't be abused!
+
+[h1] Features that are being worked on: [/h1]
+Functional gas mask with replaceable airfilters.
+Fixable hazmat suit with ductape.
+A Self Contained Breathing Apparatus (SCBA) for the hazmat suit.
+I might implement some "fun" things like a Soda Can that can give you more luck with curing from radiation, etc.
+Washing yourself will do something useful against radiation.
+
+
 [h1]My other mods:[/h1]
 If you want even longer smoke time:
-[url=https://steamcommunity.com/sharedfiles/filedetails/?id=2857547671] Even longer smoke time [/url]
+[url=https://steamcommunity.com/sharedfiles/filedetails/?id=2855493549] Longer smoke time [/url]
 [url=https://steamcommunity.com/sharedfiles/filedetails/?id=2858157800] Better Smoke Sound [/url]
 
 [quote]
@@ -111,6 +131,9 @@ This mod can only be added to and extended with the express permission from the 
 
 If no permission is received you may not alter the mod.
  [/quote]
+
+[h1][url=https://github.com/Atophite/RadiatedZonesPZ]Github[/url][/h1]
+
 
 Wanna support? Kind words and helpful feedback appreciated. Feel free to buy me a hot coffee otherwise!.
 [url=https://ko-fi.com/atophite] [img]https://i.imgur.com/q3tKS4P.png[/img][/url]

@@ -32,15 +32,16 @@ end
 local function onGameStart()
 	local player = getPlayer()
 
+	--This isnt even working lol
 	--if client is online send request to server
 	if isClient() then
-		print("requesting zones")
+		print("requesting zones 1")
 		sendClientCommand("Atos", "RequestAllZones", {
 			player = player
 		});
 	else
 		--If client is offline, manually read the file
-		print("reading zones file cuz offline")
+		print("reading zones file from client side cuz offline")
 		zones = AtosShared:readZonesFile()
 
 	end
@@ -105,8 +106,26 @@ local function EveryTenMinutes()
 	--Check if player is protected by pills
 	checkIfPlayerProtectedByPills()
 
-	--If player is wearing gaskmask
+	--If player is wearing gasmask
 	AtosClient:useGasMask(player)
+
+	--If zones are empty
+	--sendClientCommand only works on multiplayer
+	--Wish it was working on onConnected/onGameStart
+	if zones == nil then
+		if(isClient()) then
+			print("Requesting zones 2")
+			sendClientCommand("Atos", "RequestAllZones", {
+				player = player
+			});
+		else
+			zones = AtosShared:readZonesFile()
+		end
+	else
+		AtosClient:loopZones()
+	end
+
+
 
 end
 
@@ -120,25 +139,36 @@ local function EveryDays()
 	local cureChance = 30
 	local burnChance = 50
 	local currentRadiation = AtosClient:getRadiation()
+	local hasLuckySodaUsage = AtosClient:getHasLuckySodaUsage()
 	print("Day is over. The dice has been rolled: " .. chance)
 
 
-	if AtosClient:getRadiationCured() == true or currentRadiation < 450 then
-		AtosClient:setRadiation(currentRadiation / 1.2)
+	if AtosClient:getRadiationCured() == true or currentRadiation < 300 then
+		if hasLuckySodaUsage then
+			AtosClient:setRadiation(currentRadiation / 1.4)
+			--When day is over lucky soda wears out
+			AtosClient:setHasLuckySodaUsage(false)
+		else
+			AtosClient:setRadiation(currentRadiation / 1.2)
+		end
+
+		--Stop the function since it doesn't needs to go further.
 		return
 	end
 
 	if currentRadiation >= 1000 then
-		dieChance = 10 --5%
-		cureChance = 20 --10%
-		burnChance = 50 --30%
+		dieChance = 5 --5%
+		cureChance = 15 --10%
+		burnChance = 50 --35%
 	end
 
 	if AtosClient:getHasLuckySodaUsage() then
 		print("player drank lucky soda. Chances has been altered.")
 		dieChance = -1 --0%
-		cureChance = 60--50%
 		burnChance = 10--10%
+		cureChance = 60--50%
+		AtosClient:setRadiation(currentRadiation / 1.4)
+		--When day is over lucky soda wears out
 		AtosClient:setHasLuckySodaUsage(false)
 	end
 
@@ -166,25 +196,6 @@ local function EveryDays()
 end
 
 local function everyOneMinute()
-	local player = getPlayer()
-	--Check for pills
-
-
-	--If zones are empty
-	--sendClientCommand only works on multiplayer
-	--For some reason the sendClientCommand doesnt work on onGameStart()
-	if zones == nil then
-		if(isClient()) then
-			sendClientCommand("Atos", "RequestAllZones", {
-				player = player
-			});
-		else
-			zones = AtosShared:readZonesFile()
-		end
-	else
-		AtosClient:loopZones()
-	end
-
 
 	AtosClient:calculateRadiation()
 end
@@ -200,11 +211,6 @@ function AtosClient:setGeigerAndProtectMoodle()
 	if AtosClient:isGeigerEquipped(player) and not hasGeiger then
 		hasGeiger = true
 
-		--if not isInZone then
-		--	player:Say("Radiation not detected!")
-		--elseif isInZone then
-		--	player:Say("Radiation detected!")
-		--end
 
 	elseif not AtosClient:isGeigerEquipped(player) then
 		hasGeiger = false
@@ -268,18 +274,24 @@ function AtosClient:validateZone()
 				player:Say("Radiation detected!")
 			end
 			hasEnteredZone = true
-			AtosClient:setGeigerAndProtectMoodle()
+			--AtosClient:setGeigerAndProtectMoodle()
+			print("player entered zone")
+			local playerIsProtectedByClothingType = AtosClient:playerIsProtectedByClothingType(player)
+			if playerIsProtectedByClothingType == "HazmatSuit" or playerIsProtectedByClothingType == "GasMask"  then
+				print("player is wearing hazmat or gasmask protection")
+			elseif playerIsProtectedByClothingType == "LightMask"  then
+				print("player is wearing light mask protection like dustmask")
+
+			elseif playerIsProtectedByClothingType == "ClothMask"  then
+				print("player is wearing cloth mask protection like improvised cloth mask")
+			else
+				print("player is not wearing protection")
+			end
 		end
 
-		local playerIsProtectedByClothingType = AtosClient:playerIsProtectedByClothingType(player)
 
-		if playerIsProtectedByClothingType == "HazmatSuit" or playerIsProtectedByClothingType == "GasMask"  then
-			print("player is wearing hazmat or gasmask protection")
-		elseif playerIsProtectedByClothingType == "LightMask" then
-			print("player is wearing light mask protection like dustmask")
-		else
-			print("player is not wearing protection")
-		end
+
+
 
 		--If the player has a geiger the player can detect the radiation
 		if AtosClient:isGeigerEquipped(player) then
@@ -327,11 +339,9 @@ function AtosClient:calculateRadiation()
 				--print(playerRadiation)
 
 			else
-				print(radiationValues.noPills)
+				--print(radiationValues.noPills)
 				playerRadiation = playerRadiation + radiationValues.noPills
-				print(playerRadiation)
-
-
+				--print(playerRadiation)
 
 			end
 		end

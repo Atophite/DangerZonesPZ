@@ -4,7 +4,7 @@
 - [x] Implement repairable hazmat suits with rubber and ducttape
 - [x] Remove chance of dying when lightly radiated
 - [x] Add distrubitions/ gasmask/luckysoda
-- [ ] Add new translations
+- [x] Add new translations
 - [x] Tooltip empty gasmask/book
 - [ ] Fix that the empty gasmask finds the best gasmask filter
 - [x] Implement lucky soda
