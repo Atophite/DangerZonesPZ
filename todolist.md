@@ -1,25 +1,14 @@
-# TODO LIST new version
-- [x] Fixed an issue when reaching max RADS. Player will die with foodsickness now.
-- [x] Implement functional gas mask
-- [x] Implement repairable hazmat suits with rubber and ducttape
-- [x] Remove chance of dying when lightly radiated
-- [x] Add distrubitions/ gasmask/luckysoda
-- [x] Add new translations
-- [x] Tooltip empty gasmask/book
-- [ ] Fix that the empty gasmask finds the best gasmask filter
-- [x] Implement lucky soda
-- [x] Implement cigarette heals radiation
-- [x] Change some chances of burning, etc.
-- [x] Add option to spawn with geiger teller (modoptions).
-- [ ] Look into SMUI (MOPP suit)
+# TODO LIST new version 1.2.2
+
+- [ ] Fix that the empty gasmask and geigerteller finds the best gasmask filter/battery
+- [x] Implement MysteriousHazmat from They Knew mod
 
 - boolean	contains(InventoryItem inventoryItem) use
-- are you considering compatibility for SMUI? that mod had a MOPP suit and it'd be pretty cool if that could work with this one
 
 # TO TEST
-- [ ] Test translations
-- [ ] Test multiplayer
-- [ ] 
+
+# Future things
+- [ ] Implement a function to randomize radiated zones when the world is being made
 
 
 # DONE
@@ -40,7 +29,6 @@
 - [x] Implement support for multiplayer
 - [x] Create a cure for radiation: introduce a chance for daily radiation cure or else player will die from radiation
 - [ ] ~Implement an air filter. The air filter can be used for the hazmat to work~
-- [ ] Implement a function to randomize radiated zones when the world is being made
 - [ ] ~Utilize iodine for aiding in the curing process~
 - [x] Implement burn damage when medium radiated
 - [x] Nerf Iodine so the player can't spam Iodine to reduce RADS (its 25 RADS now)
@@ -51,5 +39,16 @@
 - [x] Make mod logo
 - [x] Make mod showcase images
 - [x] Make mod showcase video
+- [x] Implement lucky soda
+- [x] Implement cigarette heals radiation
+- [x] Change some chances of burning, etc.
+- [x] Add option to spawn with geiger teller (modoptions).
+- [x] Fixed an issue when reaching max RADS. Player will die with foodsickness now.
+- [x] Implement functional gas mask
+- [x] Implement repairable hazmat suits with rubber and ducttape
+- [x] Remove chance of dying when lightly radiated
+- [x] Add distrubitions/ gasmask/luckysoda
+- [x] Add new translations
+- [x] Tooltip empty gasmask/book
 
 

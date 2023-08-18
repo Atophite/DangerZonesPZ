@@ -102,30 +102,39 @@ function RadiatedZones.OnCreate.GasMaskAirFilterRemove(items, result, player)
 end
 
 function RadiatedZones.OnTest.RepairHazmatSuit(sourceItem, result)
+    local validItemTypes = {
+        ["Base.HazmatSuit"] = true,
+        ["TheyKnew.MysteriousHazmat"] = true
+    }
 
-    if sourceItem:getType() == "HazmatSuit" then
-
+    local itemType = sourceItem:getFullType()
+    if validItemTypes[itemType] then
         return sourceItem:getHolesNumber() > 0
     end
     return true
 end
 
 function RadiatedZones.OnCreate.RepairHazmatSuit(items, result, player)
+    local validItemTypes = {
+        ["Base.HazmatSuit"] = true,
+        ["TheyKnew.MysteriousHazmat"] = true
+    }
 
+    local test = AtosClient
 
-    for i=0, items:size()-1 do
+    for i = 0, items:size() - 1 do
         local item = items:get(i)
-        if item:getClothingItemName() == "HazmatSuit" then
+        local itemType = item:getFullType()
+
+        if validItemTypes[itemType] then
             local itemCondition = item:getCondition()
             local itemDirtyness = item:getDirtyness()
+            --Recipe has RemoveResultItem:true parameter,
 
-            result:setCondition(itemCondition)
-            result:setDirtyness(itemDirtyness)
+            local hazmatSuit = player:getInventory():AddItem(itemType)
 
+            hazmatSuit:setCondition(itemCondition)
+            hazmatSuit:setDirtyness(itemDirtyness)
         end
     end
 end
-
-
-
-

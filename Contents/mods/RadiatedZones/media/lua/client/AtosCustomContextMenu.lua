@@ -70,8 +70,10 @@ ISInventoryPaneContextMenu.wearItem = function(item, player)
     -- ISInventoryPaneContextMenu.onClothingItemExtra(item, item:getClothingItemExtra():get(0), playerObj);
     -- else
     ISInventoryPaneContextMenu.transferIfNeeded(playerObj, item);
-    print(item:getName())
-    if item:getClothingItemName() == "HazmatSuit" then
+
+    local clothingTypeByMap = AtosConstants.protectionTypeMap[clothingItemType]
+
+    if clothingTypeByMap == "HazmatSuit" then
         ISTimedActionQueue.add(ISWearClothing:new(playerObj, item, 1000));
     else
         ISTimedActionQueue.add(ISWearClothing:new(playerObj, item, 50));
@@ -84,7 +86,10 @@ end
 ISInventoryPaneContextMenu.unequipItem = function(item, player)
     if not getSpecificPlayer(player):isEquipped(item) then return end
     if item ~= nil and item:getType() == "CandleLit" then item = ISInventoryPaneContextMenu.litCandleExtinguish(item, player) end
-    if item:getClothingItemName() == "HazmatSuit" then
+
+    local clothingTypeByMap = AtosConstants.protectionTypeMap[clothingItemType]
+
+    if clothingTypeByMap == "HazmatSuit" then
         ISTimedActionQueue.add(ISUnequipAction:new(getSpecificPlayer(player), item, 500));
     else
         ISTimedActionQueue.add(ISUnequipAction:new(getSpecificPlayer(player), item, 50));

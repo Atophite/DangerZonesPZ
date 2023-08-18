@@ -51,7 +51,7 @@ module RadiatedZones {
     recipe Repair Hazmat Suit
         {
             keep Scissors,
-            HazmatSuit,
+            HazmatSuit/MysteriousHazmat,
             DuctTape=2,
 
             Result:HazmatSuit,
@@ -60,6 +60,7 @@ module RadiatedZones {
             OnTest:RadiatedZones.OnTest.RepairHazmatSuit,
             OnCreate:RadiatedZones.OnCreate.RepairHazmatSuit,
             Sound:PutItemInBag,
+            RemoveResultItem:true,
         }
 
     recipe Craft Improvised Gas Mask Filter

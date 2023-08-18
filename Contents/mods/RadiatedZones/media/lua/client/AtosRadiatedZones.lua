@@ -23,6 +23,7 @@ local zones
 
 local AtosClient = AtosRadiatedZones.Client
 local AtosShared = AtosRadiatedZones.Shared
+local AtosConstants = AtosRadiatedZones.Constants
 
 local function onClothingUpdated(player)
 	--print("clothing update")
@@ -271,17 +272,21 @@ function AtosClient:validateZone()
 			hasEnteredZone = true
 			--AtosClient:setGeigerAndProtectMoodle()
 			print("player entered zone")
-			local playerIsProtectedByClothingType = AtosClient:playerIsProtectedByClothingType(player)
-			if playerIsProtectedByClothingType == "HazmatSuit" or playerIsProtectedByClothingType == "GasMask"  then
-				print("player is wearing hazmat or gasmask protection")
-			elseif playerIsProtectedByClothingType == "LightMask"  then
-				print("player is wearing light mask protection like dustmask")
 
-			elseif playerIsProtectedByClothingType == "ClothMask"  then
-				print("player is wearing cloth mask protection like improvised cloth mask")
-			else
-				print("player is not wearing protection")
-			end
+			---- ----------------------DEBUG SHIT ------------------------
+		--	local playerIsProtectedByClothingType = AtosClient:playerIsProtectedByClothingType(player)
+		--	if playerIsProtectedByClothingType == "HazmatSuit"   then
+		--		print("player is wearing hazmat protection")
+		--	elseif playerIsProtectedByClothingType == "GasMask" then
+		--		print("player is wearing gasmask protection")
+		--	elseif playerIsProtectedByClothingType == "LightMask"  then
+		--		print("player is wearing light mask protection like dustmask")
+		--
+		--	elseif playerIsProtectedByClothingType == "ClothMask"  then
+		--		print("player is wearing cloth mask protection like improvised cloth mask")
+		--	else
+		--		print("player is not wearing protection")
+		--	end
 		end
 
 
@@ -326,7 +331,7 @@ function AtosClient:calculateRadiation()
 	if isInZone then
 
 		-- Calculate player radiation based on clothing type
-		local radiationValues = AtosClient.clothingRadiation[playerWearClothingType]
+		local radiationValues = AtosConstants.clothingRadiation[playerWearClothingType]
 		if radiationValues then
 			if playerIsProtectedByPills then
 				--print(radiationValues.withPills)
