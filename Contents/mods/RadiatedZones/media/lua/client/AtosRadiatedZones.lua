@@ -19,10 +19,11 @@ local hasGeiger = false
 local hasEnteredZone = false
 
 
-local zones
+local zones = nil
 
 local AtosClient = AtosRadiatedZones.Client
 local AtosShared = AtosRadiatedZones.Shared
+local AtosConstants = AtosRadiatedZones.Constants
 
 local function onClothingUpdated(player)
 	--print("clothing update")
@@ -109,19 +110,6 @@ local function EveryTenMinutes()
 	--If player is wearing gasmask
 	AtosClient:useGasMask(player)
 
-	--If zones are empty
-	--sendClientCommand only works on multiplayer
-	--Wish it was working on onConnected/onGameStart
-	if zones == nil then
-		if(isClient()) then
-			print("Requesting zones 2")
-			sendClientCommand("Atos", "RequestAllZones", {
-				player = player
-			});
-		else
-			zones = AtosShared:readZonesFile()
-		end
-	end
 end
 
 
@@ -191,7 +179,24 @@ local function EveryDays()
 end
 
 local function everyOneMinute()
-	AtosClient:loopZones()
+
+	--If zones are empty
+	--sendClientCommand only works on multiplayer
+	--Wish it was working on onConnected/onGameStart
+	if zones == nil then
+		if(isClient()) then
+			print("Requesting zones 2")
+			sendClientCommand("Atos", "RequestAllZones", {
+				player = player
+			});
+		else
+			zones = AtosShared:readZonesFile()
+		end
+	else
+		--Loop through the zones and check if player is in the zone
+		AtosClient:loopZones()
+	end
+
 	AtosClient:calculateRadiation()
 end
 
@@ -238,6 +243,7 @@ end
 
 
 function AtosClient:loopZones()
+
 	local player = getPlayer()
     local playerX, playerY = player:getX(), player:getY()
     isInZone = false
@@ -271,17 +277,21 @@ function AtosClient:validateZone()
 			hasEnteredZone = true
 			--AtosClient:setGeigerAndProtectMoodle()
 			print("player entered zone")
-			local playerIsProtectedByClothingType = AtosClient:playerIsProtectedByClothingType(player)
-			if playerIsProtectedByClothingType == "HazmatSuit" or playerIsProtectedByClothingType == "GasMask"  then
-				print("player is wearing hazmat or gasmask protection")
-			elseif playerIsProtectedByClothingType == "LightMask"  then
-				print("player is wearing light mask protection like dustmask")
 
-			elseif playerIsProtectedByClothingType == "ClothMask"  then
-				print("player is wearing cloth mask protection like improvised cloth mask")
-			else
-				print("player is not wearing protection")
-			end
+			---- ----------------------DEBUG SHIT ------------------------
+		--	local playerIsProtectedByClothingType = AtosClient:playerIsProtectedByClothingType(player)
+		--	if playerIsProtectedByClothingType == "HazmatSuit"   then
+		--		print("player is wearing hazmat protection")
+		--	elseif playerIsProtectedByClothingType == "GasMask" then
+		--		print("player is wearing gasmask protection")
+		--	elseif playerIsProtectedByClothingType == "LightMask"  then
+		--		print("player is wearing light mask protection like dustmask")
+		--
+		--	elseif playerIsProtectedByClothingType == "ClothMask"  then
+		--		print("player is wearing cloth mask protection like improvised cloth mask")
+		--	else
+		--		print("player is not wearing protection")
+		--	end
 		end
 
 
@@ -300,6 +310,7 @@ function AtosClient:validateZone()
 		--Check if its the first time that the player has left the zone.
 		--To prevent a loop
 		if hasEnteredZone then
+			print("player has left the radiated zone")
 			AtosClient:stopSound()
 			--Send message to server that player left zone.
 			if AtosClient:isGeigerEquipped(player) then
@@ -326,7 +337,7 @@ function AtosClient:calculateRadiation()
 	if isInZone then
 
 		-- Calculate player radiation based on clothing type
-		local radiationValues = AtosClient.clothingRadiation[playerWearClothingType]
+		local radiationValues = AtosConstants.clothingRadiation[playerWearClothingType]
 		if radiationValues then
 			if playerIsProtectedByPills then
 				--print(radiationValues.withPills)

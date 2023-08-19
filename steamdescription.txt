@@ -1,19 +1,25 @@
-[h1] RadiatedZones [/h1]
+[h1] Radiated Zones [/h1]
 This mod was a fun project I had in 2022. Finally I decided to finish it.
 The mod is multiplayer compatible.
 
-It's recommended to use this mod on a new save. I'm not responsible if you lose your character progress.
+[h2]WARNING[/h2]
+It's recommended to use this mod on a new save/character. I'm not responsible if you lose your character progress.
 
-The following start locations are relatively safe:
-Maldraugh, Riverside, Rosewood, West Point
+[img]https://i.imgur.com/k4z3Srl.png[/img]
 
-There are around 20 radiated zones scattered in the map. When you are wearing a geiger teller you will know when you are in a radiated area. The geiger teller makes sound and has a visual text that says there is some radiation detected. You need Iodine and a Hazmat suit to protect yourself. Iodine give you some protection, the Hazmat suit protects you 100% protection. Gas masks and other masks works too. The Iodine can be used to remove some radiation but this can only be done every 12 hours. Iodine can always be used to protect you from radiation. Iodine has a 5 hour long duration.
+Navigate through a world with 20 radiated zones using your Geiger Teller, which alerts you with sounds when you enter a radiation area. Equip a Hazmat Suit for full 100% protection, or use Iodine and masks for varying levels of defense. Iodine grants partial protection with a 5-hour duration. Stay safe and adapt to the radiated challenges in this immersive mod.
 
 There is a chance to be cured from radiation. Read below how it works.
+
+[h2] Safe start locations: [/h2]
+The following start locations are relatively safe:
+Maldraugh, Riverside, Rosewood, West Point
 
 [h2] Installation: [/h2]
 The mod doesn't require any extra installation steps.
 If you would like to add more or change radiated zones. You can edit the coordinates.txt file which is located in the mod folder.
+
+[h2] If you decide to put your own coordinates remember to make a backup of your own custom coordinates file or you will lose it when you update the mod! [/h2]
 
 You can use the following website to generate a compatible coordinate that the mod can use:
 [url=https://atophite.github.io/RadiatedZonesCoordinatesGen/] Coordinate generator [/url]
@@ -24,15 +30,17 @@ https://steamcommunity.com/workshop/filedetails/discussion/3019024205/3816290897
 
 [h2]Required mods[/h2]
 The mod requires MoodleFramework to have custom moodles.
+And Speed Framework to make your character move 30% slower with a hazmat suit on! But it's optional.
 
 [h2]Recommend optional mods:[/h2]
-[h3]SpeedFramework[/h3]
-Is an optional mod but I highly recommend it. When player is wearing hazmat suit. The player moves 30% slower.
-[url=https://steamcommunity.com/workshop/filedetails/?id=2941768575][/url]
+[h3]Draw On The Map[/h3]
+Draw the radiated zones on the map that you found!
+[url=https://steamcommunity.com/sharedfiles/filedetails/?id=2804531012][img]https://i.imgur.com/FevpHxq.png[/img][/url]
+
 
 [h3]Where's Hazmat Suit?[/h3]
 Is an optional mod. Zombies around hospitals has a chance to spawn a hazmat suit zombie.
-https://steamcommunity.com/sharedfiles/filedetails/?id=2746846231
+[url=https://steamcommunity.com/sharedfiles/filedetails/?id=2746846231][img]https://i.imgur.com/SCHZAzf.png[/img][/url]
 
 [h2]Radiation Mod Feature List:[/h2]
 [h3]Radiation Protection and Detection[/h3]
@@ -53,7 +61,6 @@ https://steamcommunity.com/sharedfiles/filedetails/?id=2746846231
 [*]Multiplayer compatibility for all mod features.
 [/list]
 
-
 [h3]Radiation Effects and Gameplay[/h3]
 [list]
 [*]Daily chance for radiation cure; failure has a chance to die.
@@ -71,8 +78,8 @@ There are three stages of radiated:
 [*]heavily radiated (2000 RAD)
 [/list]
 
-if player is lightly radiated the player will get 50% sickness.
-if player is medium radiated the player get 75% sickness.
+if player is lightly radiated the player will get 25% sickness.
+if player is medium radiated the player get 50% sickness.
 If player reach heavily radiated the player will die with 100% sickness.
 
 If player has more than 300 RADS:
@@ -97,29 +104,10 @@ The chance of being sick from radiated is X% this will not cure until player hit
 When player reached cured state the radiation will fall off everyday.
 When player reached cured state and gets into a radiated zone again the cure is gone.
 
-[h1] Q&A [/h1]
-Q: Is this mod multiplayer compatible?
-A: Yes.
+[h1] Frequently Asked Questions [/h1]
+[url=https://steamcommunity.com/workshop/filedetails/discussion/3019024205/3816290897718558034/]Click here for the FAQ.[/url]
 
-Q: My geiger teller is not working
-A: Make sure the geiger teller is not empty. You need 4 batteries to fill up the geiger teller. If there are batteries already in it. You can remove the batteries and place new batteries. It works similar to the flashlight.
-
-Q: I'm running so slow with the hazmat suit
-A: You can disable SpeedFramework mod, to make your character faster with hazmat suit on.
-
-Q: How does curing work?
-A: Everyday you have a chance to cure. If you reached the curing state you are not sick anymore and the radiation slowly decreases.
-
-Q: I'm wearing a hazmat suit but I'm not protected and I don't see the hazmat moodle.
-A: Possibly there is a hole in your suit or the condition of the suit is 0. I might make a feature to make hazmat suits fixable.
-
-Q: Where can I loot the hazmat, geigerteller and Iodine?
-A: Hazmat can be found in any logical place, it's rare in wardrobes, can be found in medical and army area's. Geigerteller can be found in electronic stuff and Iodine can be found pretty much anywhere like bedtables, bathrooms, medical and army area's, etc.
-
-Q: How can I mute the geiger teller sound?
-A: You can by turning it off. Or right click and click on "Look at Geiger Teller" to see if there is any radiation. But be aware this option also uses battery so it can't be abused!
-
-[h1] Version 1.1 [/h1]
+[h1] Version 1.2.1 [/h1]
 [h1] Here's what's new: [/h1]
 
 [h2] New Gear and Features: [/h2]
@@ -137,11 +125,10 @@ A: You can by turning it off. Or right click and click on "Look at Geiger Teller
     [*]Various minor bug fixes and optimizations have been implemented.
 [/list]
 
-
 [h1]My other mods:[/h1]
-If you want even longer smoke time:
-[url=https://steamcommunity.com/sharedfiles/filedetails/?id=2855493549] Longer smoke time [/url]
-[url=https://steamcommunity.com/sharedfiles/filedetails/?id=2858157800] Better Smoke Sound [/url]
+[url=https://steamcommunity.com/sharedfiles/filedetails/?id=2855493549] [img]https://i.imgur.com/ttwKTgk.png[/img][/url] [url=https://steamcommunity.com/sharedfiles/filedetails/?id=2858157800] [img]https://i.imgur.com/Cqq1zFf.png[/img][/url]
+
+I'm pretty new with making mods in general. Any help would be appreciated!
 
 [quote]
 Ask for permission [theindiestone.com]
@@ -151,7 +138,6 @@ If no permission is received you may not alter the mod.
  [/quote]
 
 [h1][url=https://github.com/Atophite/RadiatedZonesPZ]Github[/url][/h1]
-
 
 Wanna support? Kind words and helpful feedback appreciated. Feel free to buy me a hot coffee otherwise!.
 [url=https://ko-fi.com/atophite] [img]https://i.imgur.com/q3tKS4P.png[/img][/url]

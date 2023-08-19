@@ -5,6 +5,7 @@
 ---
 
 local AtosClient = AtosRadiatedZones.Client
+local AtosConstants = AtosRadiatedZones.Constants
 
 
 -- Contants for clothing types
@@ -13,7 +14,7 @@ local GASMASK = "GasMask"
 local HAZMAT = "HazmatSuit"
 local CLOTHMASK = "ClothMask"
 
-AtosClient.protectionTypeMap = {
+AtosConstants.protectionTypeMap = {
     ["Hat_DustMask"] = LIGHTMASK,
     ["Hat_SurgicalMask_Green"] = LIGHTMASK,
     ["Hat_SurgicalMask_Blue"] = LIGHTMASK,
@@ -22,6 +23,8 @@ AtosClient.protectionTypeMap = {
     ["ImprovisedMask"] = CLOTHMASK,
     ["Hat_GasMask"] = GASMASK,
     ["HazmatSuit"] = HAZMAT,
+    --THEY KNEW MOD
+    ["MysteriousHazmat"] = HAZMAT
 }
 
 -- Constants for radiation multipliers OBSOLETE FOR NOW
@@ -29,7 +32,7 @@ local BASE_MULTIPLIER = 1.10
 local PILL_PROTECTION_MULTIPLIER = 1.05
 
 -- Define radiation values for each clothing type
-AtosClient.clothingRadiation = {
+AtosConstants.clothingRadiation = {
     ["Nothing"] = { noPills = 6.5, withPills = 5.0},
     ["ClothMask"] = { noPills = 5.5, withPills = 4.5 },
     ["LightMask"] = { noPills = 4.0, withPills = 3.25 },

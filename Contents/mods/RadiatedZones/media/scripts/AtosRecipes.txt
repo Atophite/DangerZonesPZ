@@ -6,7 +6,7 @@ module RadiatedZones {
         destroy Battery = 4,
 
         Result:GeigerTeller,
-        Time:400.0,
+        Time:200.0,
         Category:Electrical,
         OnTest:RadiatedZones.OnTest.GeigerTellerBatteriesInsert,
         OnCreate:RadiatedZones.OnCreate.GeigerTellerBatteriesInsert,
@@ -17,7 +17,7 @@ module RadiatedZones {
         keep GeigerTeller,
 
         Result:Battery,
-        Time:400.0,
+        Time:200.0,
         Category:Electrical,
         OnTest:RadiatedZones.OnTest.GeigerTellerBatteriesRemove,
         OnCreate:RadiatedZones.OnCreate.GeigerTellerBatteriesRemove,
@@ -51,7 +51,7 @@ module RadiatedZones {
     recipe Repair Hazmat Suit
         {
             keep Scissors,
-            HazmatSuit,
+            HazmatSuit/MysteriousHazmat,
             DuctTape=2,
 
             Result:HazmatSuit,
@@ -60,6 +60,7 @@ module RadiatedZones {
             OnTest:RadiatedZones.OnTest.RepairHazmatSuit,
             OnCreate:RadiatedZones.OnCreate.RepairHazmatSuit,
             Sound:PutItemInBag,
+            RemoveResultItem:true,
         }
 
     recipe Craft Improvised Gas Mask Filter

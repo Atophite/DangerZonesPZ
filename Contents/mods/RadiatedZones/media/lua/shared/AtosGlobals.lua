@@ -5,6 +5,7 @@
 ---
 
 AtosRadiatedZones = {
+    Constants = { }, -- Constants
     Settings = { -- configuration options
 
     },
@@ -73,3 +74,5 @@ function AtosShared:readZonesFile()
 
     return zones
 end
+
+HAZMAT = "HazmatSuit"

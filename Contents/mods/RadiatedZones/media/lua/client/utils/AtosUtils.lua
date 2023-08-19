@@ -10,6 +10,7 @@ if isServer() and not isClient() then
 end
 
 local AtosClient = AtosRadiatedZones.Client
+local AtosConstants = AtosRadiatedZones.Constants
 
 function AtosClient:printCors()
 
@@ -81,7 +82,7 @@ function AtosClient:playerIsProtectedByClothingType(player)
    for count = 1, items:size() - 1 do
       local clothingItem = items:getItemByIndex(count)
       local clothingItemType = clothingItem:getType()
-      local protectionTypeByMap = AtosClient.protectionTypeMap[clothingItemType]
+      local protectionTypeByMap = AtosConstants.protectionTypeMap[clothingItemType]
 
       --print(items:getItemByIndex(count):getClothingItemName())
       if protectionTypeByMap == "HazmatSuit" then
