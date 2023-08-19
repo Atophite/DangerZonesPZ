@@ -6,7 +6,7 @@ module RadiatedZones {
         destroy Battery = 4,
 
         Result:GeigerTeller,
-        Time:400.0,
+        Time:200.0,
         Category:Electrical,
         OnTest:RadiatedZones.OnTest.GeigerTellerBatteriesInsert,
         OnCreate:RadiatedZones.OnCreate.GeigerTellerBatteriesInsert,
@@ -17,7 +17,7 @@ module RadiatedZones {
         keep GeigerTeller,
 
         Result:Battery,
-        Time:400.0,
+        Time:200.0,
         Category:Electrical,
         OnTest:RadiatedZones.OnTest.GeigerTellerBatteriesRemove,
         OnCreate:RadiatedZones.OnCreate.GeigerTellerBatteriesRemove,

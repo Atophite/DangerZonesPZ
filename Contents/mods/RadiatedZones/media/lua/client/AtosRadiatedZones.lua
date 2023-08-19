@@ -19,7 +19,7 @@ local hasGeiger = false
 local hasEnteredZone = false
 
 
-local zones
+local zones = nil
 
 local AtosClient = AtosRadiatedZones.Client
 local AtosShared = AtosRadiatedZones.Shared
@@ -110,19 +110,6 @@ local function EveryTenMinutes()
 	--If player is wearing gasmask
 	AtosClient:useGasMask(player)
 
-	--If zones are empty
-	--sendClientCommand only works on multiplayer
-	--Wish it was working on onConnected/onGameStart
-	if zones == nil then
-		if(isClient()) then
-			print("Requesting zones 2")
-			sendClientCommand("Atos", "RequestAllZones", {
-				player = player
-			});
-		else
-			zones = AtosShared:readZonesFile()
-		end
-	end
 end
 
 
@@ -192,7 +179,24 @@ local function EveryDays()
 end
 
 local function everyOneMinute()
-	AtosClient:loopZones()
+
+	--If zones are empty
+	--sendClientCommand only works on multiplayer
+	--Wish it was working on onConnected/onGameStart
+	if zones == nil then
+		if(isClient()) then
+			print("Requesting zones 2")
+			sendClientCommand("Atos", "RequestAllZones", {
+				player = player
+			});
+		else
+			zones = AtosShared:readZonesFile()
+		end
+	else
+		--Loop through the zones and check if player is in the zone
+		AtosClient:loopZones()
+	end
+
 	AtosClient:calculateRadiation()
 end
 
@@ -239,6 +243,7 @@ end
 
 
 function AtosClient:loopZones()
+
 	local player = getPlayer()
     local playerX, playerY = player:getX(), player:getY()
     isInZone = false
@@ -305,6 +310,7 @@ function AtosClient:validateZone()
 		--Check if its the first time that the player has left the zone.
 		--To prevent a loop
 		if hasEnteredZone then
+			print("player has left the radiated zone")
 			AtosClient:stopSound()
 			--Send message to server that player left zone.
 			if AtosClient:isGeigerEquipped(player) then

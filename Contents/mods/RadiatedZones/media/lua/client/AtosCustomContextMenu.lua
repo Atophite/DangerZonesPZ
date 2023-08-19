@@ -3,7 +3,7 @@
 --- Created by Atophite.
 --- DateTime: 29/07/2023 15:31
 ---
-local AtosClient = AtosRadiatedZones.Client
+local AtosConstants = AtosRadiatedZones.Constants
 
 local function doMenu(player, context, items)
     for i, v in ipairs(items) do
@@ -74,7 +74,7 @@ ISInventoryPaneContextMenu.wearItem = function(item, player)
     local clothingTypeByMap = AtosConstants.protectionTypeMap[clothingItemType]
 
     if clothingTypeByMap == "HazmatSuit" then
-        ISTimedActionQueue.add(ISWearClothing:new(playerObj, item, 1000));
+        ISTimedActionQueue.add(ISWearClothing:new(playerObj, item, 750));
     else
         ISTimedActionQueue.add(ISWearClothing:new(playerObj, item, 50));
     end
