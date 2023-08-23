@@ -1,0 +1,12 @@
+Tooltip_CS = {
+	Tooltip_item_geigerteller = "Zůstaňte ve střehu kvůli radiačnímu záření! Vybavte se na opasku (pravý nebo levý) nebo použijte primární/sekundární slot. Nezapomeňte jej aktivovat a sledujte výdrž baterie.",
+	Tooltip_item_iodine = "5 hodinové pilulky na radiační ochranu. Léčí záření v případě užívání každých 12 hodin.",
+	Tooltip_item_hazmat = "Protiradiační oblek poskytuje plnou ochranu proti radiačnímu záření. Zkontrolujte, zda v obleku nejsou nějaké díry!",
+	Tooltip_item_empty_geigerteller = "Vybitý Geigerovů čítač který je nepoužitelný. Pro plné nabití použijte 4 baterie!",
+	Tooltip_item_airfilter = "Vzduchový filtr pro plynovou masku. Použijte jej k doplnění vzduchového filtru plynové masky.",
+	Tooltip_item_nukesurivival_guide = "Radiační ochrana a strategie přežití"
+	Tooltip_item_luckysoda = "Pijte a mějte více štěstí v zoufalých časech. Získejte více štěstí při léčbě z radiace."
+	Tooltip_item_empty_gasmask = "Plynová maska bez filtru. Vložte filtr pro ochranu před zářením."
+	Tooltip_item_improvised_mask = "Improvizovaná maska která vás lehce ochrání před radiací."
+	Tooltip_item_gasmask = "Plynová maska vás dobře ochrání před radiací."
+}
