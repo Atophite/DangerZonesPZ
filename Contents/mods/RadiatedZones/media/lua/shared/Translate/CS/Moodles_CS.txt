@@ -1,0 +1,15 @@
+Moodles_CS {
+    Moodles_Iodine_Good_lvl4 = "Chráněný jódem",
+    Moodles_Iodine_Good_desc_lvl4 = "Účinky jódu vás činí odolnějšími vůči radiačnímu záření",
+    Moodles_Iodine_Bad_lvl3 = "Chráněný jódem",
+    Moodles_Iodine_Bad_desc_lvl3 = "Účinky jódu jsou téměř u konce",
+
+    Moodles_Hazmat_Good_lvl4 = "Chráněný protiradiačním oblekem",
+    Moodles_Hazmat_Good_desc_lvl4 = "Protiradiační oblek vás činí plně odolným vůči radiačnímu záření",
+
+    Moodles_GasMask_Good_lvl4 = "Chráněný plynovou maskou",
+    Moodles_GasMask_Good_desc_lvl4 = "Plynová maska vás činí odolnějšími vůči radiačnímu záření",
+
+    Moodles_LightMask_Good_lvl4 = "Chráněný maskou",
+    Moodles_LightMask_Good_desc_lvl4 = "Maska vás činí o něco odolnějšími vůči radiačnímu záření",
+}

@@ -1,0 +1,4 @@
+Sandbox_CS = {
+    Sandbox_RadiatedZones = "Radiační zóny",
+    Sandbox_RadiatedZones_SpawnWithGeigerTeller = "Spawnutí s Geigerovým čitačem",
+}
