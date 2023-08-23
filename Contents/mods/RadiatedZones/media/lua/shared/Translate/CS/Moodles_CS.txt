@@ -1,15 +1,15 @@
 Moodles_CS {
-    Moodles_Iodine_Good_lvl4 = "ChrÃ¡nÄ›nÃ½ jÃ³dem",
-    Moodles_Iodine_Good_desc_lvl4 = "ÃšÄinky jÃ³du vÃ¡s ÄinÃ­ odolnÄ›jÅ¡Ã­mi vÅ¯Äi radiaÄnÃ­mu zÃ¡Å™enÃ­",
-    Moodles_Iodine_Bad_lvl3 = "ChrÃ¡nÄ›nÃ½ jÃ³dem",
-    Moodles_Iodine_Bad_desc_lvl3 = "ÃšÄinky jÃ³du jsou tÃ©mÄ›Å™ u konce",
+    Moodles_Iodine_Good_lvl4 = "Chr nØnì j¢dem",
+    Moodles_Iodine_Good_desc_lvl4 = "éŸinky j¢du v s Ÿin¡ odolnØjç¡mi v…Ÿi radiaŸn¡mu z ıen¡",
+    Moodles_Iodine_Bad_lvl3 = "Chr nØnì j¢dem",
+    Moodles_Iodine_Bad_desc_lvl3 = "éŸinky j¢du jsou t‚mØı u konce",
 
-    Moodles_Hazmat_Good_lvl4 = "ChrÃ¡nÄ›nÃ½ protiradiaÄnÃ­m oblekem",
-    Moodles_Hazmat_Good_desc_lvl4 = "ProtiradiaÄnÃ­ oblek vÃ¡s ÄinÃ­ plnÄ› odolnÃ½m vÅ¯Äi radiaÄnÃ­mu zÃ¡Å™enÃ­",
+    Moodles_Hazmat_Good_lvl4 = "Chr nØnì protiradiaŸn¡m oblekem",
+    Moodles_Hazmat_Good_desc_lvl4 = "ProtiradiaŸn¡ oblek v s Ÿin¡ plnØ odolnìm v…Ÿi radiaŸn¡mu z ıen¡",
 
-    Moodles_GasMask_Good_lvl4 = "ChrÃ¡nÄ›nÃ½ plynovou maskou",
-    Moodles_GasMask_Good_desc_lvl4 = "PlynovÃ¡ maska vÃ¡s ÄinÃ­ odolnÄ›jÅ¡Ã­mi vÅ¯Äi radiaÄnÃ­mu zÃ¡Å™enÃ­",
+    Moodles_GasMask_Good_lvl4 = "Chr nØnì plynovou maskou",
+    Moodles_GasMask_Good_desc_lvl4 = "Plynov  maska v s Ÿin¡ odolnØjç¡mi v…Ÿi radiaŸn¡mu z ıen¡",
 
-    Moodles_LightMask_Good_lvl4 = "ChrÃ¡nÄ›nÃ½ maskou",
-    Moodles_LightMask_Good_desc_lvl4 = "Maska vÃ¡s ÄinÃ­ o nÄ›co odolnÄ›jÅ¡Ã­mi vÅ¯Äi radiaÄnÃ­mu zÃ¡Å™enÃ­",
+    Moodles_LightMask_Good_lvl4 = "Chr nØnì maskou",
+    Moodles_LightMask_Good_desc_lvl4 = "Maska v s Ÿin¡ o nØco odolnØjç¡mi v…Ÿi radiaŸn¡mu z ıen¡",
 }
