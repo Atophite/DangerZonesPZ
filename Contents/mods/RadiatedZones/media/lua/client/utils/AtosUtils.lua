@@ -25,9 +25,20 @@ function AtosClient:printTable(table)
 
 end
 
-local function getHandItem(equippedItem)
+local function getGeigerTellerFromHand(equippedItem)
    if equippedItem ~= nil then
       if equippedItem:getName() == "Geiger Teller" and
+              equippedItem:getModName() == "Radiated Zones" and
+              equippedItem:isActivated() then
+         return true
+
+      end
+   end
+end
+
+local function getCivGeigerTellerFromHand(equippedItem)
+   if equippedItem ~= nil then
+      if equippedItem:getType() == "CivGeigerTeller" and
               equippedItem:getModName() == "Radiated Zones" and
               equippedItem:isActivated() then
          return true
@@ -42,7 +53,7 @@ function AtosClient:isGeigerEquipped(player)
    local secondaryEquippedItem = player:getSecondaryHandItem()
    local currentUseDelta
 
-   if getHandItem(primaryEquippedItem) or getHandItem(secondaryEquippedItem) then
+   if getGeigerTellerFromHand(primaryEquippedItem) or getGeigerTellerFromHand(secondaryEquippedItem) then
       return true
    end
 
@@ -55,6 +66,19 @@ function AtosClient:isGeigerEquipped(player)
             return true
       end
    end
+   return false
+end
+
+function AtosClient:isCivGeigerEquipped(player)
+   local primaryEquippedItem = player:getPrimaryHandItem()
+   local secondaryEquippedItem = player:getSecondaryHandItem()
+   local currentUseDelta
+
+   if getCivGeigerTellerFromHand(primaryEquippedItem) or getCivGeigerTellerFromHand(secondaryEquippedItem) then
+      print("civ geiger is equpped")
+      return true
+   end
+
    return false
 end
 
