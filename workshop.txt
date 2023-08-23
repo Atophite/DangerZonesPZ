@@ -113,7 +113,7 @@ description=
 description=[h1] Frequently Asked Questions [/h1]
 description=[url=https://steamcommunity.com/workshop/filedetails/discussion/3019024205/3816290897718558034/]Click here for the FAQ.[/url]
 description=
-description=[h1] Version 1.2.2 [/h1]
+description=[h1] Version 1.2.3 [/h1]
 description=[h1] Here's what's new: [/h1]
 description=
 description=[h2] New Gear and Features: [/h2]
@@ -130,6 +130,7 @@ description=
 description=[h2] Bug Fixes and Improvements: [/h2]
 description=[list]
 description=    [*]Various minor bug fixes and optimizations have been implemented.
+description=    [*] Added Czech translation
 description=[/list]
 description=
 description=[h1]My other mods:[/h1]
@@ -148,6 +149,9 @@ description=[h1][url=https://github.com/Atophite/RadiatedZonesPZ]Github[/url][/h
 description=
 description=Wanna support? Kind words and helpful feedback appreciated. Feel free to buy me a hot coffee otherwise!.
 description=[url=https://ko-fi.com/atophite] [img]https://i.imgur.com/q3tKS4P.png[/img][/url]
+description=
+description=Workshop ID: 3019024205
+description=Mod ID: RadiatedZones
 description=
 description=Workshop ID: 3019024205
 description=Mod ID: RadiatedZones

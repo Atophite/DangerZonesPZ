@@ -1,4 +1,4 @@
 Sandbox_CS = {
-    Sandbox_RadiatedZones = "RadiaÄnÃ­ zÃ³ny",
-    Sandbox_RadiatedZones_SpawnWithGeigerTeller = "SpawnutÃ­ s GeigerovÃ½m ÄitaÄem",
+    Sandbox_RadiatedZones = "RadiaŸn¡ z¢ny",
+    Sandbox_RadiatedZones_SpawnWithGeigerTeller = "Spawnut¡ s Geigerovìm ŸitaŸem",
 }
