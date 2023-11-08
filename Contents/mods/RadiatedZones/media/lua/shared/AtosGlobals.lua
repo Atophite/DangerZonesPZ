@@ -74,5 +74,3 @@ function AtosShared:readZonesFile()
 
     return zones
 end
-
-HAZMAT = "HazmatSuit"

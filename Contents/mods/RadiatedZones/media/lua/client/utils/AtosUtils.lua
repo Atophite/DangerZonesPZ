@@ -79,7 +79,7 @@ function AtosClient:playerIsProtectedByClothingType(player)
    local items = player:getWornItems()
    local isSpeedFrameworkActivated = getActivatedMods():contains("SpeedFramework")
 
-   for count = 1, items:size() - 1 do
+   for count = 0, items:size() - 1  do
       local clothingItem = items:getItemByIndex(count)
       local clothingItemType = clothingItem:getType()
       local protectionTypeByMap = AtosConstants.protectionTypeMap[clothingItemType]

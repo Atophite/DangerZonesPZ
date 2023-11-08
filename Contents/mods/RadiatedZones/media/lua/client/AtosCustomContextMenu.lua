@@ -6,19 +6,24 @@
 local AtosConstants = AtosRadiatedZones.Constants
 
 local function doMenu(player, context, items)
+
     for i, v in ipairs(items) do
         local item = v;
         if not instanceof(v, "InventoryItem") then
             item = v.items[1];
         end
 
-        if item:getType() then
-            if item:getType() == "GeigerTeller" then
+        local itemType = item:getType()
+        local protectionTypeByMap = AtosConstants.protectionTypeMap[itemType]
+
+
+        if itemType then
+            if itemType == "GeigerTeller" then
                 if item:getUsedDelta() > 0 then
                     context:addOption(getText("ContextMenu_measure_radiation"), item, measureRadiation, player);
                     context:addOption(getText("ContextMenu_check_geiger"), item, lookAtGeiger, player);
                 end
-            elseif item:getType() == "Hat_GasMask" then
+            elseif protectionTypeByMap == "GasMask" then
                 context:addOption(getText("ContextMenu_check_gasmask_filter"), item, checkGasMaskFilter, player);
             end
         end
@@ -42,7 +47,6 @@ end
 
 function checkGasMaskFilter(item, player)
     local playerObj = getSpecificPlayer(player);
-
     local condition = item:getCondition()
 
     if condition <= 0 then
@@ -59,6 +63,7 @@ function checkGasMaskFilter(item, player)
 end
 
 
+
 -------------------------- OVERRIDE--------------------------------------
 ISInventoryPaneContextMenu.wearItem = function(item, player)
     -- if clothing isn't in main inventory, put it there first.
@@ -71,10 +76,10 @@ ISInventoryPaneContextMenu.wearItem = function(item, player)
     -- else
     ISInventoryPaneContextMenu.transferIfNeeded(playerObj, item);
 
-    local clothingTypeByMap = AtosConstants.protectionTypeMap[clothingItemType]
+    local clothingTypeByMap = AtosConstants.protectionTypeMap[item:getType()]
 
     if clothingTypeByMap == "HazmatSuit" then
-        ISTimedActionQueue.add(ISWearClothing:new(playerObj, item, 750));
+        ISTimedActionQueue.add(ISWearClothing:new(playerObj, item, 500));
     else
         ISTimedActionQueue.add(ISWearClothing:new(playerObj, item, 50));
     end
@@ -87,7 +92,7 @@ ISInventoryPaneContextMenu.unequipItem = function(item, player)
     if not getSpecificPlayer(player):isEquipped(item) then return end
     if item ~= nil and item:getType() == "CandleLit" then item = ISInventoryPaneContextMenu.litCandleExtinguish(item, player) end
 
-    local clothingTypeByMap = AtosConstants.protectionTypeMap[clothingItemType]
+    local clothingTypeByMap = AtosConstants.protectionTypeMap[item:getType()]
 
     if clothingTypeByMap == "HazmatSuit" then
         ISTimedActionQueue.add(ISUnequipAction:new(getSpecificPlayer(player), item, 500));

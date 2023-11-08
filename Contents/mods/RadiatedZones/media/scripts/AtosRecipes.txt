@@ -72,7 +72,7 @@ module RadiatedZones {
             CottonBalls=4,
             DuctTape=2,
             Charcoal=1,
-            Result:ImprovisedGasMaskFilter,
+            Result:GasMaskFilter,
             NeedToBeLearn:true,
             Time:250.0,
             Category:Survivalist,

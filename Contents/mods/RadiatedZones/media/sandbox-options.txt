@@ -7,3 +7,11 @@ option RadiatedZones.SpawnWithGeigerTeller
     page = RadiatedZones,
     translation = RadiatedZones_SpawnWithGeigerTeller,
 }
+
+option RadiatedZones.HardcoreMode
+{
+    type = boolean,
+    default = false,
+    page = RadiatedZones,
+    translation = "Hardcore mode",
+}

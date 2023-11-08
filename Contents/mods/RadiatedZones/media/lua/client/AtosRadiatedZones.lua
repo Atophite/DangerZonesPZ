@@ -230,6 +230,7 @@ function AtosClient:setGeigerAndProtectMoodle()
 		AtosClient:setHazmatMoodle(0.5)
 		AtosClient:setLightMaskMoodle(0.5)
 	elseif playerIsProtectedByClothingType == "LightMask" or playerIsProtectedByClothingType == "ClothMask" then
+		isProtected = true
 		AtosClient:setLightMaskMoodle(1.0)
 		AtosClient:setGasMaskMoodle(0.5)
 		AtosClient:setHazmatMoodle(0.5)
@@ -279,19 +280,19 @@ function AtosClient:validateZone()
 			print("player entered zone")
 
 			---- ----------------------DEBUG SHIT ------------------------
-		--	local playerIsProtectedByClothingType = AtosClient:playerIsProtectedByClothingType(player)
-		--	if playerIsProtectedByClothingType == "HazmatSuit"   then
-		--		print("player is wearing hazmat protection")
-		--	elseif playerIsProtectedByClothingType == "GasMask" then
-		--		print("player is wearing gasmask protection")
-		--	elseif playerIsProtectedByClothingType == "LightMask"  then
-		--		print("player is wearing light mask protection like dustmask")
-		--
-		--	elseif playerIsProtectedByClothingType == "ClothMask"  then
-		--		print("player is wearing cloth mask protection like improvised cloth mask")
-		--	else
-		--		print("player is not wearing protection")
-		--	end
+			--local playerIsProtectedByClothingType = AtosClient:playerIsProtectedByClothingType(player)
+			--if playerIsProtectedByClothingType == "HazmatSuit"   then
+			--	print("player is wearing hazmat protection")
+			--elseif playerIsProtectedByClothingType == "GasMask" then
+			--	print("player is wearing gasmask protection")
+			--elseif playerIsProtectedByClothingType == "LightMask"  then
+			--	print("player is wearing light mask protection like dustmask")
+			--
+			--elseif playerIsProtectedByClothingType == "ClothMask"  then
+			--	print("player is wearing cloth mask protection like improvised cloth mask")
+			--else
+			--	print("player is not wearing protection")
+			--end
 		end
 
 

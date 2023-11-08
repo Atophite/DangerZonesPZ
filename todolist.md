@@ -1,9 +1,24 @@
-# TODO LIST new version 1.2.2
+# TODO LIST new version 1.3
 
-- [ ] Fix that the empty gasmask and geigerteller finds the best gasmask filter/battery
-- [x] Implement MysteriousHazmat from They Knew mod
+- [ ] Implement Stalker pack
+  - [ ] M40GasMask
+  - [ ] Cs2aGasMask
+  - [ ] GP5GasMask
+- [ ] Implement Brita Pack
+  - [ ] S10_Gasmask
+  - [ ] S10_Gasmask_Set
+  - [ ] GM15_Gasmask
+  - [ ] GM17_Gasmask
+  - [ ] GP4u_Gasmask
+  - [ ] GP5M_Gasmask
+  - [ ] K1_Gasmask
+  - [ ] Hat_M45_GasMask
+  - [ ] Hat_MCU_GasMask
+  - [ ] MM1_Gasmask
+  - [ ] Hat_MSA_Gas_Mask
+  - [ ] Hat_MSA_Gas_Mask_AMP
+  - [ ] Metro_Gasmask_set
 
-- boolean	contains(InventoryItem inventoryItem) use
 
 # TO TEST
 
@@ -50,5 +65,6 @@
 - [x] Add distrubitions/ gasmask/luckysoda
 - [x] Add new translations
 - [x] Tooltip empty gasmask/book
+- [x] Implement MysteriousHazmat from They Knew mod
 
 

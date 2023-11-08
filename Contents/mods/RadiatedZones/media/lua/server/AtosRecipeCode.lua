@@ -6,8 +6,20 @@
 RadiatedZones = {}
 RadiatedZones.OnCreate = {}
 RadiatedZones.OnTest = {}
+RadiatedZones.GetItemTypes = {}
 
 local AtosClient = AtosRadiatedZones.Client
+local AtosConstants = AtosRadiatedZones.Constants
+
+local function addExistingItemType(scriptItems, type)
+    local all = getScriptManager():getItemsByType(type)
+    for i=1,all:size() do
+        local scriptItem = all:get(i-1)
+        if not scriptItems:contains(scriptItem) then
+            scriptItems:add(scriptItem)
+        end
+    end
+end
 
 -- Return true if recipe is valid, false otherwise
 function RadiatedZones.OnTest.GeigerTellerBatteriesInsert(sourceItem, result)
@@ -77,7 +89,6 @@ function RadiatedZones.OnCreate.GasMaskAirFilterInsert(items, result, player)
 end
 
 function RadiatedZones.OnTest.GasMaskAirFilterRemove(sourceItem, result)
-
     return true
 
 end
@@ -138,4 +149,15 @@ function RadiatedZones.OnCreate.RepairHazmatSuit(items, result, player)
             hazmatSuit:setDirtyness(itemDirtyness)
         end
     end
+end
+
+function RadiatedZones.GetItemTypes.Mask(scriptItems)
+
+    for itemName, protectionType in pairs(AtosConstants.protectionTypeMap) do
+        if protectionType == "GasMask" then
+            addExistingItemType(scriptItems, itemName)
+
+        end
+    end
+
 end
