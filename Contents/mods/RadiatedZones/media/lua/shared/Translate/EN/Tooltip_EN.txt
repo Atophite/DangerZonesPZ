@@ -9,4 +9,6 @@ Tooltip_EN = {
 	Tooltip_item_empty_gasmask = "An gas mask without a filter. Insert a filter to provide radiation protection."
 	Tooltip_item_improvised_mask = "An improvised mask to lightly protect you against radiation."
 	Tooltip_item_gasmask = "A Gas Mask, it does a good job to protect you from radiation."
+	Tooltip_item_civ_geigerteller = "A civillian geiger teller, not as accurate but it does it's job."
+	Tooltip_item_dosimeter = "Use if you want to know how much radiation you have taken."
 }

@@ -149,6 +149,41 @@ module RadiatedZones {
         Tooltip = Tooltip_item_improvised_mask,
     }
 
+    item CivGeigerTeller
+    {
+        DisplayCategory = Electronics,
+        Weight  =   0.5,
+        Type    =   Drainable,
+        UseWhileEquipped	=	TRUE,
+        ActivatedItem	=	TRUE,
+        KeepOnDeplete = TRUE,
+        DisplayName =   Civillian Geiger Teller,
+        Icon            = CivGeigerteller,
+        Tooltip = Tooltip_item_civ_geigerteller,
+        StaticModel     = WalkieTalkieValue,
+        WorldStaticModel = CivGeigerteller,
+        ticksPerEquipUse = 5000,
+    }
+
+    item DosiMeter
+    {
+        DisplayCategory = Electronics,
+        Weight  =   0.2,
+        Type    =   Drainable,
+        AttachmentType = Walkie,
+        UseWhileEquipped	=	TRUE,
+        ActivatedItem	=	TRUE,
+        KeepOnDeplete = TRUE,
+        DisplayName =   Dosi Meter,
+        Icon            = Dosimeter,
+        Tooltip = Tooltip_item_dosimeter,
+        StaticModel     = WalkieTalkieValue,
+        WorldStaticModel = CivGeigerteller,
+        ticksPerEquipUse = 5000,
+    }
+
+
+
 }
 
 module Base {
