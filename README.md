@@ -1,6 +1,8 @@
 # RadiatedZonesPZ
 
 ![poster](https://github.com/Atophite/RadiatedZonesPZ/assets/14220576/1e210d50-c32f-443d-bec7-1933a599d9e9)
+### Workshop:
+https://steamcommunity.com/sharedfiles/filedetails/?id=3019024205
 
 # Project Zomboid Radiation Mod Feature List
 
