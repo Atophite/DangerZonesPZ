@@ -50,11 +50,11 @@ local function onGameStart()
 	AtosClient:setGeigerAndProtectMoodle()
 end
 
-local function OnCreatePlayer(playerIndex, player)
+local function OnCreateLivingCharacter(playerOrSurvivor, survivordesc)
 	print("new player created")
 	local spawnWithGeigerTeller = SandboxVars.RadiatedZones.SpawnWithGeigerTeller
 	if spawnWithGeigerTeller == true then
-		player:getInventory():AddItem("RadiatedZones.GeigerTeller")
+		playerOrSurvivor:getInventory():AddItem("RadiatedZones.GeigerTeller")
 	end
 end
 
@@ -466,5 +466,5 @@ Events.OnConnected.Add(onConnected)
 Events.OnGameBoot.Add(OnGameBoot)
 Events.EveryDays.Add(EveryDays)
 Events.EveryTenMinutes.Add(EveryTenMinutes)
-Events.OnCreatePlayer.Add(OnCreatePlayer)
+Events.OnCreateLivingCharacter.Add(OnCreateLivingCharacter)
 
