@@ -23,8 +23,30 @@ AtosConstants.protectionTypeMap = {
     ["ImprovisedMask"] = CLOTHMASK,
     ["Hat_GasMask"] = GASMASK,
     ["HazmatSuit"] = HAZMAT,
+
     --THEY KNEW MOD
-    ["MysteriousHazmat"] = HAZMAT
+    ["MysteriousHazmat"] = HAZMAT,
+
+    ----Stalker armor pack
+    --["M40GasMask"] = GASMASK,
+    --["Cs2aGasMask"] = GASMASK,
+    --["GP5GasMask"] = GASMASK,
+    --
+    ----BRITA ARMOR PACK
+    --["S10_Gasmask"] = GASMASK,
+    --["S10_Gasmask_Set"] = GASMASK,
+    --["GM15_Gasmask"] = GASMASK,
+    --["GM17_Gasmask"] = GASMASK,
+    --["GP4u_Gasmask"] = GASMASK,
+    --["GP5M_Gasmask"] = GASMASK,
+    --["K1_Gasmask"] = GASMASK,
+    --["Hat_M45_GasMask"] = GASMASK,
+    --["Hat_MCU_GasMask"] = GASMASK,
+    --["MM1_Gasmask"] = GASMASK,
+    --["Hat_MSA_Gas_Mask"] = GASMASK,
+    --["Hat_MSA_Gas_Mask_AMP"] = GASMASK,
+    --["Metro_Gasmask_set"] = GASMASK,
+
 }
 
 -- Constants for radiation multipliers OBSOLETE FOR NOW

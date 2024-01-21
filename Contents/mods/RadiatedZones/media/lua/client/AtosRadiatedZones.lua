@@ -50,11 +50,11 @@ local function onGameStart()
 	AtosClient:setGeigerAndProtectMoodle()
 end
 
-local function OnCreatePlayer(playerIndex, player)
+local function OnCreateLivingCharacter(playerOrSurvivor, survivordesc)
 	print("new player created")
 	local spawnWithGeigerTeller = SandboxVars.RadiatedZones.SpawnWithGeigerTeller
 	if spawnWithGeigerTeller == true then
-		player:getInventory():AddItem("RadiatedZones.GeigerTeller")
+		playerOrSurvivor:getInventory():AddItem("RadiatedZones.GeigerTeller")
 	end
 end
 
@@ -103,6 +103,8 @@ end
 local function EveryTenMinutes()
 
 	local player = getPlayer()
+
+	AtosClient:validateZoneWithCivGeiger(player)
 
 	--Check if player is protected by pills
 	checkIfPlayerProtectedByPills()
@@ -230,6 +232,7 @@ function AtosClient:setGeigerAndProtectMoodle()
 		AtosClient:setHazmatMoodle(0.5)
 		AtosClient:setLightMaskMoodle(0.5)
 	elseif playerIsProtectedByClothingType == "LightMask" or playerIsProtectedByClothingType == "ClothMask" then
+		isProtected = true
 		AtosClient:setLightMaskMoodle(1.0)
 		AtosClient:setGasMaskMoodle(0.5)
 		AtosClient:setHazmatMoodle(0.5)
@@ -258,12 +261,11 @@ function AtosClient:loopZones()
         end
     end
 
-    AtosClient:validateZone()
+    AtosClient:validateZoneWithGeiger(player)
 end
 
 
-function AtosClient:validateZone()
-	local player = getPlayer()
+function AtosClient:validateZoneWithGeiger(player)
 	-- Check if the player is in the radiation zone
 	if isInZone then
 
@@ -279,27 +281,80 @@ function AtosClient:validateZone()
 			print("player entered zone")
 
 			---- ----------------------DEBUG SHIT ------------------------
-		--	local playerIsProtectedByClothingType = AtosClient:playerIsProtectedByClothingType(player)
-		--	if playerIsProtectedByClothingType == "HazmatSuit"   then
-		--		print("player is wearing hazmat protection")
-		--	elseif playerIsProtectedByClothingType == "GasMask" then
-		--		print("player is wearing gasmask protection")
-		--	elseif playerIsProtectedByClothingType == "LightMask"  then
-		--		print("player is wearing light mask protection like dustmask")
-		--
-		--	elseif playerIsProtectedByClothingType == "ClothMask"  then
-		--		print("player is wearing cloth mask protection like improvised cloth mask")
-		--	else
-		--		print("player is not wearing protection")
-		--	end
+			--local playerIsProtectedByClothingType = AtosClient:playerIsProtectedByClothingType(player)
+			--if playerIsProtectedByClothingType == "HazmatSuit"   then
+			--	print("player is wearing hazmat protection")
+			--elseif playerIsProtectedByClothingType == "GasMask" then
+			--	print("player is wearing gasmask protection")
+			--elseif playerIsProtectedByClothingType == "LightMask"  then
+			--	print("player is wearing light mask protection like dustmask")
+			--
+			--elseif playerIsProtectedByClothingType == "ClothMask"  then
+			--	print("player is wearing cloth mask protection like improvised cloth mask")
+			--else
+			--	print("player is not wearing protection")
+			--end
 		end
-
-
-
 
 
 		--If the player has a geiger the player can detect the radiation
 		if AtosClient:isGeigerEquipped(player) then
+			isRadiationDetected = true
+			AtosClient:playSound()
+		else
+			isRadiationDetected = false
+			AtosClient:stopSound()
+		end
+	else
+		--Check if its the first time that the player has left the zone.
+		--To prevent a loop
+		if hasEnteredZone then
+			print("player has left the radiated zone")
+			AtosClient:stopSound()
+			--Send message to server that player left zone.
+			if AtosClient:isGeigerEquipped(player) then
+				player:Say("Radiation not detected!")
+			end
+
+			hasEnteredZone = false
+		end
+	end
+end
+
+function AtosClient:validateZoneWithCivGeiger()
+	local player = getPlayer()
+	-- Check if the player is in the radiation zone
+	if isInZone then
+
+		--Check if its the first time that the player has entered the zone.
+		--To prevent a loop
+		if not hasEnteredZone then
+
+			if AtosClient:isCivGeigerEquipped(player) and AtosClient:isGeigerEquipped(player) == false then
+				player:Say("Radiation detected!")
+			end
+			hasEnteredZone = true
+			--AtosClient:setGeigerAndProtectMoodle()
+
+			---- ----------------------DEBUG SHIT ------------------------
+			--	local playerIsProtectedByClothingType = AtosClient:playerIsProtectedByClothingType(player)
+			--	if playerIsProtectedByClothingType == "HazmatSuit"   then
+			--		print("player is wearing hazmat protection")
+			--	elseif playerIsProtectedByClothingType == "GasMask" then
+			--		print("player is wearing gasmask protection")
+			--	elseif playerIsProtectedByClothingType == "LightMask"  then
+			--		print("player is wearing light mask protection like dustmask")
+			--
+			--	elseif playerIsProtectedByClothingType == "ClothMask"  then
+			--		print("player is wearing cloth mask protection like improvised cloth mask")
+			--	else
+			--		print("player is not wearing protection")
+			--	end
+		end
+
+
+		--If the player has a geiger the player can detect the radiation
+		if AtosClient:isCivGeigerEquipped(player) then
 			isRadiationDetected = true
 			AtosClient:playSound()
 		else
@@ -411,5 +466,5 @@ Events.OnConnected.Add(onConnected)
 Events.OnGameBoot.Add(OnGameBoot)
 Events.EveryDays.Add(EveryDays)
 Events.EveryTenMinutes.Add(EveryTenMinutes)
-Events.OnCreatePlayer.Add(OnCreatePlayer)
+Events.OnCreateLivingCharacter.Add(OnCreateLivingCharacter)
 
