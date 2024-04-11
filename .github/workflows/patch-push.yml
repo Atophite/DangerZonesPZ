@@ -21,6 +21,7 @@ jobs:
           appID: 108600
           #workshop ID
           publishedFileID: 3019024205
+          path: "Contents/mods/RadiatedZones"
           # changelog: ${{ steps.changelog.outputs.changelog }}
         env:
           STEAM_ACCOUNT_NAME: ${{ secrets.STEAM_USERNAME }}
