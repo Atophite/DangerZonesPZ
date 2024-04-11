@@ -16,6 +16,9 @@ jobs:
         id: changelog
         run: echo "changelog=$(git log --format=%B -n 1 ${{ github.sha }})" >> $GITHUB_OUTPUT
 
+      - name: Display output
+        run: echo "${{ env.changelog }}"
+
       - name: Upload to Workshop
         uses: AnarkisGaming/workshop@v1
         with:
