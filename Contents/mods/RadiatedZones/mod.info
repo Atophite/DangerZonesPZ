@@ -7,4 +7,4 @@ require=MoodleFramework,SpeedFramework
 poster=poster.png
 icon=poster-mini.png
 versionMin=41.78.16
-modVersion=1.3
+modVersion=1.3.1
