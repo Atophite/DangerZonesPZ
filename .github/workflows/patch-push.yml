@@ -1,7 +1,7 @@
 name: Upload to Workshop
 on:
   schedule:
-    # 1 AM every friday
+    # 1 AM every friday!
     - cron: "00 1 * * 5"
   workflow_dispatch: 
   
