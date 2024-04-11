@@ -11,10 +11,6 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
-      
-      - name: Read changelog of commit
-        id: changelog
-        run: echo "changelog=$(git log --format=%b -n 1 ${{ github.sha }})" >> $GITHUB_OUTPUT
 
       - name: Display output
         run: echo "${{ env.changelog }}"
@@ -25,7 +21,7 @@ jobs:
           appID: 108600
           #workshop ID
           publishedFileID: 3019024205
-          changelog: ${{ steps.changelog.outputs.changelog }}
+          # changelog: ${{ steps.changelog.outputs.changelog }}
         env:
           STEAM_ACCOUNT_NAME: ${{ secrets.STEAM_USERNAME }}
           STEAM_PASSWORD: ${{ secrets.STEAM_PASSWORD  }}
