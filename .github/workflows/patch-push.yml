@@ -1,0 +1,27 @@
+name: Upload to Workshop
+on:
+  schedule:
+    # 1 AM every friday
+    - cron: "00 1 * * 5"
+  
+jobs:
+  upload:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+      
+      - name: Read changelog file
+        id: changelog
+        run: echo "::set-output name=content::$(cat changelog.txt)"
+
+      - name: Upload to Workshop
+        uses: AnarkisGaming/workshop@v1
+        with:
+          appID: 108600
+          #workshop ID
+          publishedFileID: 3019024205
+          changelog: ${{ steps.changelog.outputs.content }}
+        env:
+          STEAM_ACCOUNT_NAME: ${{ secrets.STEAM_USERNAME }}
+          STEAM_PASSWORD: ${{ secrets.STEAM_PASSWORD  }}
