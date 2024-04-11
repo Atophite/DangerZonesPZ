@@ -14,7 +14,7 @@ jobs:
       
       - name: Read changelog of commit
         id: changelog
-        run: echo "changelog=$(git log --format=%B -n 1 ${{ github.sha }})" >> $GITHUB_OUTPUT
+        run: echo "changelog=$(git log --format=%b -n 1 ${{ github.sha }})" >> $GITHUB_OUTPUT
 
       - name: Display output
         run: echo "${{ env.changelog }}"
