@@ -13,7 +13,7 @@ local AtosClient = AtosRadiatedZones.Client
 
 --Listen to server commands
 local function OnServerCommand(module, command, arguments)
-    print("Getting server command")
+    -- print("Getting server command") DEBUG
 
     if module == "Atos" and command == "GetAllZones" then
         print("Getting all zones")

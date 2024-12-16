@@ -170,7 +170,6 @@ local function EveryDays()
 			player:getBodyDamage():setFakeInfectionLevel(0)
 			print("radiation is cured")
 		elseif chance <= burnChance and currentRadiation >= 1000 then
-
 			print("Burn damage")
 
 		else
